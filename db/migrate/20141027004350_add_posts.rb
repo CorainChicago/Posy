@@ -7,7 +7,7 @@ class AddPosts < ActiveRecord::Migration
       t.string :gender
       t.string :hair_color
       t.string :location
-      t.boolean :flagged
+      t.integer :flagged, default: 0
 
       t.timestamps
     end

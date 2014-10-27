@@ -5,7 +5,7 @@ class AddComments < ActiveRecord::Migration
       t.text :content
       t.string :ip_address
       t.string :author_name
-      t.boolean :flagged
+      t.integer :flagged, default: 0
 
       t.timestamps
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027010409) do
+ActiveRecord::Schema.define(version: 20141027155311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,20 @@ ActiveRecord::Schema.define(version: 20141027010409) do
     t.text     "content"
     t.string   "ip_address"
     t.string   "author_name"
-    t.boolean  "flagged",     default: false
+    t.integer  "flagged",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "locations", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "locations", ["name"], name: "index_locations_on_name", using: :btree
 
   create_table "posts", force: true do |t|
     t.text     "content"
@@ -35,9 +43,10 @@ ActiveRecord::Schema.define(version: 20141027010409) do
     t.string   "gender"
     t.string   "hair_color"
     t.string   "location"
-    t.boolean  "flagged",     default: false
+    t.integer  "flagged",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "location_id"
   end
 
 end
