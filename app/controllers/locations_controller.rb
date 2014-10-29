@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
 
   def show
-    url = params[:location_name].downcase.strip
+    url = params[:slug].downcase.strip
     @location = Location.find_by(slug: url)
     redirect_to '/' unless @location
   end
