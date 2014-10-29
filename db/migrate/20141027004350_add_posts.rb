@@ -3,10 +3,9 @@ class AddPosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.text :content
       t.string :session_id
-      t.string :author_name
       t.string :gender
       t.string :hair_color
-      t.string :location
+      t.string :spotted_at
       t.integer :flagged, default: 0
 
       t.timestamps

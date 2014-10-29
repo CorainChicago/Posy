@@ -41,10 +41,9 @@ ActiveRecord::Schema.define(version: 20141029010018) do
   create_table "posts", force: true do |t|
     t.text     "content"
     t.string   "session_id"
-    t.string   "author_name"
     t.string   "gender"
     t.string   "hair_color"
-    t.string   "location"
+    t.string   "spotted_at"
     t.integer  "flagged",     default: 0
     t.datetime "created_at"
     t.datetime "updated_at"

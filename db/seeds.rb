@@ -8,8 +8,26 @@
 
 hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
 
-# Post.create!(
-#   location: hendrix,
-#   content: 'hey hey',
-  
-# )
+Post.create!(location: hendrix,
+  content: "hey hey",
+  session_id: "0",
+  gender: "male",
+  hair_color: "brown",
+  spotted_at: "MC Reynolds"
+)
+Post.create!(
+  location: hendrix,
+  content: "yo yo",
+  session_id: "0",
+  gender: "male",
+  hair_color: "black",
+  spotted_at: "SLTC"
+)
+Post.create!(
+  location: hendrix,
+  content: "wassup wassup",
+  session_id: "0",
+  gender: "male",
+  hair_color: "blonde",
+  spotted_at: "Hardin Hall"
+)
