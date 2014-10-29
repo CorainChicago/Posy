@@ -1,4 +1,4 @@
-class LocationController < ApplicationController
+class LocationsController < ApplicationController
 
   def show
     url = params[:location_name].downcase.strip

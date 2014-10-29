@@ -31,3 +31,27 @@ Post.create!(
   hair_color: "blonde",
   spotted_at: "Hardin Hall"
 )
+
+#THIS SHOULD BE SHOWN BECAUSE IT IS CLEARED
+Post.create!(
+  location: hendrix,
+  content: "howdy",
+  session_id: "0",
+  gender: "male",
+  hair_color: "blonde",
+  spotted_at: "Hardin Hall",
+  flagged: 3,
+  cleared: true
+)
+
+# THIS SHOULD NOT BE SHOWN BECAUSE IT IS NOT CLEARED
+Post.create!(
+  location: hendrix,
+  content: "umph",
+  session_id: "0",
+  gender: "male",
+  hair_color: "blonde",
+  spotted_at: "Hardin Hall",
+  flagged: 3,
+  cleared: false
+)
