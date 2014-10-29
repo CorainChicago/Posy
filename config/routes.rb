@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   # TO BE IMPLEMENTED LATER
   # get '/about' 
 
-  get '/:location_name' => 'post#index', as: "location"
+  get '/:location_name' => 'location#show', as: "location"
 
 end
