@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141029010018) do
   create_table "comments", force: true do |t|
     t.integer  "post_id"
     t.text     "content"
-    t.string   "ip_address"
+    t.string   "session_id"
     t.string   "author_name"
     t.integer  "flagged",     default: 0
     t.datetime "created_at"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20141029010018) do
 
   create_table "posts", force: true do |t|
     t.text     "content"
-    t.string   "ip_address"
+    t.string   "session_id"
     t.string   "author_name"
     t.string   "gender"
     t.string   "hair_color"

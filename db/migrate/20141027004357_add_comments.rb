@@ -3,7 +3,7 @@ class AddComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.integer :post_id
       t.text :content
-      t.string :ip_address
+      t.string :session_id
       t.string :author_name
       t.integer :flagged, default: 0
 

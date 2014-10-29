@@ -7,3 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
+
+# Post.create!(
+#   location: hendrix,
+#   content: 'hey hey',
+  
+# )
