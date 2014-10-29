@@ -3,11 +3,15 @@ class Location < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_create { generate_url_key }
+  after_create { generate_slug }
 
-  def generate_url_key
-    url_key ||= name.downcase.strip.gsub(/ /, '_')
+  def generate_slug
+    slug ||= name.downcase.strip.gsub(/ /, '_')
     save
+  end
+
+  def to_param
+    slug
   end
 
 end

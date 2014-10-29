@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :locations,    :only => [] do
+  # root '/hendrix'
+
+  resources :locations, param: :slug, :only => [] do
     resources :posts,      :only => [:index, :create, :update, :delete] do
       resources :comments, :only => [:create, :update, :delete] 
     end

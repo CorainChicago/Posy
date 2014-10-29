@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-hendrix = Location.create!(name: "Hendrix College", url_key: "hendrix")
+hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")

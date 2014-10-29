@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20141029010018) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "url_key"
+    t.string   "slug"
   end
 
-  add_index "locations", ["url_key"], name: "index_locations_on_url_key", using: :btree
+  add_index "locations", ["slug"], name: "index_locations_on_slug", using: :btree
 
   create_table "posts", force: true do |t|
     t.text     "content"
