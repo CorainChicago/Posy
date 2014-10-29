@@ -8,7 +8,7 @@
 
 hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
 
-Post.create!(location: hendrix,
+p1 = Post.create!(location: hendrix,
   content: "hey hey",
   session_id: "0",
   gender: "male",
@@ -54,4 +54,18 @@ Post.create!(
   spotted_at: "Hardin Hall",
   flagged: 3,
   cleared: false
+)
+
+
+Comment.create!(
+  post: p1,
+  content: "yeah, you're probably right",
+  session_id: "1",
+  author_name: "Pine"
+)
+Comment.create!(
+  post: p1,
+  content: "nahhhhhh",
+  session_id: "2",
+  author_name: "Oak"
 )
