@@ -4,7 +4,7 @@ class AddPosts < ActiveRecord::Migration
       t.text :content
       t.string :session_id
       t.string :gender
-      t.string :hair_color
+      t.string :hair
       t.string :spotted_at
       t.integer :flagged, default: 0
 

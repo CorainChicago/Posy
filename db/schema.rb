@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20141029010018) do
     t.text     "content"
     t.string   "session_id"
     t.string   "gender"
-    t.string   "hair_color"
+    t.string   "hair"
     t.string   "spotted_at"
     t.integer  "flagged",     default: 0
     t.datetime "created_at"

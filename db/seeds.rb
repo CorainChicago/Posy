@@ -12,7 +12,7 @@ p1 = Post.create!(location: hendrix,
   content: "hey hey",
   session_id: "0",
   gender: "male",
-  hair_color: "brown",
+  hair: "brown",
   spotted_at: "MC Reynolds"
 )
 Post.create!(
@@ -20,7 +20,7 @@ Post.create!(
   content: "yo yo",
   session_id: "0",
   gender: "male",
-  hair_color: "black",
+  hair: "black",
   spotted_at: "SLTC"
 )
 Post.create!(
@@ -28,7 +28,7 @@ Post.create!(
   content: "wassup wassup",
   session_id: "0",
   gender: "male",
-  hair_color: "blonde",
+  hair: "blonde",
   spotted_at: "Hardin Hall"
 )
 
@@ -38,7 +38,7 @@ Post.create!(
   content: "howdy",
   session_id: "0",
   gender: "male",
-  hair_color: "blonde",
+  hair: "blonde",
   spotted_at: "Hardin Hall",
   flagged: 3,
   cleared: true
@@ -50,7 +50,7 @@ Post.create!(
   content: "umph",
   session_id: "0",
   gender: "male",
-  hair_color: "blonde",
+  hair: "blonde",
   spotted_at: "Hardin Hall",
   flagged: 3,
   cleared: false
