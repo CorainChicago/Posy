@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 var Post = React.createClass({
   render: function() {
-    // console.log(this.props)
     return (
       <div className="post">
         <p className="hair">Hair: {this.props.hair}</p>
@@ -16,7 +15,6 @@ var Post = React.createClass({
 var PostList = React.createClass({
   render: function() {
     var postNodes = this.props.posts.map(function (post, index) {
-      console.log(post)
       return (
         <Post hair={post.hair} location={post.spotted_at} gender={post.gender} content={post.content} key={index} />
       )
@@ -42,7 +40,6 @@ var PostBox = React.createClass({
       url: this.props.url,
       dataType: 'json',
       success: function (data) {
-        // console.log(data.posts);
         this.setState({posts: data.posts});
       }.bind(this),
       error: function(xhr, status, err) {
