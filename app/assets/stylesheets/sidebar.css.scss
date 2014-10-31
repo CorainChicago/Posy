@@ -1,0 +1,9 @@
+@import 'color_palette';
+
+#sidebar {
+  background-color: $dark-blue;
+  position: fixed;
+  height: 100%;
+  color: #ffffff;
+  width: 33%;
+}

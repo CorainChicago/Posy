@@ -1,1 +1,22 @@
-_sidebar.html.erb
+<div id="sidebar">
+  <h1 id="badge">Afar</h1>
+  <% if location %>
+    <h2 id="location"><%= @location.name %></h3>
+  <% end %>
+
+  <%= form_for :post, id: "post-form" do |f|  %>
+    <%= f.label :hair, "Hair" %>
+    <%= f.select :hair, ["Female", "Male", "Other"] %>
+
+    <%= f.label :gender, "Gender" %>
+    <%= f.select :gender, ["Brown", "Black", "Blonde", "Red", "Other"] %><br/>
+    
+    <%= f.label :spotted_at, "Location" %>
+    <%= f.text_field :spotted_at %><br/>
+
+    <%= f.label :content, "Message" %>
+    <%= f.text_area :content %><br/>
+
+    <%= f.submit "Submit!" %><br/>
+  <% end %>
+</div>
