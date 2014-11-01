@@ -3,10 +3,10 @@ var Post = React.createClass({
   render: function() {
     return (
       <div className="post">
-        <p className="hair">Hair: {this.props.hair}</p>
-        <p className="location">Location: {this.props.location}</p>
-        <p className="gender">Gender: {this.props.gender}</p>
-        <p className="content">Content: {this.props.content}</p>
+        <p className="location">{this.props.location}: </p>
+        <p className="hair">{this.props.hair}-haired </p>
+        <p className="gender">{this.props.gender}</p>
+        <p className="content">{this.props.content}</p>
       </div>
     );
   }

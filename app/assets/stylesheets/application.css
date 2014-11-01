@@ -21,3 +21,7 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body {
+  background-color: #E3E3E3;
+}

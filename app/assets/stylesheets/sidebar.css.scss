@@ -29,7 +29,7 @@
       font-size: 100%;
       text-align: center;
       margin-top: 1em;
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
     }
 
     label {
@@ -39,6 +39,7 @@
     input[type="submit"] {
       margin-top: 1em;
       font-size: 75%;
+      font-weight: 100;
     }
 
     textarea, input[type="text"], .post-form-select {
@@ -52,6 +53,10 @@
 
     input[type="submit"], input[type="text"], select {
       height: 3em;
+    }
+
+    textarea, input[type="text"], select {
+      color: #7C7D7F;
     }
 
     div.post-form-select {
