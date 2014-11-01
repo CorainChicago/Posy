@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
-  has_many :comments
   belongs_to :location
+  has_many :comments
+  has_many :flaggings, as: :flaggable
 
   validates :content, :location, presence: true
 

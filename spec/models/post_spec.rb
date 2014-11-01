@@ -7,6 +7,7 @@ RSpec.describe Post, :type => :model do
   # it { should validate_presence_of :hair }
   it { should validate_presence_of :location }
   it { should belong_to :location }
+  it { should have_many :flaggings }
 
   describe '#get_posts_by_location' do
     before(:each) do

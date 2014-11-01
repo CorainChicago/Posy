@@ -26,4 +26,8 @@ class PostsController < ApplicationController
 
   end
 
+  def flag
+
+  end
+
 end
