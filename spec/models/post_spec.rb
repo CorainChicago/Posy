@@ -97,4 +97,26 @@ RSpec.describe Post, :type => :model do
     end
 
   end
+
+  describe "#updated_flagged_count" do
+    before(:each) do
+      Post.create!(
+        location: Location.create(name: "Testing University"),
+        content: "hello there",
+        session_id: 0,
+        gender: "Male",
+        hair: "Brown",
+        spotted_at: "wherever"
+      )
+    end
+
+    let(:post) { Post.find_by(content: "hello there", spotted_at: "wherever") }
+    
+    it 'should update the flagged column of the record' do
+      # This, perhaps unfortunately, is testing via a Flagging callback that calls this method
+      expect{ Flagging.create(session_id: "0", flaggable: post) }.to \
+        change{ Post.find_by(content: "hello there", spotted_at: "wherever").flagged }.by(1)
+    end
+
+  end
 end

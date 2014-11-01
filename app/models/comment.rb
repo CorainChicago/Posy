@@ -4,4 +4,9 @@ class Comment < ActiveRecord::Base
 
 
   validates :content, :post_id, presence: true
+
+  def update_flagged_count
+    self.update_attribute(:flagged, self.flaggings.count)
+  end
+
 end

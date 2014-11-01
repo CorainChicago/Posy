@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141101193134) do
 
   create_table "flaggings", force: true do |t|
     t.string   "session_id"
+    t.string   "flaggable_type"
     t.integer  "flaggable_id"
     t.datetime "created_at"
     t.datetime "updated_at"

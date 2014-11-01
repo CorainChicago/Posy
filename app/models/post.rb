@@ -20,4 +20,9 @@ class Post < ActiveRecord::Base
     end
 
   end
+
+  def update_flagged_count
+    self.update_attribute(:flagged, self.flaggings.count)
+  end
+
 end
