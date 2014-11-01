@@ -1,15 +1,16 @@
 @import 'color_palette';
 
 .post {
+  position: relative;
   background-color: #ffffff;
   width: 90%;
   margin: 1em auto;
-  padding: .5em;
+  padding: .5em 2em .5em .5em;
   border-radius: 2px;
   box-shadow: 0px 0px 2px $dark-gray;
   // box-shadow: 1px 1px 1px $dark-gray;
 
-  .location, .hair, .gender {
+  .location, .hair, .gender, .post-flag {
     display: inline;
     font-family: Helvetica, Trebuchet, sans-serif;
     font-size: 85%;
@@ -27,5 +28,18 @@
 
   .content {
     color: $dark-gray;
+  }
+
+  .post-flag {
+    display: block;
+    // position: relative;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    color: $background-gray;
+    &:hover {
+      color: $dark-gray;
+    }
   }
 }

@@ -7,6 +7,7 @@ var Post = React.createClass({
         <p className="hair">{this.props.hair}-haired </p>
         <p className="gender">{this.props.gender}</p>
         <p className="content">{this.props.content}</p>
+        <a className="post-flag" href="#" title="Flag as inappropriate">X</a>
       </div>
     );
   }
