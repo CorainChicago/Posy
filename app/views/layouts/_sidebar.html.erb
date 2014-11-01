@@ -1,22 +1,28 @@
 <div id="sidebar">
-  <h1 id="badge">Afar</h1>
-  <% if location %>
-    <h2 id="location"><%= @location.name %></h3>
-  <% end %>
+  <div id="sidebar-container">
+    <h1 id="badge">Afar</h1>
+    <% if location %>
+      <h2 id="location"><%= @location.name %></h3>
+    <% end %>
 
-  <%= form_for :post, id: "post-form" do |f|  %>
-    <%= f.label :hair, "Hair" %>
-    <%= f.select :hair, ["Female", "Male", "Other"] %>
+    <%= form_for :post, id: "post-form" do |f|  %>
+      <div class="post-form-select">
+        <%= f.label :gender, "Gender" %><br/>
+        <div class="post-form-select-background"><%= f.select :gender, ["", "Male", "Female"], class: "sidebar-select" %></div>
+      </div>
 
-    <%= f.label :gender, "Gender" %>
-    <%= f.select :gender, ["Brown", "Black", "Blonde", "Red", "Other"] %><br/>
-    
-    <%= f.label :spotted_at, "Location" %>
-    <%= f.text_field :spotted_at %><br/>
+      <div class="post-form-select">
+        <%= f.label :hair, "Hair" %><br/>
+        <div class="post-form-select-background"><%= f.select :hair, ["", "Brown", "Black", "Blonde", "Red"], class: "sidebar-select" %></div>
+      </div>
 
-    <%= f.label :content, "Message" %>
-    <%= f.text_area :content %><br/>
+      <%= f.label :spotted_at, "Location" %>
+      <%= f.text_field :spotted_at %><br/>
 
-    <%= f.submit "Submit!" %><br/>
-  <% end %>
+      <%= f.label :content, "Message" %>
+      <%= f.text_area :content, rows: 4 %><br/>
+
+      <%= f.submit "Submit!" %><br/>
+    <% end %>
+  </div>
 </div>
