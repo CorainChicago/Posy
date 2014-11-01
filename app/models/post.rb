@@ -2,5 +2,21 @@ class Post < ActiveRecord::Base
   has_many :comments
   belongs_to :location
 
-  validates :content, :gender, :location, :hair, presence: true
+  validates :content, :location, presence: true
+
+  def self.get_posts_by_location(args = {})
+    flagged_threshold = 2
+
+    # These may be too much hassle. Perhaps passing in order arguments would be ok here...
+    offset = args[:offset]
+    location_id = args[:location_id]
+    batch_size = args[:batch_size]
+
+    if offset
+      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).limit(batch_size).offset(offset)
+    else
+      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).limit(batch_size)
+    end
+
+  end
 end

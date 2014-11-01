@@ -15,14 +15,4 @@ RSpec.describe Location, :type => :model do
     end
   end
 
-  describe '#get_posts' do
-    before(:each) do
-      tu= Location.create(name: "Testing University")
-      30.times do 
-        Post.create
-      end
-    end
-
-
-  end
 end

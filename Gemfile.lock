@@ -32,6 +32,7 @@ GEM
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     columnize (0.8.9)
+    database_cleaner (1.2.0)
     debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -140,6 +141,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  database_cleaner (~> 1.2.0)
   debugger
   faker
   jbuilder (~> 2.0)

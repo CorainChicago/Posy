@@ -35,6 +35,7 @@ gem 'react-rails'
 group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'database_cleaner', '~> 1.2.0'
   gem 'shoulda-matchers', require: false
   gem 'debugger'
 end

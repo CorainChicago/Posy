@@ -3,11 +3,15 @@ class PostsController < ApplicationController
 
 
   def index
-    location = Location.find_by(slug: params[:location_slug])
-    offset = params[:offset]
-    batch_size = 10
-    # respond_with Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location.id, 2)
-    respond_with location.get_posts(offset, batch_size)
+    location = Location.select(:id).find_by(slug: params[:location_slug])
+    
+    args = {
+      location_id: location.id,
+      offset: params[:offset],
+      batch_size: 10
+    }
+
+    respond_with Post.get_posts_by_location(args)
   end
 
   def create
