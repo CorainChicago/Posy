@@ -14,9 +14,9 @@ class Post < ActiveRecord::Base
     batch_size = args[:batch_size]
 
     if offset
-      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).limit(batch_size).offset(offset)
+      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).order(id: :desc).limit(batch_size).offset(offset)
     else
-      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).limit(batch_size)
+      return Post.where("location_id = ? AND (flagged < ? OR cleared = true)", location_id, flagged_threshold).order(id: :desc).limit(batch_size)
     end
 
   end

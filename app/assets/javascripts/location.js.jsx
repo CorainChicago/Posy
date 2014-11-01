@@ -1,4 +1,6 @@
 /** @jsx React.DOM */
+var postsPath = window.location.pathname + "/posts";
+
 var Post = React.createClass({
   render: function() {
     return (
@@ -57,13 +59,37 @@ var PostBox = React.createClass({
   }
 });
 
-var ready = function() {
-  posts_path = window.location.pathname + "/posts"
-
+var react_ready = function() {
   React.renderComponent(
-    <PostBox url={posts_path} />,
+    <PostBox url={postsPath} />,
     document.getElementById('location_posts')
   );
 };
 
-$(".location_posts").ready(ready);
+var submitPost = function(form) {
+  $.ajax({
+    type: "POST",
+    url: postsPath,
+    data: $(form).serializeArray()
+  })
+  .done(function(response) {
+    newPost = response.post
+    // Implement displaying new post
+  })
+  .fail(function(response) {
+    var errors = response.responseJSON.errors
+    // Implement error display
+  });
+}
+
+$(".location_posts").ready(function() {
+  react_ready();
+
+  $("form").on("submit", function() {
+    event.preventDefault();
+    submitPost(this);
+  })
+});
+
+
+
