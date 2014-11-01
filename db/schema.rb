@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20141101193134) do
     t.datetime "updated_at"
   end
 
+  add_index "flaggings", ["flaggable_id", "flaggable_type"], name: "index_flaggings_on_flaggable_id_and_flaggable_type", using: :btree
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"

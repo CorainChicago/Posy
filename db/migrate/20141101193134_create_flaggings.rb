@@ -7,5 +7,7 @@ class CreateFlaggings < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :flaggings, [:flaggable_id, :flaggable_type]
   end
 end
