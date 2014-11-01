@@ -5,9 +5,15 @@ class Location < ActiveRecord::Base
 
   after_create { generate_slug }
 
+  def get_posts(offset)
+    Post.all
+  end
+
+    private
+
   def generate_slug
-    slug ||= name.downcase.strip.gsub(/ /, '_')
-    save
+    self.slug ||= name.downcase.strip.gsub(/ /, '-')
+    self.save
   end
 
   def to_param

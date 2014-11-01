@@ -33,6 +33,7 @@ gem 'active_model_serializers'
 gem 'react-rails'
 
 group :development, :test do
+  gem 'faker'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', require: false
   gem 'debugger'
