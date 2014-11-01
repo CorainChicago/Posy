@@ -117,6 +117,6 @@ RSpec.describe Post, :type => :model do
       expect{ Flagging.create(session_id: "0", flaggable: post) }.to \
         change{ Post.find_by(content: "hello there", spotted_at: "wherever").flagged }.by(1)
     end
-
+    
   end
 end
