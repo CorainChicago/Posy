@@ -3,11 +3,12 @@ class PostsController < ApplicationController
   before_action :get_location_by_slug, only: [:index, :create]
 
 
-  def index    
+  def index   
+
     args = {
       location_id: @location.id,
       offset: params[:offset],
-      batch_size: 10
+      batch_size: params[:batch_size]
     }
 
     render json: Post.get_posts_by_location(args)

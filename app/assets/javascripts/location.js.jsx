@@ -36,13 +36,16 @@ var PostBox = React.createClass({
     return {posts: []};
   },
   componentDidMount: function() {
-    this.loadPostsFromServer();
+    this.loadPostsFromServer(this.props.batchSize);
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
+    window.addEventListener('scroll', this.handleScroll);
   },
-  loadPostsFromServer: function() {
-    console.log(this.state.posts.length);
+  loadPostsFromServer: function(size) {
+    var size = size || this.state.posts.length
+    
     $.ajax({
       url: this.props.url,
+      data: { batch_size: size },
       dataType: 'json',
       success: function (data) {
         this.setState({posts: data.posts});
@@ -52,18 +55,26 @@ var PostBox = React.createClass({
       }.bind(this)
     });
   },
+  handleScroll: function() {
+    if ( $(window).scrollTop() >= $(document).height() - $(window).height()) {
+      newSize = this.state.posts.length + this.props.batchSize;
+      this.loadPostsFromServer(newSize);
+    };
+  },
   render: function() {
     return (
-      <div className="postBox">
+      <div className="postBox" ref="">
         <PostList posts={this.state.posts} />
       </div>
     );
   }
 });
 
-var react_ready = function() {
+
+
+var reactReady = function() {
   React.renderComponent(
-    <PostBox url={postsPath} pollInterval={2000} />,
+    <PostBox url={postsPath} pollInterval={4000} batchSize={10} />,
     document.getElementById('location_posts')
   );
 };
@@ -85,13 +96,18 @@ var submitPost = function(form) {
 }
 
 $(".location_posts").ready(function() {
-  react_ready();
+  reactReady();
 
   $("form").on("submit", function() {
     event.preventDefault();
     submitPost(this);
-  })
+  });
+
+  $(window).scroll( function() {
+    if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
+      
+    };
+  });
+
+
 });
-
-
-
