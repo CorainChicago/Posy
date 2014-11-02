@@ -8,7 +8,19 @@
 
 hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
 
-p1 = Post.create!(location: hendrix,
+30.times do |i|
+  Post.create!(
+    location: hendrix,
+    session_id: 0,
+    gender: "female",
+    hair: "black",
+    spotted_at: "#{i}",
+    content: "#{i}"
+  )
+end
+
+p1 = Post.create!(
+  location: hendrix,
   content: "hey hey",
   session_id: "0",
   gender: "male",
