@@ -12,11 +12,13 @@ RSpec.describe Post, :type => :model do
   describe '#get_posts_by_location' do
     before(:each) do
       tu = Location.create(name: "Testing University")
-      30.times do |i|
+
+      Post.create(location: tu, content: "oldest", session_id: "0", gender: "", hair: "", spotted_at: "wherever")
+      28.times do |i|
         new_post = Post.create!(
           location: tu,
           content: Faker::Lorem.paragraph(3),
-          session_id: 0,
+          session_id: "0",
           gender: ["", "Male", "Female"].sample,
           hair: ["Brown", "Blonde", "Red", "Black", ""].sample,
           spotted_at: "wherever"
@@ -26,8 +28,8 @@ RSpec.describe Post, :type => :model do
           new_post.update_attribute(:flagged, 99)
           new_post.update_attribute(:cleared, true) if i == 15
         end
-
       end
+      Post.create(location: tu, content: "newest", session_id: "0", gender: "", hair: "", spotted_at: "wherever")
     end
 
     let(:args) do
@@ -94,6 +96,16 @@ RSpec.describe Post, :type => :model do
       expect(first_batch_ids.uniq.count).to be 10
       expect(second_batch_ids.uniq.count).to be 10
       expect(third_batch_ids.uniq.count).to be 7
+    end
+
+    it 'should return posts in order from newest to oldest' do
+      first_posts = Post.get_posts_by_location(args)
+      expect(first_posts.first.content).to eq "newest"
+
+      args[:offset] = first_posts.count
+      args[:batch_size] = 20
+      second_posts = Post.get_posts_by_location(args)
+      expect(second_posts.last.content).to eq "oldest"
     end
 
   end
