@@ -37,8 +37,10 @@ var PostBox = React.createClass({
   },
   componentDidMount: function() {
     this.loadPostsFromServer();
+    setInterval(this.loadPostsFromServer, this.props.pollInterval);
   },
   loadPostsFromServer: function() {
+    console.log(this.state.posts.length);
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -61,7 +63,7 @@ var PostBox = React.createClass({
 
 var react_ready = function() {
   React.renderComponent(
-    <PostBox url={postsPath} />,
+    <PostBox url={postsPath} pollInterval={2000} />,
     document.getElementById('location_posts')
   );
 };
@@ -73,7 +75,7 @@ var submitPost = function(form) {
     data: $(form).serializeArray()
   })
   .done(function(response) {
-    newPost = response.post
+    newPost = response.post;
     // Implement displaying new post
   })
   .fail(function(response) {
