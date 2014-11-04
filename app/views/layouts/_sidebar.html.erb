@@ -5,7 +5,7 @@
       <h2 id="location"><%= @location.name %></h3>
     <% end %>
 
-    <%= form_for :post, id: "post-form" do |f|  %>
+    <%= form_for @post, url: location_posts_path(@location), :html => {id: "post-form"} do |f|  %>
       <div class="post-form-select">
         <%= f.label :gender, "Gender" %><br/>
         <div class="post-form-select-background"><%= f.select :gender, ["", "Male", "Female"], class: "sidebar-select" %></div>

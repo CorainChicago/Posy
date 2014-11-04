@@ -1,3 +1,7 @@
-<%= render partial: 'layouts/sidebar', :locals => { location: @location, post: @post }  %>
-
 <div id="location_posts"></div>
+
+<%= javascript_tag do %>
+  window.postsPath = '<%= location_posts_path(@location.slug) %>';
+  window.locationName = '<%= @location.name %>';
+  reactLocationReady();
+<% end %>
