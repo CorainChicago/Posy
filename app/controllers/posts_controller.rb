@@ -35,7 +35,9 @@ class PostsController < ApplicationController
   end
 
   def flag
-
+    post = Post.find_by(id: params[:post_id])
+    flag = Flagging.create(flaggable: post, session_id: session[:session_id]) if post
+    raise flag.inspect
   end
 
     private

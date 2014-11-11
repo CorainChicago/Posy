@@ -1,12 +1,24 @@
 /** @jsx React.DOM */
 
+/* REACT STRUCTURE
+  
+  -LocationDisplay
+    -Sidebar
+      -SidebarPostForm
+    -PostList
+      -Post
+      (COMMENTS TO BE IMPLEMENTED)
+
+*/
+
 var LocationDisplay = React.createClass({
   getInitialState: function() {
-    return {posts: []};
+    return {posts: [], flagged: []};
   },
   componentDidMount: function() {
     this.loadPostsFromServer(this.props.batchSize);
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
+
     $(window).on('scroll', this.handleScroll);
     $('form[id=post-form]').on('submit', this.handlePostSubmit);
   },
@@ -36,7 +48,6 @@ var LocationDisplay = React.createClass({
     var location = this;
     var $form = $(event.target);
 
-    console.log(this.props.url);
     $.ajax({
       type: "POST",
       url: this.props.url,
@@ -44,10 +55,19 @@ var LocationDisplay = React.createClass({
     })
     .done(function(response) {
       newPost = response.post;
+      // $("html, body").animate({ scrollTop: 0 }, "slow");
       location.setState({posts: [newPost].concat(location.state.posts)});
     })
     .fail(function(response) {
       var errors = response.responseJSON.errors
+      // implement error message display
+    })
+  },
+  handleFlagging: function(post, path) {
+    var flagPath = this.props.url + path
+    $.ajax({
+      url: flagPath,
+      method: "POST",
     })
   },
   render: function() {
@@ -55,7 +75,7 @@ var LocationDisplay = React.createClass({
       <div id="location-container">
         <Sidebar />
         <div id="location_posts">
-            <PostList posts={this.state.posts} />
+            <PostList handleFlagging={this.handleFlagging} posts={this.state.posts} />
         </div>
       </div>
     )
@@ -113,9 +133,16 @@ var SidebarPostForm = React.createClass({
 
 var PostList = React.createClass({
   render: function() {
-    var postNodes = this.props.posts.map(function (post, index) {
+    var passFlaggingUp = this.props.handleFlagging;
+    var postNodes = this.props.posts.map(function (post) {
       return (
-        <Post hair={post.hair} location={post.spotted_at} gender={post.gender} content={post.content} key={index} />
+        <Post 
+          hair={post.hair} 
+          location={post.spotted_at} 
+          gender={post.gender} 
+          content={post.content} 
+          key={post.id} 
+          handleFlagging={passFlaggingUp} />
       )
     });
 
@@ -128,6 +155,10 @@ var PostList = React.createClass({
 });
 
 var Post = React.createClass({
+  handleFlaggingClick: function() {
+    var flagPath = "/" + this.props.key + "/flag";
+    this.props.handleFlagging(this, flagPath);
+  },
   render: function() {
     return (
       <div className="post">
@@ -135,7 +166,7 @@ var Post = React.createClass({
         <p className="hair">{this.props.hair}-haired </p>
         <p className="gender">{this.props.gender}</p>
         <p className="content">{this.props.content}</p>
-        <a className="post-flag" href="#" title="Flag as inappropriate">X</a>
+        <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>
       </div>
     );
   }
