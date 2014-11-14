@@ -8,7 +8,8 @@ class PostsController < ApplicationController
     args = {
       location_id: @location.id,
       offset: params[:offset],
-      batch_size: params[:batch_size]
+      batch_size: params[:batch_size],
+      session_id: session[:session_id]
     }
 
     render json: Post.get_posts_by_location(args)
@@ -37,7 +38,13 @@ class PostsController < ApplicationController
   def flag
     post = Post.find_by(id: params[:post_id])
     flag = Flagging.create(flaggable: post, session_id: session[:session_id]) if post
-    raise flag.inspect
+
+    if flag
+      render json: {}, status: 200
+    else
+      # this may need to be more specific or a different code
+      render json: {}, status: 500
+    end
   end
 
     private

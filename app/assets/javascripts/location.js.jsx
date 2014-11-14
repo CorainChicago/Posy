@@ -7,13 +7,18 @@
       -SidebarPostForm
     -PostList
       -Post
-      (COMMENTS TO BE IMPLEMENTED)
+        -CommentList (IMPLEMENT)
+          Comment (IMPLEMENT)
+          CommentForm (IMPLEMENT)
 
 */
 
 var LocationDisplay = React.createClass({
   getInitialState: function() {
-    return {posts: [], flagged: []};
+    return {
+      posts: [],
+      numPosts: this.props.batchSize
+    };
   },
   componentDidMount: function() {
     this.loadPostsFromServer(this.props.batchSize);
@@ -22,8 +27,9 @@ var LocationDisplay = React.createClass({
     $(window).on('scroll', this.handleScroll);
     $('form[id=post-form]').on('submit', this.handlePostSubmit);
   },
-  loadPostsFromServer: function(size) {
-    var size = size || this.state.posts.length
+  loadPostsFromServer: function() {
+    // var size = size || this.state.posts.length
+    var size = this.state.numPosts;
 
     $.ajax({
       url: this.props.url,
@@ -40,7 +46,8 @@ var LocationDisplay = React.createClass({
   handleScroll: function() {
     if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
       newSize = this.state.posts.length + this.props.batchSize;
-      this.loadPostsFromServer(newSize);
+      this.setState({ numPosts: newSize})
+      this.loadPostsFromServer();
     };
   },
   handlePostSubmit: function(event) {
@@ -69,6 +76,7 @@ var LocationDisplay = React.createClass({
       url: flagPath,
       method: "POST",
     })
+    this.loadPostsFromServer();
   },
   render: function() {
     return (
@@ -158,6 +166,7 @@ var Post = React.createClass({
   handleFlaggingClick: function() {
     var flagPath = "/" + this.props.key + "/flag";
     this.props.handleFlagging(this, flagPath);
+    console.log(Object.getPrototypeOf(this));
   },
   render: function() {
     return (
@@ -174,7 +183,7 @@ var Post = React.createClass({
 
 var reactLocationReady = function() {
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={40000} batchSize={10} />,
+    <LocationDisplay url={postsPath} pollInterval={5000} batchSize={10} />,
     document.body
   );
 }
