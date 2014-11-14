@@ -77,11 +77,11 @@ RSpec.describe Post, :type => :model do
 
 
     it 'should return batches by offset' do
-      first_batch_ids = Post.get_posts_by_location(args).pluck(:id)
+      first_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
       args[:offset] = first_batch_ids.count
-      second_batch_ids = Post.get_posts_by_location(args).pluck(:id)
+      second_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
       args[:offset] = first_batch_ids.count + second_batch_ids.count
-      third_batch_ids = Post.get_posts_by_location(args).pluck(:id)
+      third_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
 
       second_batch_ids.each do |id|
         expect(first_batch_ids.include? id).to be false

@@ -11,7 +11,7 @@ class Flagging < ActiveRecord::Base
 
     # This enumeration is intended to reduce database queries to just one;
     # these items may already be loaded into memory though, so I am unsure if
-    # enumeration is actually faster than multiple ActiveRecord expressions.
+    # enumeration is actually faster than multiple ActiveRecord queries.
     flaggings.each do |flagging|
       if flagging.flaggable_type == "Post"
         flagged_ids[:posts] << flagging.flaggable_id
