@@ -12,7 +12,6 @@ RSpec.describe Flagging, :type => :model do
       spotted_at: "wherever"
     )
     Comment.create(
-      author_name: "Oak",
       session_id: "0",
       content: "hey-o",
       post: new_post
@@ -20,7 +19,7 @@ RSpec.describe Flagging, :type => :model do
   end
 
   let(:post) { Post.find_by(content: "hello there", spotted_at: "wherever") }
-  let(:comment) { Comment.find_by(content: "hey-o", author_name: "Oak") }
+  let(:comment) { Comment.find_by(content: "hey-o") }
   
   it { should belong_to :flaggable }
 
