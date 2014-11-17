@@ -149,7 +149,8 @@ var PostList = React.createClass({
           location={post.spotted_at} 
           gender={post.gender} 
           content={post.content} 
-          key={post.id} 
+          key={post.id}
+          comments={post.comments} 
           handleFlagging={passFlaggingUp} />
       )
     });
@@ -169,6 +170,7 @@ var Post = React.createClass({
     console.log(Object.getPrototypeOf(this));
   },
   render: function() {
+
     return (
       <div className="post">
         <p className="location">{this.props.location}: </p>
@@ -176,8 +178,37 @@ var Post = React.createClass({
         <p className="gender">{this.props.gender}</p>
         <p className="content">{this.props.content}</p>
         <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>
+        <CommentList comments={this.props.comments} />
       </div>
     );
+  }
+});
+
+var CommentList = React.createClass({
+  render: function() {
+    var commentNodes = this.props.comments.map(function (comment) {
+      return (
+        <Comment author={comment.author_name} content={comment.content} key={comment.id}/>
+      )
+    })
+
+    return (
+      <div className="commentList">
+        {commentNodes}
+      </div>
+    );
+  }
+});
+
+var Comment = React.createClass({
+  render: function() {
+    return (
+      <div className="comment">
+        <h1>{this.props.content}</h1>
+        <h1>{this.props.author}</h1>
+        <h1>{this.props.key}</h1>
+      </div>
+    )
   }
 });
 
