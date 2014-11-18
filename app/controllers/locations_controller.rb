@@ -7,4 +7,8 @@ class LocationsController < ApplicationController
     redirect_to '/' unless @location
   end
 
+  def admin
+
+  end
+
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # root '/hendrix'
 
   resources :locations, param: :slug, path: "", :only => [:show] do
+    get '/admin', to: 'locations#admin'
     resources :posts, :only => [:index, :create, :update, :delete] do
       post '/flag', to: 'posts#flag'
       resources :comments, :only => [:create, :update, :delete] do

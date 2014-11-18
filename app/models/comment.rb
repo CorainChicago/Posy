@@ -33,7 +33,7 @@ class Comment < ActiveRecord::Base
     siblings.each do |sib|
       return sib.author_name if sib.session_id == self.session_id
     end
-    return nil
+    nil
   end
 
   def find_unused_name(siblings)
