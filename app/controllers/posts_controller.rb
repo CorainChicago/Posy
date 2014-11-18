@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   respond_to :json
-  before_action :get_location_by_slug, only: [:index, :create]
+  before_action :get_location_by_slug, only: [:index, :create, :destroy, :clear]
 
 
   def index   
@@ -27,12 +27,19 @@ class PostsController < ApplicationController
     end
   end
 
-  def update
+  def destroy
+    post = Post.find_by(id: params[:id])
+    post.destroy_comments
+    post.destroy
 
+    redirect_to location_admin_path(@location)
   end
 
-  def delete
+  def clear
+    post = Post.find_by(id: params[:post_id])
+    post.mark_as_cleared if post
 
+    redirect_to location_admin_path(@location)
   end
 
   def flag

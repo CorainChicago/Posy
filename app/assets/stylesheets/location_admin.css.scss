@@ -1,0 +1,28 @@
+.admin-post {
+  border: 1px solid black;
+  width: 90%;
+  margin: 0 auto 2em auto;
+
+  .admin-post-details, .admin-post-content, .admin-post-dashboard {
+    display: inline-block;
+    padding: 10px;
+  }
+
+  .admin-post-details {
+    border: 1px solid red;
+    width: 25%;
+
+    .admin-location, .admin-hair, .admin-gender {
+    }
+  }
+
+  .admin-post-content {
+    border: 1px solid yellow;
+    width: 50%;
+  }
+
+  .admin-post-dashboard {
+    border: 1px solid blue;
+    width: 23%;
+  }
+}
