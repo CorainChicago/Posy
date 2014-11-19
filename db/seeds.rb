@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
+admin = Admin.create(email: "dev@dev.com", password: "test")
+admin.locations << hendrix
 
 # 30.times do |i|
 #   Post.create!(

@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   end
 
   # IMPLEMENT ABOUT
-  
+
 end
