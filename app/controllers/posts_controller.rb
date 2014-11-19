@@ -28,23 +28,20 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    # @post = Post.find_by(id: params[:id])
-    @post.destroy_comments
-    @post.destroy
+    # For now, content is not deleted, only hidden
+    # @post.destroy_comments
+    # @post.destroy
+    @post.mark_as_removed
 
-    # redirect_to location_admin_path(@location)
     redirect_to location_admin_path(params[:location_slug])
   end
 
   def clear
-    # @post = Post.find_by(id: params[:post_id])
     @post.mark_as_cleared if @post
-    # redirect_to location_admin_path(@location)
     redirect_to location_admin_path(params[:location_slug])
   end
 
   def flag
-    # post = Post.find_by(id: params[:post_id])
     flag = Flagging.create(flaggable: @post, session_id: session[:session_id]) if @post
 
     if flag

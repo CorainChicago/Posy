@@ -10,7 +10,7 @@ module Content
   }
 
   def clear?
-    self.content_state >= 0
+    self.status >= 0
   end
 
   def mark_as_cleared

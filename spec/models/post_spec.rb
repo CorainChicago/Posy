@@ -26,7 +26,8 @@ RSpec.describe Post, :type => :model do
 
         if [0, 12, 22, 15].include? i
           new_post.update_attribute(:flagged, 99)
-          new_post.update_attribute(:cleared, true) if i == 15
+          new_post.update_attribute(:status, -1) unless i == 15
+          new_post.update_attribute(:status, 1) if i == 15
         end
       end
       Post.create(location: tu, content: "newest", session_id: "0", gender: "", hair: "", spotted_at: "wherever")
@@ -37,8 +38,8 @@ RSpec.describe Post, :type => :model do
       {location_id: location_id, batch_size: 10, offset: nil }
     end
 
-    let(:uncleared_posts) { Post.where(flagged: 99, cleared: false) }
-    let(:cleared_post) { Post.find_by(flagged: 99, cleared: true) }
+    let(:uncleared_posts) { Post.where(flagged: 99, status: -1 ) }
+    let(:cleared_post) { Post.find_by(flagged: 99, status: 1) }
 
 
 

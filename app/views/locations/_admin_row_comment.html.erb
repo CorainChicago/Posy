@@ -6,7 +6,7 @@
   <td></td>
   <td><%= "#{comment.author_name}: #{comment.content}" %></td>
   <td><%= comment.flagged %></td>
-  <td><%= comment.cleared %></td>
+  <td><%= (comment.clear?) ? "Y" : "N" %></td>
   <td><%= button_to "Mark OK", location_post_comment_clear_path(location, post, comment), method: "POST" %></td>
-  <td><%= button_to "Delete", location_post_comment_path(location, post, comment), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  <td><%= button_to "Hide", location_post_comment_path(location, post, comment), method: :delete, data: {confirm: "Are you sure?"} %></td>
 </tr>

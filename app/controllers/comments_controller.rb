@@ -6,7 +6,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    # For now, content is not destroyed, only hidden
+    # @comment.destroy
+    @comment.mark_as_removed
+
     redirect_to location_admin_path(params[:location_slug])
   end
 

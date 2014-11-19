@@ -5,9 +5,9 @@
   <td><%= post.gender %></td>
   <td><%= post.content %></td>
   <td><%= post.flagged %></td>
-  <td><%= post.cleared %></td>
+  <td><%= (post.clear?) ? "Y" : "N" %></td>
   <td><%= button_to "Mark OK", location_post_clear_path(location, post), method: "POST" %></td>
-  <td><%= button_to "Delete", location_post_path(location, post), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  <td><%= button_to "Hide", location_post_path(location, post), method: :delete, data: {confirm: "Are you sure?"} %></td>
 </tr>
 
 <% post.comments.each do |comment| %>
