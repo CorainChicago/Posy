@@ -1,7 +1,19 @@
-<h1><%= @location.name %></h1>
+<table>
+  <tr>
+    <th>Timestamp</th>
+    <th>Location</th>
+    <th>Hair</th>
+    <th>Gender</th>
+    <!-- <th>Type</th> -->
+    <th>Content</th>
+    <th>Flags</th>
+    <th>Cleared?</th>
+    <th>Clear</th>
+    <th>Delete</th>
+  </tr>
 
-<div>
   <% @posts.each do |post| %>
-    <%= render partial: "admin_post", :locals => { location: @location, post: post } %>
+    <%= render partial: "admin_row_post", locals: {location: @location, post: post} %>
   <% end %>
-</div>
+
+</table>

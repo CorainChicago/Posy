@@ -10,6 +10,10 @@ class Comment < ActiveRecord::Base
     self.update_attribute(:flagged, self.flaggings.count)
   end
 
+  def mark_as_cleared
+    self.update_attribute(:cleared, true)
+  end
+
     private
 
   def generate_author_name

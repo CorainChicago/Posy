@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       post '/flag', to: 'posts#flag'
       post '/clear', to: 'posts#clear'
 
-      resources :comments, :only => [:create, :update, :destroy] do
+      resources :comments, :only => [:create, :destroy] do
         post '/flag', to: 'comments#flag'
+        post '/clear', to: 'comments#clear'
       end
     end
   end

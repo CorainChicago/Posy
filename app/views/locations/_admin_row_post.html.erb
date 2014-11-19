@@ -1,0 +1,15 @@
+<tr>
+  <td><%= post.created_at.strftime("%m/%d %H:%M") %></td>
+  <td><%= post.spotted_at %></td>
+  <td><%= post.hair %></td>
+  <td><%= post.gender %></td>
+  <td><%= post.content %></td>
+  <td><%= post.flagged %></td>
+  <td><%= post.cleared %></td>
+  <td><%= button_to "Mark OK", location_post_clear_path(location, post), method: "POST" %></td>
+  <td><%= button_to "Delete", location_post_path(location, post), method: :delete, data: {confirm: "Are you sure?"} %></td>
+</tr>
+
+<% post.comments.each do |comment| %>
+  <%= render partial: "admin_row_comment", locals: {location: location, post: post, comment: comment} %>
+<% end %>
