@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   def show
-    @locations = 
+    # REDIRECIT IF NOT LOGGED IN
+    @locations = current_admin
   end
 end
