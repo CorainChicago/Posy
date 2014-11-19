@@ -11,9 +11,12 @@ class LocationsController < ApplicationController
   end
 
   def admin
-    # IMPLEMENT USERS / AUTHENTICATION
-
-    @posts = @location.posts.order(:created_at => :desc)
+    admin_ids = @location.admins.pluck(:id)
+    if admin_ids.include? current_admin_id
+      @posts = @location.posts.order(:created_at => :desc)
+    else
+      redirect_to login_path
+    end
   end
 
     private

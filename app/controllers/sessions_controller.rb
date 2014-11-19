@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-    raise "LOGIN".inspect
   end
 
   def create
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
     if admin && admin.authenticate(params[:password])
       flash[:notice] = "You've been successfully logged in."
       session[:admin_id] = admin.id
-      # REDIRECT
+      redirect_to admin_path
     else
       flash[:alert] = "Invalid password or email"
       render "new"
@@ -18,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:admin_id] = nil
-    # REDIRECT
+    redirect_to login_path
   end
 
 end
