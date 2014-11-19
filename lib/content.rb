@@ -2,7 +2,8 @@ module Content
   # created to be implemented by models for user-generated
   # content (i.e. posts, comments)
 
-  @@states = {
+  FLAGGED_THRESHOLD = 2
+  STATES = {
     cleared: 1,  # marked as OK by admin
     default: 0,  # untouched by admin, flaggings below threshold
     flagged: -1, # number of flaggings above threshold
@@ -14,19 +15,21 @@ module Content
   end
 
   def mark_as_cleared
-    self.update_attribute(:status, @@states[:cleared])
+    self.update_attribute(:status, STATES[:cleared])
   end
 
   def mark_as_removed
-    self.update_attribute(:status, @@states[:removed])
-  end
-
-  def mark_as_flagged
-    self.update_attribute(:status, @@state[:flagged])
+    self.update_attribute(:status, STATES[:removed])
   end
 
   def update_flagged_count
-    self.update_attribute(:flagged, self.flaggings.count)
+    flags = self.flaggings.count
+
+    if flags >= FLAGGED_THRESHOLD
+      self.update_attributes(flagged: flags, status: STATES[:flagged])
+    else
+      self.update_attribute(:flagged, self.flaggings.count)
+    end
   end
 
 end
