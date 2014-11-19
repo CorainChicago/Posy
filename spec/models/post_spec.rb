@@ -69,7 +69,7 @@ RSpec.describe Post, :type => :model do
       expect(posts.include? uncleared_posts[2]).to be false
     end
 
-    it 'should retun posts that have been flagged but cleared' do
+    it 'should return posts that have been flagged but cleared' do
       args[:batch_size] = 100
       posts = Post.get_posts_by_location(args)
       expect(posts.include? cleared_post).to be true
@@ -110,7 +110,7 @@ RSpec.describe Post, :type => :model do
 
   end
 
-  describe "#updated_flagged_count" do
+  describe "#update_flagged_count" do
     before(:each) do
       Post.create!(
         location: Location.create(name: "Testing University"),
@@ -130,5 +130,24 @@ RSpec.describe Post, :type => :model do
         change{ Post.find_by(content: "hello there", spotted_at: "wherever").flagged }.by(1)
     end
     
+  end
+
+  describe '#mark_as_cleared' do
+    before(:each) do
+      Post.create!(
+        location: Location.create(name: "Testing University"),
+        content: "hello there",
+        session_id: 0,
+        gender: "Male",
+        hair: "Brown",
+        spotted_at: "wherever"
+      )
+    end
+
+    let(:post) { Post.find_by(content: "hello there", spotted_at: "wherever") }
+
+    it 'should update the post\'s status to 1' do
+      expect{ post.mark_as_cleared }.to change{ post.status }.to(1)
+    end
   end
 end

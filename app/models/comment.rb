@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Content
+
   belongs_to :post
   has_many :flaggings, as: :flaggable
 
@@ -6,13 +8,9 @@ class Comment < ActiveRecord::Base
 
   before_create{ generate_author_name }
 
-  def update_flagged_count
-    self.update_attribute(:flagged, self.flaggings.count)
-  end
-
-  def mark_as_cleared
-    self.update_attribute(:cleared, true)
-  end
+  # def mark_as_cleared
+  #   self.update_attribute(:cleared, true)
+  # end
 
     private
 

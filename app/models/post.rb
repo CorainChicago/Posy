@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Content
+
   belongs_to :location
   has_many :comments
   has_many :flaggings, as: :flaggable
@@ -24,13 +26,9 @@ class Post < ActiveRecord::Base
     filter_flaggings(posts, args[:session_id])
   end
 
-  def update_flagged_count
-    self.update_attribute(:flagged, self.flaggings.count)
-  end
-
-  def mark_as_cleared
-    self.update_attribute(:cleared, true)
-  end
+  # def mark_as_cleared
+  #   self.update_attribute(:cleared, true)
+  # end
 
   def destroy_comments
     self.comments.each { |c| c.destroy }
