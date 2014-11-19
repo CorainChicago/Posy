@@ -1,10 +1,6 @@
 class AdminsController < ApplicationController
 
   def show
-    # PRODUCTION ONLY
-    session[:admin_id] = Admin.find_by(email: "dev@dev.com").id
-    # END PRODUCTION ONLY
-
     @admin = current_admin
     if @admin
       @locations = @admin.locations

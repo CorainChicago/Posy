@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
+    redirect_to admin_path if current_admin_id
   end
 
   def create
