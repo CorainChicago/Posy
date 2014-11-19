@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Location, :type => :model do
   it { should have_many :posts }
+  it { should have_many :administrations }
+  it { should have_many :admins }
 
   describe '#generate_slug' do
     it 'should NOT generate slug if slug IS provided upon creation' do

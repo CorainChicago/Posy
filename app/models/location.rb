@@ -1,5 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :posts
+  has_many :administrations
+  has_many :admins, through: :administrations
 
   validates :name, presence: true
 
