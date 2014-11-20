@@ -1,22 +1,23 @@
 <%= link_to "Back to locations", admin_path %>
 <%= link_to "Logout", logout_path %>
 
-<table class="admin-table">
-  <tr>
-    <th>Timestamp</th>
-    <th>Location</th>
-    <th>Hair</th>
-    <th>Gender</th>
-    <!-- <th>Type</th> -->
-    <th>Content</th>
-    <th>Flags</th>
-    <th>Display?</th>
-    <th>Clear</th>
-    <th>Remove</th>
-  </tr>
+<div id="admin-tables">
+  <table class="admin-table">
+    <tr><td colspan="9">PRIORITIES (flagged by users)</tr>
+    <%= render "admin_headers" %>
 
-  <% @posts.each do |post| %>
-    <%= render partial: "admin_row_post", locals: {location: @location, post: post} %>
-  <% end %>
+    <% @priorities.each do |post| %>
+      <%= render partial: "admin_row_post", locals: {location: @location, post: post} %>
+    <% end %>
+  </table>
 
-</table>
+  <table class="admin-table">
+    <tr><td colspan="9">ALL POSTS</td></tr>
+    <%= render "admin_headers" %>
+
+    <% @posts.each do |post| %>
+      <%= render partial: "admin_row_post", locals: {location: @location, post: post} %>
+    <% end %>
+
+  </table>
+</div>

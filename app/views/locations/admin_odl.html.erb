@@ -1,7 +1,0 @@
-<h1><%= @location.name %></h1>
-
-<div>
-  <% @posts.each do |post| %>
-    <%= render partial: "admin_post", :locals => { location: @location, post: post } %>
-  <% end %>
-</div>

@@ -1,12 +1,9 @@
-<tr>
-  <td><%= comment.created_at.strftime("%m/%d %H:%M") %></td>
-  <!-- maybe colspan filler instead? -->
-  <td></td>
-  <td></td>
-  <td></td>
-  <td><%= "#{comment.author_name}: #{comment.content}" %></td>
-  <td><%= comment.flagged %></td>
-  <td><%= (comment.clear?) ? "Y" : "N" %></td>
-  <td><%= button_to "Mark OK", location_post_comment_clear_path(location, post, comment), method: "POST" %></td>
-  <td><%= button_to "Hide", location_post_comment_path(location, post, comment), method: :delete, data: {confirm: "Are you sure?"} %></td>
+<tr class="admin-comment">
+  <td class="admin-time"><%= comment.created_at.strftime("%m/%d %H:%M") %></td>
+  <td colspan="3" class="admin-comment-blank"></td>
+  <td class="admin-content"><%= "#{comment.author_name}: #{comment.content}" %></td>
+  <td class="admin-flags"><%= comment.flagged %></td>
+  <td class="admin-show"><%= (comment.clear?) ? "Y" : "N" %></td>
+  <td class="admin-ok"><%= button_to "OK", location_post_comment_clear_path(location, post, comment), method: "POST" %></td>
+  <td class="admin-remove"><%= button_to "Hide", location_post_comment_path(location, post, comment), method: :delete, data: {confirm: "Are you sure?"} %></td>
 </tr>

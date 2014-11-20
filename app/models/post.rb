@@ -26,8 +26,13 @@ class Post < ActiveRecord::Base
     filter_flaggings(posts, args[:session_id])
   end
 
-  def destroy_comments
-    self.comments.each { |c| c.destroy }
+  # def destroy_comments
+  #   self.comments.each { |c| c.destroy }
+  # end
+
+  def has_priority_comment?
+    self.comments.each { |comment| return true if comment.admin_priority? }
+    return false
   end
 
     private
@@ -45,5 +50,4 @@ class Post < ActiveRecord::Base
 
     posts
   end
-
 end

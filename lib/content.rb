@@ -32,4 +32,8 @@ module Content
     end
   end
 
+  def admin_priority?
+    self.status == STATES[:flagged]
+  end
+
 end

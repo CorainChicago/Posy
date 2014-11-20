@@ -1,29 +1,34 @@
-// .admin-post {
-//   border: 1px solid black;
-//   width: 90%;
-//   margin: 0 auto 2em auto;
+#admin-tables {
+  margin: 50px auto;
+  width: 95%;
 
-//   .admin-post-details, .admin-post-content, .admin-post-dashboard {
-//     display: inline-block;
-//     padding: 10px;
-//   }
+  .admin-table {
+    margin-bottom: 50px;
 
-//   .admin-post-details {
-//     border: 1px solid red;
-//     width: 25%;
+    td, th {
+      text-align: left;
+      padding: 2px;
+    }
 
-//     .admin-location, .admin-hair, .admin-gender {
-//     }
-//   }
+    .admin-time {
+      width: 10%;
+    }
 
-//   .admin-post-content {
-//     border: 1px solid yellow;
-//     width: 50%;
-//   }
+    .admin-location {
+      width: 10%;
+    }
 
-//   .admin-post-dashboard {
-//     border: 1px solid blue;
-//     width: 23%;
-//   }
-// }
+    .admin-gender, .admin-hair, .admin-flags, .admin-show, .admin-ok, .admin-hide {
+      width: 5%;
+    }
 
+    .admin-content {
+      width: 50%;
+    }
+
+    .admin-comment-blank {
+      background-color: #eeeeee;
+    }
+  }
+
+}

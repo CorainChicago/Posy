@@ -1,13 +1,13 @@
-<tr>
-  <td><%= post.created_at.strftime("%m/%d %H:%M") %></td>
-  <td><%= post.spotted_at %></td>
-  <td><%= post.hair %></td>
-  <td><%= post.gender %></td>
-  <td><%= post.content %></td>
-  <td><%= post.flagged %></td>
-  <td><%= (post.clear?) ? "Y" : "N" %></td>
-  <td><%= button_to "Mark OK", location_post_clear_path(location, post), method: "POST" %></td>
-  <td><%= button_to "Hide", location_post_path(location, post), method: :delete, data: {confirm: "Are you sure?"} %></td>
+<tr class="admin-post">
+  <td class="admin-time"><%= post.created_at.strftime("%m/%d %H:%M") %></td>
+  <td class="admin-location"><%= post.spotted_at %></td>
+  <td class="admin-hair"><%= post.hair %></td>
+  <td class="admin-gender"><%= post.gender %></td>
+  <td class="admin-content"><%= post.content %></td>
+  <td class="admin-flags"><%= post.flagged %></td>
+  <td class="admin-show"><%= (post.clear?) ? "Y" : "N" %></td>
+  <td class="admin-ok"><%= button_to "OK", location_post_clear_path(location, post), method: "POST" %></td>
+  <td class="admin-hide"><%= button_to "Hide", location_post_path(location, post), method: :delete, data: {confirm: "Are you sure?"} %></td>
 </tr>
 
 <% post.comments.each do |comment| %>
