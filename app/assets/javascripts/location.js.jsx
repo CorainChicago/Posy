@@ -173,7 +173,7 @@ var Post = React.createClass({
 
     return (
       <div className="post">
-        <p className="location">{this.props.location}: </p>
+        <p className="location">{this.props.location}</p>
         <p className="hair">{this.props.hair}-haired </p>
         <p className="gender">{this.props.gender}</p>
         <p className="content">{this.props.content}</p>

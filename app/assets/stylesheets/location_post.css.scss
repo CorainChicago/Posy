@@ -1,5 +1,11 @@
 @import 'color_palette';
 
+#location-posts {
+  padding-top: 1em;
+  width: 67%;
+  margin-left: 33%;
+}
+
 .post {
   position: relative;
   background-color: #ffffff;
@@ -7,7 +13,7 @@
   margin: 1em auto;
   padding: .5em 2em .5em .5em;
   border-radius: 2px;
-  box-shadow: 0px 0px 2px $dark-gray;
+  // box-shadow: 0px 0px 2px $dark-gray;
   // box-shadow: 1px 1px 1px $dark-gray;
 
   .location, .hair, .gender, .post-flag {
@@ -19,7 +25,15 @@
   }
 
   .location {
-    color: $accent;
+    // color: $accent;
+    color: $sidebar-accent;
+    background-color: $sidebar;
+    font-weight: 300;
+    padding: 2px 4px;
+    // border-radius: 2px;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    line-height: 1.5;
   }
 
   .hair, .gender {
@@ -27,6 +41,9 @@
   }
 
   .content {
+    // font-family: $serif-stack;
+        font-family: $sans-serif-stack;
+
     color: $dark-gray;
   }
 
