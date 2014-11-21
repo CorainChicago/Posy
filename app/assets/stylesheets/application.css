@@ -25,5 +25,21 @@ html {
 body {
   /*background-color: #E3E3E3;*/
   /*background-color: #f1f1f1;*/
-  background-color: #ffffff;
+  /*background-color: #f4f4f4;*/
+  /*background-color: #ECF0F1;*/
 }
+
+/*
+
+  #location-container
+    #sidebar
+      #sidebar-container
+      #badge
+      #location
+      #new-post
+    #location-posts
+      .post-list
+        .post
+          (comments)
+
+*/

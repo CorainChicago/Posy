@@ -82,7 +82,7 @@ var LocationDisplay = React.createClass({
     return (
       <div id="location-container">
         <Sidebar />
-        <div id="location_posts">
+        <div id="location-posts">
             <PostList handleFlagging={this.handleFlagging} posts={this.state.posts} />
         </div>
       </div>
@@ -107,7 +107,7 @@ var Sidebar = React.createClass({
 var SidebarPostForm = React.createClass({
   render: function() {
     return (
-      <form accept-charset="UTF-8" action={postsPath} className="new_post" id="post-form" method="post">
+      <form accept-charset="UTF-8" action={postsPath} className="new-post" id="post-form" method="post">
         <div className="post-form-select">
           <label for="post_gender">Gender</label><br/>
           <div className="post-form-select-background">
@@ -156,7 +156,7 @@ var PostList = React.createClass({
     });
 
     return (
-      <div className="postList">
+      <div className="post-list">
         {postNodes}
       </div>
     );
@@ -192,11 +192,13 @@ var CommentList = React.createClass({
       )
     })
 
-    return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
-    );
+    // return (
+    //   <div className="commentList">
+    //     {commentNodes}
+    //   </div>
+    // );
+
+    return (<div></div>);
   }
 });
 

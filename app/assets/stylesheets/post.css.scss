@@ -12,14 +12,14 @@
 
   .location, .hair, .gender, .post-flag {
     display: inline;
-    font-family: Helvetica, Trebuchet, sans-serif;
+    font-family: $sans-serif-family;
     font-size: 85%;
     font-weight: 700;
-    font-style: italic;
+    // font-style: italic;
   }
 
   .location {
-    color: $orange;
+    color: $accent;
   }
 
   .hair, .gender {
@@ -37,7 +37,7 @@
     top: 10px;
     right: 10px;
     text-decoration: none;
-    color: $background-gray;
+    color: $dark-gray;
     &:hover {
       color: $dark-gray;
     }
