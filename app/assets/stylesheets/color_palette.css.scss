@@ -24,17 +24,22 @@
 
 // DEV PALETTE
 
+@import url(http://fonts.googleapis.com/css?family=Dancing+Script:700);
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
+
+
 // BLUE w/ red
 // $sidebar-accent: #96281B;
 // $sidebar: #22313F;
 
 // RED w/ white
 $sidebar: #96281B;
-$sidebar-accent: #000000;
+$sidebar-accent: #FFFFFF;
 
 $accent: #49B571;
 $dark-gray: #7C7D7F;
 $light-gray: #f4f4f4;
 
-$serif-family: Palatino, Garamond, serif;
-$sans-serif-family: Helvetica, Trebuchet, sans-serif;
+$serif-stack: Palatino, Garamond, serif;
+$sans-serif-stack: Lato, Helvetica, arial, sans-serif;
+$script-stack: 'Dancing Script', Lato;
