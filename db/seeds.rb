@@ -46,6 +46,18 @@ p3 = Post.create!(
   spotted_at: "Hardin Hall"
 )
 
+30.times do |i|
+  Post.create!(
+    location: hendrix,
+    content: Faker::Lorem.sentences(rand(1..5)).join(" "),
+    session_id: i,
+    gender: ["male", "female"].sample,
+    hair: ["blonde", "brown", "black", "red"].sample,
+    spotted_at: ["caf", "SLTC", "OTC", "Bailey Library", "MC Reynolds",
+                 "DW Reynolds", "ART", "Fausett", "Martin 101", "my dreams"].sample
+  )
+end
+
 # #THIS SHOULD BE SHOWN BECAUSE IT IS CLEARED
 # Post.create!(
 #   location: hendrix,

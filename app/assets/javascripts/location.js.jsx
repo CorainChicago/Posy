@@ -36,6 +36,7 @@ var LocationDisplay = React.createClass({
       data: { batch_size: size },
       dataType: 'json',
       success: function (data) {
+        console.log(data);
         this.setState({posts: data.posts});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -173,12 +174,16 @@ var Post = React.createClass({
 
     return (
       <div className="post">
-        <p className="location">{this.props.location}</p>
-        <p className="hair">{this.props.hair}-haired </p>
-        <p className="gender">{this.props.gender}</p>
-        <p className="content">{this.props.content}</p>
+        <div className="post-content">
+          <p className="location">{this.props.location}</p>
+          <p className="hair">{this.props.hair}-haired </p>
+          <p className="gender">{this.props.gender}</p>
+          <p className="content">{this.props.content}</p>
+        </div>
         <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>
-        <CommentList comments={this.props.comments} />
+        <div className="post-details">
+          <CommentList comments={this.props.comments} />
+        </div>
       </div>
     );
   }
@@ -216,7 +221,7 @@ var Comment = React.createClass({
 
 var reactLocationReady = function() {
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={5000} batchSize={10} />,
+    <LocationDisplay url={postsPath} pollInterval={50000} batchSize={10} />,
     document.body
   );
 }
