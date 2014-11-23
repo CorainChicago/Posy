@@ -1,0 +1,17 @@
+@import 'color_palette';
+
+.comment-list {
+  margin-top: .5em;
+  padding-left: 2em;
+
+  .comment {
+    font-family: $sans-serif-stack;
+    font-size: 90%;
+    line-height: 1.5;
+
+    .comment-author {
+      color: $sidebar;
+      font-weight: 400;
+    }
+  }
+}

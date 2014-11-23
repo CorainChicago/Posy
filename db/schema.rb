@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119222532) do
+ActiveRecord::Schema.define(version: 20141122184311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20141119222532) do
   end
 
   add_index "flaggings", ["flaggable_id", "flaggable_type"], name: "index_flaggings_on_flaggable_id_and_flaggable_type", using: :btree
+  add_index "flaggings", ["session_id"], name: "index_flaggings_on_session_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "name"

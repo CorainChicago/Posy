@@ -149,7 +149,8 @@ var PostList = React.createClass({
           hair={post.hair} 
           location={post.spotted_at} 
           gender={post.gender} 
-          content={post.content} 
+          content={post.content}
+          age={post.age} 
           key={post.id}
           comments={post.comments} 
           handleFlagging={passFlaggingUp} />
@@ -175,12 +176,14 @@ var Post = React.createClass({
     return (
       <div className="post">
         <div className="post-content">
-          <p className="location">{this.props.location}</p>
+          <p className="location">at {this.props.location}</p>
           <p className="hair">{this.props.hair}-haired </p>
           <p className="gender">{this.props.gender}</p>
           <p className="content">{this.props.content}</p>
         </div>
-        <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>
+        <p className="post-links">{this.props.age} ago | <a href="#" className="add-comment">Comment</a> | <a href="#" className="report-post">Report</a></p>
+
+
         <div className="post-details">
           <CommentList comments={this.props.comments} />
         </div>
@@ -197,11 +200,11 @@ var CommentList = React.createClass({
       )
     })
 
-    // return (
-    //   <div className="commentList">
-    //     {commentNodes}
-    //   </div>
-    // );
+    return (
+      <div className="comment-list">
+        {commentNodes}
+      </div>
+    );
 
     return (<div></div>);
   }
@@ -211,9 +214,10 @@ var Comment = React.createClass({
   render: function() {
     return (
       <div className="comment">
-        <h1>{this.props.content}</h1>
-        <h1>{this.props.author}</h1>
-        <h1>{this.props.key}</h1>
+        <p className="comment-content">
+          <span className="comment-author">{this.props.author} says: </span>
+          {this.props.content}
+        </p>
       </div>
     )
   }
@@ -225,3 +229,5 @@ var reactLocationReady = function() {
     document.body
   );
 }
+
+        // <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>

@@ -46,17 +46,19 @@ p3 = Post.create!(
   spotted_at: "Hardin Hall"
 )
 
-30.times do |i|
-  Post.create!(
-    location: hendrix,
-    content: Faker::Lorem.sentences(rand(1..5)).join(" "),
-    session_id: i,
-    gender: ["male", "female"].sample,
-    hair: ["blonde", "brown", "black", "red"].sample,
-    spotted_at: ["caf", "SLTC", "OTC", "Bailey Library", "MC Reynolds",
-                 "DW Reynolds", "ART", "Fausett", "Martin 101", "my dreams"].sample
-  )
-end
+# 30.times do |i|
+#   p = Post.create!(
+#     location: hendrix,
+#     content: Faker::Lorem.sentences(rand(1..5)).join(" "),
+#     session_id: i,
+#     gender: ["male", "female"].sample,
+#     hair: ["blonde", "brown", "black", "red"].sample,
+#     spotted_at: ["caf", "SLTC", "OTC", "Bailey Library", "MC Reynolds",
+#                  "DW Reynolds", "ART", "Fausett", "Martin 101", "my dreams"].sample
+#   )
+
+#   Flagging.create(session_id: "s#{i}", flaggable: p)
+# end
 
 # #THIS SHOULD BE SHOWN BECAUSE IT IS CLEARED
 # Post.create!(
@@ -98,12 +100,11 @@ end
 
 [p1, p2, p3].each do |p|
   rand(3..6).times do |i|
-    Comment.create!(
+    c = Comment.create!(
       post: p,
       content: Faker::Lorem.sentences( rand(1..3) ).join(" "),
       session_id: "#{p.to_s}#{i}",
     )
   end
-
 
 end
