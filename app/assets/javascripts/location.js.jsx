@@ -28,7 +28,6 @@ var LocationDisplay = React.createClass({
     $('form[id=post-form]').on('submit', this.handlePostSubmit);
   },
   loadPostsFromServer: function() {
-    // var size = size || this.state.posts.length
     var size = this.state.numPosts;
 
     $.ajax({
@@ -71,13 +70,36 @@ var LocationDisplay = React.createClass({
     })
   },
   handleCommentSubmit: function(event) {
-    alert('ugh');
+    event.preventDefault();
+    var $form = $(event.target);
+    var $input = $form.find('input[type=text]');
+    var comment = $input.val();
+    var path = $form.attr("action");
+    var that = this;
+
+    $.ajax({
+      method: "POST",
+      data: {
+        "comment" : comment,
+        "batchSize" : this.state.numPosts 
+      },
+      url: path
+    })
+    .done(function(response) {
+      that.setState({posts: response.posts});
+      $input.val("");
+      $form.hide();
+    })
+    .error(function(response) {
+      // Implement some sort of message?
+      that.loadPostsFromServer();
+    });
   },
   handleFlagging: function(post, path) {
     var flagPath = this.props.url + path
     $.ajax({
       url: flagPath,
-      method: "POST",
+      method: "POST"
     })
     this.loadPostsFromServer();
   },
@@ -86,7 +108,7 @@ var LocationDisplay = React.createClass({
       <div id="location-container">
         <Sidebar />
         <div id="location-posts">
-            <PostList handleFlagging={this.handleFlagging} posts={this.state.posts} />
+            <PostList handleFlagging={this.handleFlagging} handleCommentSubmit={this.handleCommentSubmit} posts={this.state.posts} />
         </div>
       </div>
     )
@@ -145,6 +167,7 @@ var SidebarPostForm = React.createClass({
 var PostList = React.createClass({
   render: function() {
     var passFlaggingUp = this.props.handleFlagging;
+    var passCommentUp = this.props.handleCommentSubmit;
     var postNodes = this.props.posts.map(function (post) {
       return (
         <Post 
@@ -155,7 +178,8 @@ var PostList = React.createClass({
           age={post.age} 
           key={post.id}
           comments={post.comments} 
-          handleFlagging={passFlaggingUp} />
+          handleFlagging={passFlaggingUp}
+          handleCommentSubmit={passCommentUp} />
       )
     });
 
@@ -186,12 +210,12 @@ var Post = React.createClass({
           <p className="gender">{this.props.gender}</p>
           <p className="content">{this.props.content}</p>
         </div>
-        <p className="post-links">{this.props.age} ago | 
-        <a href="#" className="add-comment" onClick={this.showCommentForm}>Comment</a> | 
-        <a href="#" className="report-post" onClick={this.handleFlaggingClick}>Report</a></p>
+        <p className="post-links">{this.props.age} ago |
+        <a href="#" className="add-comment" onClick={this.showCommentForm}> Comment </a>|
+        <a href="#" className="report-post" onClick={this.handleFlaggingClick}> Report </a></p>
         <div className="comment-section">
           <CommentList comments={this.props.comments} />
-          <CommentForm ref="newComment" />
+          <CommentForm ref="newComment" postId={this.props.key} handleCommentSubmit={this.props.handleCommentSubmit} />
         </div>
       </div>
     );
@@ -229,13 +253,15 @@ var Comment = React.createClass({
 
 var CommentForm = React.createClass({
   handleSubmit: function(event) {
-    event.preventDefault();
+    this.props.handleCommentSubmit(event);
   },
   render: function() {
+    var path = postsPath + "/" + this.props.postId + "/comments";
+
     return (
-      <form accept-charset="UTF-8" action="" className="new-comment" method="post" onSubmit={this.handleSubmit} ref="beep">
-        <input type="text" />
-        <input type="submit" value="Submit"/>
+      <form accept-charset="UTF-8" action={path} className="new-comment" method="post" onSubmit={this.handleSubmit} ref="beep">
+        <input type="text" name="comment" />
+        <input type="submit" value="Submit" />
       </form>
     )
   }
@@ -243,9 +269,7 @@ var CommentForm = React.createClass({
 
 var reactLocationReady = function() {
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={5000} batchSize={10} />,
+    <LocationDisplay url={postsPath} pollInterval={500000} batchSize={10} />,
     document.body
   );
 }
-
-        // <a className="post-flag" href="#" title="Flag as inappropriate" onClick={this.handleFlaggingClick}>X</a>

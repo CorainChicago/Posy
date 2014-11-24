@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   before_action :get_post, only: [:destroy, :clear, :flag]
 
   def index   
-
     args = {
       location_id: @location.id,
       offset: params[:offset],

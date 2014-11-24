@@ -2,7 +2,19 @@ class CommentsController < ApplicationController
   before_action :get_comment, except: [:create]
 
   def create
-    # IMPLEMENT ME
+    post = Post.find_by(id: params[:post_id])
+    session_id = session[:session_id]
+    content = params[:comment]
+    Comment.create(post: post, session_id: session_id, content: content)
+
+    respond_to do |format|
+      format.json do 
+        slug = params[:location_slug]
+        size = params[:batchSize]
+
+        redirect_to location_posts_path(location_slug: slug, batch_size: size)
+      end
+    end
   end
 
   def destroy
@@ -27,6 +39,6 @@ class CommentsController < ApplicationController
   def get_comment
     id = params[:comment_id] || params[:id]
     @comment = Comment.find_by(id: id)
-  end 
+  end
 
 end
