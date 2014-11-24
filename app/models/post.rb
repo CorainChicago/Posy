@@ -46,13 +46,13 @@ class Post < ActiveRecord::Base
     seconds = (@@time - self.created_at).to_i
 
     if (days = seconds / day) > 0
-      self.age = "#{days} days"
+      self.age = (days == 1 ? "#{days} day" : "#{days} days")
     elsif (hours = seconds / hour) > 0
-      self.age = "#{hours} hours"
+      self.age = (hours == 1 ? "#{hours} hour" : "#{hours} hours")
     elsif (minutes = seconds / minute) > 0
-      self.age = "#{minutes} minutes"
+      self.age = (minutes == 1 ? "#{minutes} minute" : "#{minutes} minutes")
     else
-      self.age = "#{seconds} seconds"
+      self.age = (seconds == 1 ? "#{seconds} second" : "#{seconds} seconds")
     end
   end
 

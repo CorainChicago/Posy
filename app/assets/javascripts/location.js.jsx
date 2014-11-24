@@ -36,7 +36,6 @@ var LocationDisplay = React.createClass({
       data: { batch_size: size },
       dataType: 'json',
       success: function (data) {
-        console.log(data);
         this.setState({posts: data.posts});
       }.bind(this),
       error: function(xhr, status, err) {
@@ -70,6 +69,9 @@ var LocationDisplay = React.createClass({
       var errors = response.responseJSON.errors
       // implement error message display
     })
+  },
+  handleCommentSubmit: function(event) {
+    alert('ugh');
   },
   handleFlagging: function(post, path) {
     var flagPath = this.props.url + path
@@ -169,7 +171,10 @@ var Post = React.createClass({
   handleFlaggingClick: function() {
     var flagPath = "/" + this.props.key + "/flag";
     this.props.handleFlagging(this, flagPath);
-    console.log(Object.getPrototypeOf(this));
+  },
+  showCommentForm: function() {
+    var form = this.refs.newComment.getDOMNode();
+    form.style.display = "inline";
   },
   render: function() {
 
@@ -181,11 +186,12 @@ var Post = React.createClass({
           <p className="gender">{this.props.gender}</p>
           <p className="content">{this.props.content}</p>
         </div>
-        <p className="post-links">{this.props.age} ago | <a href="#" className="add-comment">Comment</a> | <a href="#" className="report-post">Report</a></p>
-
-
-        <div className="post-details">
+        <p className="post-links">{this.props.age} ago | 
+        <a href="#" className="add-comment" onClick={this.showCommentForm}>Comment</a> | 
+        <a href="#" className="report-post" onClick={this.handleFlaggingClick}>Report</a></p>
+        <div className="comment-section">
           <CommentList comments={this.props.comments} />
+          <CommentForm ref="newComment" />
         </div>
       </div>
     );
@@ -205,8 +211,6 @@ var CommentList = React.createClass({
         {commentNodes}
       </div>
     );
-
-    return (<div></div>);
   }
 });
 
@@ -223,9 +227,23 @@ var Comment = React.createClass({
   }
 });
 
+var CommentForm = React.createClass({
+  handleSubmit: function(event) {
+    event.preventDefault();
+  },
+  render: function() {
+    return (
+      <form accept-charset="UTF-8" action="" className="new-comment" method="post" onSubmit={this.handleSubmit} ref="beep">
+        <input type="text" />
+        <input type="submit" value="Submit"/>
+      </form>
+    )
+  }
+})
+
 var reactLocationReady = function() {
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={50000} batchSize={10} />,
+    <LocationDisplay url={postsPath} pollInterval={5000} batchSize={10} />,
     document.body
   );
 }

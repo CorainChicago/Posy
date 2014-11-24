@@ -1,17 +1,51 @@
 @import 'color_palette';
 
-.comment-list {
+.comment-section {
+  // margin: .5em 1.5em 0 1.5em;
   margin-top: .5em;
-  padding-left: 2em;
+  margin-left: 1.5em;
+  border-left: .1em solid $sidebar;
+  padding-left: .5em;
 
   .comment {
     font-family: $sans-serif-stack;
     font-size: 90%;
     line-height: 1.5;
+    margin-bottom: .25em;
 
     .comment-author {
       color: $sidebar;
       font-weight: 400;
+    }
+  }
+
+  form.new-comment {
+    display: none;
+
+    input[type="text"], input[type="submit"] {
+      outline: none;
+      border-radius: 3px;
+      padding: .5em;
+            border: .1em solid $sidebar;
+
+    }
+
+    input[type="text"] {
+      border: .1em solid $sidebar;
+      // margin-right: .5em;
+      width: 84%;
+      margin-right: 1%;
+    }
+    input[type="submit"] {
+      // border: none;
+      background-color: white;
+      color: $sidebar;
+      width: 15%;
+      &:hover {
+        transition: .2s;
+        background-color: $sidebar;
+        color: #FFFFFF;
+      }
     }
   }
 }
