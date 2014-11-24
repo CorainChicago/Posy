@@ -7,6 +7,7 @@
 }
 
 .post {
+  white-space: pre-wrap;
   word-wrap: break-word;
 
   position: relative;
@@ -65,6 +66,7 @@
   // }
 
   .post-links {
+    margin-top: .5em;
     color: $sidebar;
     font-family: $sans-serif-stack;
     font-size: 75%;
@@ -72,7 +74,6 @@
       color: $sidebar;
       text-decoration: none;
       &:hover {
-        // text-decoration: underline;
         background-color: $sidebar;
         color: #FFFFFF;
         transition: .2s;

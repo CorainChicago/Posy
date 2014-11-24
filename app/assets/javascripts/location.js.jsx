@@ -1,16 +1,14 @@
 /** @jsx React.DOM */
 
-/* REACT STRUCTURE
-  
+/* REACT STRUCTURE 
   -LocationDisplay
     -Sidebar
       -SidebarPostForm
     -PostList
       -Post
-        -CommentList (IMPLEMENT)
-          Comment (IMPLEMENT)
-          CommentForm (IMPLEMENT)
-
+        -CommentForm
+        -CommentList
+          -Comment
 */
 
 var LocationDisplay = React.createClass({
@@ -60,9 +58,13 @@ var LocationDisplay = React.createClass({
       data: $form.serializeArray()
     })
     .done(function(response) {
-      newPost = response.post;
-      // $("html, body").animate({ scrollTop: 0 }, "slow");
-      location.setState({posts: [newPost].concat(location.state.posts)});
+      // newPost = response.post;
+      // newPost.age = "1 second";
+      // $("html, body").animate({ scrollTop: 0 }, "fast", function() {
+      //   location.setState({posts: [newPost].concat(location.state.posts)});
+      // });
+      console.log(response.posts[0]);
+      location.setState({posts: response.posts})
     })
     .fail(function(response) {
       var errors = response.responseJSON.errors
@@ -168,6 +170,7 @@ var PostList = React.createClass({
   render: function() {
     var passFlaggingUp = this.props.handleFlagging;
     var passCommentUp = this.props.handleCommentSubmit;
+    var toggleForms = this.toggleCommentForms;
     var postNodes = this.props.posts.map(function (post) {
       return (
         <Post 
@@ -197,8 +200,14 @@ var Post = React.createClass({
     this.props.handleFlagging(this, flagPath);
   },
   showCommentForm: function() {
-    var form = this.refs.newComment.getDOMNode();
-    form.style.display = "inline";
+    var $form = $(this.refs.newComment.getDOMNode());
+    if ($form.css('display') == 'none') {
+      $('form.new-comment:visible').hide('fast');
+      $form.show('fast');
+      var $input = $form.find('input[type=text]');
+      $input.focus();
+    }
+    return false; // prevents page from scrolling up
   },
   render: function() {
 
@@ -210,13 +219,13 @@ var Post = React.createClass({
           <p className="gender">{this.props.gender}</p>
           <p className="content">{this.props.content}</p>
         </div>
-        <p className="post-links">{this.props.age} ago |
-        <a href="#" className="add-comment" onClick={this.showCommentForm}> Comment </a>|
-        <a href="#" className="report-post" onClick={this.handleFlaggingClick}> Report </a></p>
         <div className="comment-section">
           <CommentList comments={this.props.comments} />
           <CommentForm ref="newComment" postId={this.props.key} handleCommentSubmit={this.props.handleCommentSubmit} />
         </div>
+        <p className="post-links">{this.props.age} ago |
+        <a href="#" className="add-comment" onClick={this.showCommentForm}> Comment </a>|
+        <a href="#" className="report-post" onClick={this.handleFlaggingClick}> Report </a></p>
       </div>
     );
   }
@@ -259,7 +268,7 @@ var CommentForm = React.createClass({
     var path = postsPath + "/" + this.props.postId + "/comments";
 
     return (
-      <form accept-charset="UTF-8" action={path} className="new-comment" method="post" onSubmit={this.handleSubmit} ref="beep">
+      <form accept-charset="UTF-8" action={path} className="new-comment" method="post" onSubmit={this.handleSubmit} >
         <input type="text" name="comment" />
         <input type="submit" value="Submit" />
       </form>

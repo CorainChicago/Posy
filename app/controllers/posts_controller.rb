@@ -20,7 +20,8 @@ class PostsController < ApplicationController
     new_post.session_id = session[:session_id]
 
     if new_post.save
-      render json: new_post
+      index
+      # render json: new_post
     else
       render json: {errors: new_post.errors.full_messages}, status: 400
     end
@@ -54,7 +55,14 @@ class PostsController < ApplicationController
     private
 
   def post_params
+    process_breaks
     params.require(:post).permit(:hair, :gender, :spotted_at, :content)
+  end
+
+  def process_breaks
+    params[:post][:content].gsub!(/[\n(\r\n)(\n\r)]/, "\n")
+    params[:post][:content].squeeze!("\n")
+    params[:post][:content].strip!
   end
 
   def get_location_by_slug
