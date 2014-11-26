@@ -112,6 +112,20 @@
     textarea {
       resize: none;
     }
+
+    .invalid-input-label {
+      // background-color: #FFFFFF;
+      // color: $sidebar;
+      // border: 1px solid #ffffff;
+      // background-color: $tint;
+      // background-color: $shade;
+      // outline: 1px solid black;
+    }
+
+    #location-requirement, #content-requirement {
+      display: none;
+      font-weight: 700;
+    }
   }
 
 

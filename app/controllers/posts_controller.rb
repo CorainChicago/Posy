@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   end
 
   def process_breaks
-    params[:post][:content].gsub!(/[\n(\r\n)(\n\r)]/, "\n")
+    params[:post][:content].gsub!(/[\n(\r\n)(\n\r)]+/, "\n")
     params[:post][:content].squeeze!("\n")
     params[:post][:content].strip!
   end

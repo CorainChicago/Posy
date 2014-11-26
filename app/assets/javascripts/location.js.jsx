@@ -49,27 +49,24 @@ var LocationDisplay = React.createClass({
   },
   handlePostSubmit: function(event) {
     event.preventDefault();
-    var location = this;
-    var $form = $(event.target);
 
-    $.ajax({
-      type: "POST",
-      url: this.props.url,
-      data: $form.serializeArray()
-    })
-    .done(function(response) {
-      // newPost = response.post;
-      // newPost.age = "1 second";
-      // $("html, body").animate({ scrollTop: 0 }, "fast", function() {
-      //   location.setState({posts: [newPost].concat(location.state.posts)});
-      // });
-      console.log(response.posts[0]);
-      location.setState({posts: response.posts})
-    })
-    .fail(function(response) {
-      var errors = response.responseJSON.errors
-      // implement error message display
-    })
+    if (this.refs.sidebar.refs.postForm.validatePresence()) {
+      var location = this;
+      var $form = $(event.target);
+
+      $.ajax({
+        type: "POST",
+        url: this.props.url,
+        data: $form.serializeArray()
+      })
+      .done(function(response) {
+        location.setState({posts: response.posts})
+      })
+      .fail(function(response) {
+        var errors = response.responseJSON.errors
+        // implement error message display
+      })
+    }
   },
   handleCommentSubmit: function(event) {
     event.preventDefault();
@@ -108,7 +105,7 @@ var LocationDisplay = React.createClass({
   render: function() {
     return (
       <div id="location-container">
-        <Sidebar />
+        <Sidebar ref="sidebar" />
         <div id="location-posts">
             <PostList handleFlagging={this.handleFlagging} handleCommentSubmit={this.handleCommentSubmit} posts={this.state.posts} />
         </div>
@@ -124,7 +121,7 @@ var Sidebar = React.createClass({
         <div id="sidebar-container">
           <h1 id="badge">afar</h1>
           <h2 id="location">{locationName}</h2>
-          <SidebarPostForm />
+          <SidebarPostForm ref="postForm" />
         </div>
       </div>
     )
@@ -132,6 +129,36 @@ var Sidebar = React.createClass({
 });
 
 var SidebarPostForm = React.createClass({
+  validatePresence: function() {
+    var valid = true;
+    var $location = $('input#post_spotted_at');
+    var $content = $('textarea#post_content');
+
+    if ($location.val().trim() === "") {
+      // var $label = $('#post_spotted_at_label')//.addClass('invalid-input-label');
+      // this.highlightLabel($location);
+      // $label.html("Location: (required)");
+      $('#location-requirement').fadeIn();
+      // $('#X').show('slow');
+      valid = false;
+    }
+    if ($content.val().trim() === "") {
+      // var $label = $('#post_content_label')//.addClass('invalid-input-label');
+      // this.highlightLabel($content);      
+      $('#content-requirement').fadeIn();
+      // $('#Y').show('slow');
+
+      valid = false;
+    }
+    return valid;
+  },
+  // highlightLabel: function($input) {
+  //   var inputId = $input.attr('id');
+  //   var $label = $('label[for=' + inputId + ']')
+  //   // console.log($label);
+  //   // console.log($label[0]);
+
+  // },
   render: function() {
     return (
       <form accept-charset="UTF-8" action={postsPath} className="new-post" id="post-form" method="post">
@@ -154,11 +181,11 @@ var SidebarPostForm = React.createClass({
             <option value="Red">Red</option></select></div>
           </div>
 
-        <label for="post_spotted_at">Location</label>
-        <input id="post_spotted_at" name="post[spotted_at]" type="text"/><br/>
+        <label for="post_spotted_at">Location <span id="location-requirement">(required)</span></label>
+        <input id="post_spotted_at" name="post[spotted_at]" type="text" ref="locationField" /><br/>
 
-        <label for="post_content">Message</label>
-        <textarea id="post_content" name="post[content]" rows="4"></textarea><br/>
+        <label for="post_content">Message <span id="content-requirement">(required)</span></label>
+        <textarea id="post_content" name="post[content]" rows="4" ref="contentField"></textarea><br/>
 
         <input type="submit" value="Submit!"/>
       </form>
