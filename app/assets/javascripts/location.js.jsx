@@ -49,22 +49,27 @@ var LocationDisplay = React.createClass({
   },
   handlePostSubmit: function(event) {
     event.preventDefault();
+    var postForm = this.refs.sidebar.refs.postForm
 
-    if (this.refs.sidebar.refs.postForm.validatePresence()) {
+    if (postForm.validatePresence()) {
       var location = this;
       var $form = $(event.target);
+      var postData = $form.serializeArray();
+      postForm.disable();
 
       $.ajax({
         type: "POST",
         url: this.props.url,
-        data: $form.serializeArray()
+        data: postData
       })
       .done(function(response) {
         location.setState({posts: response.posts})
+        postForm.reset();
       })
       .fail(function(response) {
         var errors = response.responseJSON.errors
         // implement error message display
+        postForm.enable();
       })
     }
   },
@@ -135,37 +140,33 @@ var SidebarPostForm = React.createClass({
     var $content = $('textarea#post_content');
 
     if ($location.val().trim() === "") {
-      // var $label = $('#post_spotted_at_label')//.addClass('invalid-input-label');
-      // this.highlightLabel($location);
-      // $label.html("Location: (required)");
       $('#location-requirement').fadeIn();
-      // $('#X').show('slow');
       valid = false;
     }
     if ($content.val().trim() === "") {
-      // var $label = $('#post_content_label')//.addClass('invalid-input-label');
-      // this.highlightLabel($content);      
       $('#content-requirement').fadeIn();
-      // $('#Y').show('slow');
-
       valid = false;
     }
     return valid;
   },
-  // highlightLabel: function($input) {
-  //   var inputId = $input.attr('id');
-  //   var $label = $('label[for=' + inputId + ']')
-  //   // console.log($label);
-  //   // console.log($label[0]);
-
-  // },
+  enable: function() {
+    $('#post-form').children(":input").prop("disabled", false);
+  },
+  disable: function() {
+    $('#post-form').children(":input").prop("disabled", true);
+  },
+  reset: function() {
+    var form = this.refs.postForm.getDOMNode();
+    form.reset();
+    this.enable();
+  },
   render: function() {
     return (
-      <form accept-charset="UTF-8" action={postsPath} className="new-post" id="post-form" method="post">
+      <form accept-charset="UTF-8" action={postsPath} id="post-form" method="post" ref="postForm">
         <div className="post-form-select">
           <label for="post_gender">Gender</label><br/>
           <div className="post-form-select-background">
-            <select id="post_gender" name="post[gender]">
+            <select id="post_gender" name="post[gender]" ref="genderSelect">
               <option value=""></option>
               <option value="Male">Male</option>
               <option value="Female">Female</option></select>
@@ -174,7 +175,7 @@ var SidebarPostForm = React.createClass({
 
         <div className="post-form-select">
           <label for="post_hair">Hair</label><br/>
-          <div className="post-form-select-background"><select id="post_hair" name="post[hair]"><option value=""></option>
+          <div className="post-form-select-background"><select id="post_hair" name="post[hair]" ><option value=""></option>
             <option value="Brown">Brown</option>
             <option value="Black">Black</option>
             <option value="Blonde">Blonde</option>
@@ -182,12 +183,12 @@ var SidebarPostForm = React.createClass({
           </div>
 
         <label for="post_spotted_at">Location <span id="location-requirement">(required)</span></label>
-        <input id="post_spotted_at" name="post[spotted_at]" type="text" ref="locationField" /><br/>
+        <input id="post_spotted_at" name="post[spotted_at]" type="text" /><br/>
 
         <label for="post_content">Message <span id="content-requirement">(required)</span></label>
         <textarea id="post_content" name="post[content]" rows="4" ref="contentField"></textarea><br/>
 
-        <input type="submit" value="Submit!"/>
+        <input type="submit" value="Submit!" ref="submitButton" />
       </form>
     )
   }

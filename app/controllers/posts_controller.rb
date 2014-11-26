@@ -60,9 +60,11 @@ class PostsController < ApplicationController
   end
 
   def process_breaks
-    params[:post][:content].gsub!(/[\n(\r\n)(\n\r)]+/, "\n")
-    params[:post][:content].squeeze!("\n")
-    params[:post][:content].strip!
+    if params[:post][:content]
+      params[:post][:content].gsub!(/[\n(\r\n)(\n\r)]+/, "\n")
+      params[:post][:content].squeeze!("\n")
+      params[:post][:content].strip!
+    end
   end
 
   def get_location_by_slug
