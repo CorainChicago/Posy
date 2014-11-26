@@ -202,9 +202,8 @@ var PostList = React.createClass({
     var postNodes = this.props.posts.map(function (post) {
       return (
         <Post 
-          hair={post.hair} 
           location={post.spotted_at} 
-          gender={post.gender} 
+          desc={post.description}
           content={post.content}
           age={post.age} 
           key={post.id}
@@ -243,8 +242,7 @@ var Post = React.createClass({
       <div className="post">
         <div className="post-content">
           <p className="location">at {this.props.location}</p>
-          <p className="hair">{this.props.hair}-haired </p>
-          <p className="gender">{this.props.gender}</p>
+          <p className="post-description">{this.props.desc}</p>
           <p className="content">{this.props.content}</p>
         </div>
         <div className="comment-section">

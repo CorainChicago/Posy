@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
 
   validates :content, :location, presence: true
 
-  attr_accessor :age
+  attr_accessor :age, :description
 
   @@flagged_threshold = 2
 
@@ -26,9 +26,11 @@ class Post < ActiveRecord::Base
     end
 
     @@time = Time.now
-    posts.each { |post| post.add_age }
+    posts.each do |post| 
+      post.add_age
+      post.add_description
+    end
     posts = filter_flaggings(posts, args[:session_id])
-
   end
 
   # def destroy_comments
@@ -43,6 +45,7 @@ class Post < ActiveRecord::Base
   def add_age
     minute = 60; hour = 60 * 60; day = hour * 24
 
+    @@time ||= Time.now
     seconds = (@@time - self.created_at).to_i
 
     if (days = seconds / day) > 0
@@ -54,6 +57,31 @@ class Post < ActiveRecord::Base
     else
       self.age = (seconds == 1 ? "#{seconds} second" : "#{seconds} seconds")
     end
+  end
+
+  def add_description
+    # This could be done before storing records to reduce runtime operations.
+
+    # if !self.hair.empty? && !self.gender.empty?
+    if self.hair.length > 0 && self.gender.length > 0
+      self.description = "#{gender}, #{self.translate_hair}"
+    elsif self.hair.length > 0
+      self.description = self.translate_hair
+    elsif self.gender.length > 0
+      self.description = gender
+    else
+      self.description = ""
+    end
+  end
+
+  def translate_hair
+    hair_desc = { 
+      "blonde" => "blonde",
+      "black" => "black-haired",
+      "brown" => "brunette",
+      "red" => "redhead"
+     }
+     hair_desc[self.hair.downcase]
   end
 
     private
