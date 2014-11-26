@@ -1,3 +1,5 @@
+@import 'color_palette';
+
 #admin-tables {
   margin: 50px auto;
   width: 95%;
@@ -10,25 +12,66 @@
       padding: 2px;
     }
 
+    th {
+      background-color: #222222;
+      color: #FFFFFF;
+      font-size: 75%;
+    }
+
+    td {
+      border: 1px solid $dark-gray;
+    }
+
+    .admin-time, .admin-location, .admin-hair, .admin-gender {
+      font-size: 75%;
+    }
+
     .admin-time {
-      width: 10%;
+      width: 7%;
+      font-size: 75%;
     }
 
     .admin-location {
-      width: 10%;
+      width: 12%;
     }
 
     .admin-gender, .admin-hair, .admin-flags, .admin-show, .admin-ok, .admin-hide {
-      width: 5%;
+      width: 4%;
+    }
+
+    .admin-show-no {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+
+    .admin-post-grouping-hidden, .admin-comment-hidden {
+      .admin-time, .admin-location, .admin-gender, .admin-hair, .admin-content{
+        text-decoration: line-through;
+      }
     }
 
     .admin-content {
-      width: 50%;
+      width: 52%;
     }
 
     .admin-comment-blank {
       background-color: #eeeeee;
     }
+
+    input {
+      display: block;
+      margin: 0 auto;
+      border: none;
+      color: #FFFFFF;
+      background-color: $dark-gray;
+      &:hover {
+        transition: .2s;
+        background-color: #000000;
+      }
+    }
   }
 
+  .admin-post-grouping {
+    border-bottom: 5px solid #000000;
+  }
 }

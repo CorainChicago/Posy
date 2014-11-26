@@ -1,9 +1,17 @@
-<tr class="admin-comment">
+<% if comment.clear? %>
+  <tr class="admin-comment">
+<% else %>
+    <tr class="admin-comment-hidden">
+<% end %>
   <td class="admin-time"><%= comment.created_at.strftime("%m/%d %H:%M") %></td>
   <td colspan="3" class="admin-comment-blank"></td>
   <td class="admin-content"><%= "#{comment.author_name}: #{comment.content}" %></td>
   <td class="admin-flags"><%= comment.flagged %></td>
-  <td class="admin-show"><%= (comment.clear?) ? "Y" : "N" %></td>
+  <% if comment.clear? %>
+    <td class="admin-show">Y</td>
+  <% else %>
+    <td class="admin-show-no">N</td>
+  <% end %>
   <td class="admin-ok"><%= button_to "OK", location_post_comment_clear_path(location, post, comment), method: "POST" %></td>
   <td class="admin-remove"><%= button_to "Hide", location_post_comment_path(location, post, comment), method: :delete, data: {confirm: "Are you sure?"} %></td>
 </tr>
