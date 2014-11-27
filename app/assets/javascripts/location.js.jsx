@@ -124,7 +124,7 @@ var Sidebar = React.createClass({
     return(
       <div id="sidebar">
         <div id="sidebar-container">
-          <h1 id="badge">afar</h1>
+          <h1 id="badge">posy</h1>
           <h2 id="location">{locationName}</h2>
           <SidebarPostForm ref="postForm" />
         </div>

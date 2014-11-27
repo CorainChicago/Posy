@@ -8,10 +8,6 @@ class Comment < ActiveRecord::Base
 
   before_create{ generate_author_name }
 
-  # def mark_as_cleared
-  #   self.update_attribute(:cleared, true)
-  # end
-
     private
 
   def generate_author_name
