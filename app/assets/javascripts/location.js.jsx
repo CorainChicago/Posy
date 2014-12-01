@@ -83,6 +83,7 @@ var LocationDisplay = React.createClass({
   handleCommentSubmit: function(event) {
     event.preventDefault();
     var $form = $(event.target);
+    $form.children(":input").prop("disabled", true);
     var $input = $form.find('input[type=text]');
     var comment = $input.val();
     var path = $form.attr("action");
@@ -99,11 +100,13 @@ var LocationDisplay = React.createClass({
     .done(function(response) {
       that.setState({posts: response.posts});
       $input.val("");
+      $form.children(":input").prop("disabled", false);
       $form.hide();
     })
     .error(function(response) {
       // Implement some sort of message?
       that.loadPostsFromServer();
+      $form.children(":input").prop("disabled", false);
     });
   },
   handleFlagging: function(post, path) {
