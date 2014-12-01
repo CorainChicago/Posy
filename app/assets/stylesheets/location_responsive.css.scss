@@ -1,0 +1,54 @@
+@media (min-width: 776px) {
+  #location-posts {
+    width: 67%;
+    margin-left: 33%;
+  }
+  #sidebar {
+    width: 33%;
+    height: 100%;
+  }
+  #listLocation {
+    display: none;
+  }
+
+
+}
+
+
+@media (max-width: 775px) {
+  #location-posts {
+    width: 100%;
+    padding-top: 10%;
+  }
+
+  #listLocation {
+    display: block;
+  }
+
+
+
+  #post-form {
+    display: none;
+    height: 100vh;
+    width: 75%;
+    margin: 2em auto;
+  }
+
+}
+
+
+// Sidebar container (forms, title, etc.) sizing
+
+@media (min-width: 1025px) {
+  #sidebar-container {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 776px) {
+  #sidebar-container {
+    width: 65%;
+    margin: 0 auto;
+  }
+}

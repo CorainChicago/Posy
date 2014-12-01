@@ -3,7 +3,7 @@
 /* REACT STRUCTURE 
   -LocationDisplay
     -Sidebar
-      -SidebarPostForm
+      -PostForm
     -PostList
       -Post
         -CommentForm
@@ -13,17 +13,21 @@
 
 var LocationDisplay = React.createClass({
   getInitialState: function() {
+    var horizontal = window.innerWidth > this.props.breakpoint;
+
     return {
       posts: [],
-      numPosts: this.props.batchSize
+      numPosts: this.props.batchSize,
+      horizontal: horizontal
     };
   },
   componentDidMount: function() {
     this.loadPostsFromServer(this.props.batchSize);
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
 
+    $(window).resize(this.handleResize);
     $(window).on('scroll', this.handleScroll);
-    $('form[id=post-form]').on('submit', this.handlePostSubmit);
+    // $('form[id=post-form]').on('submit', this.handlePostSubmit);
   },
   loadPostsFromServer: function() {
     var size = this.state.numPosts;
@@ -52,7 +56,7 @@ var LocationDisplay = React.createClass({
     var postForm = this.refs.sidebar.refs.postForm
 
     if (postForm.validatePresence()) {
-      var location = this;
+      var that = this;
       var $form = $(event.target);
       var postData = $form.serializeArray();
       postForm.disable();
@@ -63,8 +67,11 @@ var LocationDisplay = React.createClass({
         data: postData
       })
       .done(function(response) {
-        location.setState({posts: response.posts})
+        that.setState({posts: response.posts})
         postForm.reset();
+        if (!that.state.horizontal) {
+          that.refs.sidebar.handlePostSuccess();
+        }
       })
       .fail(function(response) {
         var errors = response.responseJSON.errors
@@ -107,15 +114,41 @@ var LocationDisplay = React.createClass({
     })
     this.loadPostsFromServer();
   },
-  render: function() {
-    return (
-      <div id="location-container">
-        <Sidebar ref="sidebar" />
-        <div id="location-posts">
-            <PostList handleFlagging={this.handleFlagging} handleCommentSubmit={this.handleCommentSubmit} posts={this.state.posts} />
+  handleResize: function(event) {
+    var horizontal = window.innerWidth > this.props.breakpoint;
+    if (this.state.horizontal && !horizontal) {
+      this.setState({horizontal: false})
+    }
+    else if (!this.state.horizontal && horizontal) {
+      this.setState({horizontal: true});
+    }
+  },
+  render: function() {  
+    if (this.state.horizontal) {
+      return (
+        <div id="location-container">
+          <Sidebar ref="sidebar" handlePostSubmit={this.handlePostSubmit} />
+          <div id="location-posts">
+              <PostList handleFlagging={this.handleFlagging} 
+                        handleCommentSubmit={this.handleCommentSubmit} 
+                        posts={this.state.posts} />
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+    else {
+      // FIX SIDEBAR REF!!!
+      return (
+        <div id="location-container">
+          <Header ref="sidebar" handlePostSubmit={this.handlePostSubmit} /> 
+          <div id="location-posts">
+            <PostList handleFlagging={this.handleFlagging} 
+                      handleCommentSubmit={this.handleCommentSubmit} 
+                      posts={this.state.posts} />
+          </div>
+        </div>
+      )
+    }
   }
 });
 
@@ -124,16 +157,40 @@ var Sidebar = React.createClass({
     return(
       <div id="sidebar">
         <div id="sidebar-container">
-          <h1 id="badge">posy</h1>
+          <h1 id="badge">Posy</h1>
           <h2 id="location">{locationName}</h2>
-          <SidebarPostForm ref="postForm" />
+          <PostForm ref="postForm" handlePostSubmit={this.props.handlePostSubmit} />
         </div>
       </div>
     )
   }
 });
 
-var SidebarPostForm = React.createClass({
+var Header = React.createClass({
+  togglePostForm: function() {
+    $("#post-form").slideToggle();
+    return false;
+  },
+  handlePostSubmit: function(event) {
+    this.props.handlePostSubmit(event);
+  },
+  handlePostSuccess: function() {
+    this.togglePostForm();
+    this.refs.postForm.reset();
+  },
+  render: function() {
+    return(
+      <div id="header">
+        <p id="hmm">!</p>
+        <h1 id="badge">Posy</h1>
+        <a href="#" id="new-post-button" onClick={this.togglePostForm} >+</a>
+        <PostForm ref="postForm" handlePostSubmit={this.handlePostSubmit}/>
+      </div>
+    )
+  }
+})
+
+var PostForm = React.createClass({
   validatePresence: function() {
     var valid = true;
     var $location = $('input#post_spotted_at');
@@ -162,7 +219,7 @@ var SidebarPostForm = React.createClass({
   },
   render: function() {
     return (
-      <form accept-charset="UTF-8" action={postsPath} id="post-form" method="post" ref="postForm">
+      <form accept-charset="UTF-8" action={postsPath} id="post-form" method="post" ref="postForm" onSubmit={this.props.handlePostSubmit} >
         <div className="post-form-select">
           <label for="post_gender">Gender</label><br/>
           <div className="post-form-select-background">
@@ -215,6 +272,7 @@ var PostList = React.createClass({
 
     return (
       <div className="post-list">
+        <h2 id="listLocation">{locationName}</h2>
         {postNodes}
       </div>
     );
@@ -304,7 +362,7 @@ var CommentForm = React.createClass({
 
 var reactLocationReady = function() {
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={500000} batchSize={10} />,
+    <LocationDisplay url={postsPath} pollInterval={500000} batchSize={10} breakpoint={775} />,
     document.body
   );
 }

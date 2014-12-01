@@ -2,8 +2,15 @@
 
 #location-posts {
   padding-top: 1em;
-  width: 67%;
-  margin-left: 33%;
+
+  #listLocation {
+    color: $sidebar;
+    font-family: $sans-serif-stack;
+    width: 90%;
+    margin: 1em auto;
+    font-weight: 700;
+    font-size: 200%;
+  }
 }
 
 .post {
@@ -14,7 +21,7 @@
   background-color: #ffffff;
   width: 90%;
   margin: 1em auto;
-  padding: .5em .5em .5em .5em;
+  // padding: .5em .5em .5em .5em;
   border-radius: 2px;
 
   .location, .post-description {
