@@ -17,8 +17,8 @@ var LocationDisplay = React.createClass({
 
     return {
       posts: [],
-      numPosts: this.props.batchSize,
-      horizontal: horizontal
+      horizontal: horizontal,
+      exhausted: false // have all posts been retrieved from server?
     };
   },
   componentDidMount: function() {
@@ -27,28 +27,35 @@ var LocationDisplay = React.createClass({
 
     $(window).resize(this.handleResize);
     $(window).on('scroll', this.handleScroll);
-    // $('form[id=post-form]').on('submit', this.handlePostSubmit);
   },
   loadPostsFromServer: function() {
-    var size = this.state.numPosts;
+    var size = this.state.posts.length + this.props.batchSize
+    var that = this;
 
     $.ajax({
       url: this.props.url,
       data: { batch_size: size },
-      dataType: 'json',
-      success: function (data) {
-        this.setState({posts: data.posts});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+      dataType: 'json'
+    })
+    .done(function(response) {
+      var posts = response.posts;
+      if (posts.length < size) {
+        that.setState({posts: posts, exhausted: true});
+      }
+      else {
+        that.setState({posts: posts})
+      }
+    })
+    .fail(function(response) {
+      // IMPLEMENT ERROR MESSAGE?
+    })
   },
   handleScroll: function() {
     if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
       newSize = this.state.posts.length + this.props.batchSize;
-      this.setState({ numPosts: newSize})
-      this.loadPostsFromServer();
+      if (!this.state.exhausted) { 
+        this.loadPostsFromServer();
+      }
     };
   },
   handlePostSubmit: function(event) {
@@ -93,7 +100,7 @@ var LocationDisplay = React.createClass({
       method: "POST",
       data: {
         "comment" : comment,
-        "batchSize" : this.state.numPosts 
+        "batchSize" : this.state.posts.length 
       },
       url: path
     })

@@ -10,16 +10,16 @@ hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
 admin = Admin.create(email: "dev@dev.com", password: "test")
 admin.locations << hendrix
 
-# 30.times do |i|
-#   Post.create!(
-#     location: hendrix,
-#     session_id: 0,
-#     gender: "female",
-#     hair: "black",
-#     spotted_at: "#{i}",
-#     content: "#{i}"
-#   )
-# end
+30.times do |i|
+  Post.create!(
+    location: hendrix,
+    session_id: 0,
+    gender: "female",
+    hair: "black",
+    spotted_at: "#{i}",
+    content: Faker::Lorem.sentences(rand(1..4)).join(" ")
+  )
+end
 
 p1 = Post.create!(
   location: hendrix,
