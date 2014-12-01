@@ -92,6 +92,7 @@ class Post < ActiveRecord::Base
     posts = posts.reject{ |post| flagging_ids[:posts].include? post.id }
 
     posts.each_with_index do |post, i|
+      # could possibly be made more efficient (runs some series of transactions)
       posts[i].comments = post.comments.reject do |comment| 
         flagging_ids[:comments].include? comment.id
       end    

@@ -1,3 +1,5 @@
+@import 'color_palette';
+
 @media (min-width: 776px) {
   #location-posts {
     width: 67%;
@@ -8,7 +10,7 @@
     height: 100%;
   }
   #listLocation {
-    display: none;
+    // display: none;
   }
 
 

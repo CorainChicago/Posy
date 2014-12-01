@@ -12,13 +12,33 @@
     // width: 50%;
     // margin: 0 auto;
 
+    img {
+      display: block;
+      margin: 2em auto 1em auto;
+      width: 100%;
+    }
+
+    #post-form {
+      display: none;
+    }
+
+    #new-post-button {
+      font-family: $sans-serif-stack;
+      display: block;
+      width: 67%;
+      margin: 8em auto;
+      font-weight: 300;
+    }
+
     h1, h2, h3, label, input[type="submit"] {
       font-family: $sans-serif-stack;
       font-weight: 100;
     }
 
     h1 {
-      font-family: $script-stack;
+      // font-family: $script-stack;
+      font-family: $sans-serif-stack;
+      font-weight: 700;
       font-size: 250%;
       text-align: center;
       margin-top: 1em;
@@ -26,11 +46,27 @@
 
     h2 {
       color: $sidebar-accent;
-      font-size: 100%;
+      font-size: 125%;
       font-weight: 300;
       text-align: center;
       margin-top: 1em;
       margin-bottom: 1.5em;
+    }
+  }
+
+  #about-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: $sans-serif-stack;
+    font-size: 75%;
+    text-align: center;
+    position: absolute;
+    bottom: 3em;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

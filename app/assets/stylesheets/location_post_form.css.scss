@@ -25,7 +25,7 @@ input[type="submit"], input[type="text"], textarea {
   border-radius: 2px;
 }
 
-input[type="submit"], input[type="text"], select {
+#new-post-button, input[type="submit"], input[type="text"], select {
   height: 3em;
 }
 
@@ -64,7 +64,7 @@ div.post-form-select {
   }
 }
 
-input[type="submit"] {
+#new-post-button, input[type="submit"] {
   background-color: $sidebar;
   border: 1px solid $sidebar-accent;
   border-radius: 2px;

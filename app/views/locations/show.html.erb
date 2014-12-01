@@ -3,5 +3,6 @@
 <%= javascript_tag do %>
   window.postsPath = '<%= location_posts_path(@location.slug) %>';
   window.locationName = '<%= @location.name %>';
+  window.logoSVG = '<%= asset_path "posy-logo.svg" %>'
   reactLocationReady();
 <% end %>

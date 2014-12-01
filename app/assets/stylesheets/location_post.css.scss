@@ -5,9 +5,11 @@
 
   #listLocation {
     color: $sidebar;
+    // color: white;
+    // background-color: $sidebar;
     font-family: $sans-serif-stack;
     width: 90%;
-    margin: 1em auto;
+    margin: .5em auto 1em auto;
     font-weight: 700;
     font-size: 200%;
   }

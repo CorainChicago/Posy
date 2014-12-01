@@ -25,7 +25,7 @@ var LocationDisplay = React.createClass({
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
 
     $(window).on('resize', this.handleResize);
-    $(window).on('scroll', this.handleScroll); 
+    $(window).on('scroll', this.handleScroll);
   },
   loadPostsFromServer: function(numPosts) {
     var size = numPosts || this.state.posts.length
@@ -73,6 +73,9 @@ var LocationDisplay = React.createClass({
         postForm.reset();
         if (!that.state.horizontal) {
           that.refs.sidebar.handlePostSuccess();
+        }
+        else {
+          that.refs.sidebar.hidePostForm();
         }
       })
       .fail(function(response) {
@@ -158,14 +161,31 @@ var LocationDisplay = React.createClass({
 });
 
 var Sidebar = React.createClass({
+  handlePostSuccess: function() {
+    this.hidePostForm();
+  },  
+  showPostForm: function() {
+    $("#new-post-button").fadeOut('fast', function() {
+      $("#post-form").fadeIn();
+    });
+    return false;
+  },
+  hidePostForm: function() {
+    $("#post-form").fadeOut('fast', function() {
+      $("#new-post-button").fadeIn();
+    });
+  },
   render: function() {
+          // <h1 id="badge">POSY</h1>
+          // <h2 id="location">{locationName}</h2>
     return(
       <div id="sidebar">
         <div id="sidebar-container">
-          <h1 id="badge">Posy</h1>
-          <h2 id="location">{locationName}</h2>
+          <img src={logoSVG} id="logo" />
+          <button id="new-post-button" onClick={this.showPostForm}>Add Post</button>
           <PostForm ref="postForm" handlePostSubmit={this.props.handlePostSubmit} />
         </div>
+        <a href="#" id="about-link">About</a>
       </div>
     )
   }
@@ -187,8 +207,8 @@ var Header = React.createClass({
     return(
       <div id="header">
         <p id="hmm">!</p>
-        <h1 id="badge">Posy</h1>
-        <a href="#" id="new-post-button" onClick={this.togglePostForm} >+</a>
+        <h1 id="badge">POSY</h1>
+        <a href="#" id="new-post-link" onClick={this.togglePostForm} >+</a>
         <PostForm ref="postForm" handlePostSubmit={this.handlePostSubmit}/>
       </div>
     )
