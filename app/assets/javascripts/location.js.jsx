@@ -18,18 +18,17 @@ var LocationDisplay = React.createClass({
     return {
       posts: [],
       horizontal: horizontal,
-      exhausted: false // have all posts been retrieved from server?
     };
   },
   componentDidMount: function() {
     this.loadPostsFromServer(this.props.batchSize);
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
 
-    $(window).resize(this.handleResize);
-    $(window).on('scroll', this.handleScroll);
+    $(window).on('resize', this.handleResize);
+    $(window).on('scroll', this.handleScroll); 
   },
-  loadPostsFromServer: function() {
-    var size = this.state.posts.length + this.props.batchSize
+  loadPostsFromServer: function(numPosts) {
+    var size = numPosts || this.state.posts.length
     var that = this;
 
     $.ajax({
@@ -40,11 +39,9 @@ var LocationDisplay = React.createClass({
     .done(function(response) {
       var posts = response.posts;
       if (posts.length < size) {
-        that.setState({posts: posts, exhausted: true});
+        $(window).off('scroll'); // oldest post retreived, stop handling scroll
       }
-      else {
-        that.setState({posts: posts})
-      }
+      that.setState({posts: posts})
     })
     .fail(function(response) {
       // IMPLEMENT ERROR MESSAGE?
@@ -53,9 +50,7 @@ var LocationDisplay = React.createClass({
   handleScroll: function() {
     if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
       newSize = this.state.posts.length + this.props.batchSize;
-      if (!this.state.exhausted) { 
-        this.loadPostsFromServer();
-      }
+      this.loadPostsFromServer(newSize);
     };
   },
   handlePostSubmit: function(event) {
