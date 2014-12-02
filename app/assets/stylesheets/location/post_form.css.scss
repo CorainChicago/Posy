@@ -1,9 +1,4 @@
-@import 'color_palette';
-
-label, input[type="submit"] {
-      font-family: $sans-serif-stack;
-      font-weight: 100;
-}
+@import '_utilities';
 
 label {
   font-size: 75%;
@@ -12,7 +7,6 @@ label {
 input[type="submit"] {
   margin-top: 1em;
   font-size: 75%;
-  font-weight: 100;
 }
 
 textarea, input[type="text"], .post-form-select {
@@ -40,8 +34,7 @@ textarea, input[type="text"] {
 }
 
 div.post-form-select {
-  // width: 100%;   // Full-width selects
-  width: 48%; // Side-by-side selects
+  width: 48%;
   margin-right: 2%;
   display: inline-block;
 
@@ -65,18 +58,17 @@ div.post-form-select {
 }
 
 #new-post-button, input[type="submit"] {
-  background-color: $sidebar;
-  border: 1px solid $sidebar-accent;
+  background-color: $feature-color;
+  border: 1px solid $secondary-color;
   border-radius: 2px;
   color: #ffffff;
-  font-weight: 300;
   outline: none;
 
   &:hover {
     // define webkits
     transition: .3s;
     background-color: #ffffff;
-    color: $sidebar;
+    color: $feature-color;
   }
 
 }
@@ -87,5 +79,4 @@ textarea {
 
 #location-requirement, #content-requirement {
   display: none;
-  // font-weight: 700;
 }

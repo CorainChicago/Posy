@@ -1,16 +1,12 @@
-@import 'color_palette';
+@import '_utilities';
 
 #location-posts {
   padding-top: 1em;
 
   #listLocation {
-    color: $sidebar;
-    // color: white;
-    // background-color: $sidebar;
-    font-family: $sans-serif-stack;
+    color: $feature-color;
     width: 90%;
     margin: .5em auto 1em auto;
-    font-weight: 700;
     font-size: 200%;
   }
 }
@@ -18,25 +14,20 @@
 .post {
   white-space: pre-wrap;
   word-wrap: break-word;
-
   position: relative;
   background-color: #ffffff;
   width: 90%;
   margin: 1em auto;
-  // padding: .5em .5em .5em .5em;
   border-radius: 2px;
 
   .location, .post-description {
     display: inline;
-    font-family: $sans-serif-stack;
     font-size: 85%;
-    font-weight: 700;
   }
 
   .location {
-    color: $sidebar-accent;
-    background-color: $sidebar;
-    font-weight: 300;
+    color: white;
+    background-color: $feature-color;
     padding: 2px 4px;
     margin-right: 3px;
     margin-bottom: 3px;
@@ -48,8 +39,6 @@
   }
 
   .content {
-    // font-family: $serif-stack;
-    font-family: $sans-serif-stack;
     color: $dark-gray;
     line-height: 1.5;
     margin: .25em auto .25em;
@@ -57,14 +46,13 @@
   
   .post-links {
     margin-top: .5em;
-    color: $sidebar;
-    font-family: $sans-serif-stack;
+    color: $feature-color;
     font-size: 75%;
     a {
-      color: $sidebar;
+      color: $feature-color;
       text-decoration: none;
       &:hover {
-        background-color: $sidebar;
+        background-color: $feature-color;
         color: #FFFFFF;
         transition: .2s;
       }

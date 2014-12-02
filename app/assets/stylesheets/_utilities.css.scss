@@ -1,0 +1,26 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+$feature-color: #96281B;
+$secondary-color: #FFFFFF;
+$dark-gray: #636465;
+$light-gray: #f4f4f4;
+
+$sans-serif-stack: Lato, Helvetica, arial, sans-serif;
+
+
+
+h1, h2, h3, h4, h5, h6, p, a, label, input, button {
+  font-family: $sans-serif-stack;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #FFFFFF;
+}
