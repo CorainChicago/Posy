@@ -7,7 +7,7 @@
   position: fixed;
   z-index: 1;
 
-  h1, #hmm, #new-post-button {
+  h1, #menu, #new-post-button {
     display: inline-block;
   }
 
@@ -19,14 +19,12 @@
     width: 50%;
   }
 
-  #hmm {
-    display: inline-block;
+  #menu, #new-post-button {
     width: 25%;
   }
 
   #new-post-link {
     font-size: 200%;
-    width: 25%;
     text-align: right;
     padding-right: 1em;
     text-decoration: none;

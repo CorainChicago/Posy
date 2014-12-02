@@ -9,21 +9,19 @@ class Post < ActiveRecord::Base
 
   attr_accessor :age, :description
 
-  @@flagged_threshold = 2
-
   def self.get_posts_by_location(args = {})
     # Originally implemented to retreive posts piecemeal through an offset.
     # For now, that offset is never present
 
-    offset = args[:offset]
+    # offset = args[:offset]
     location_id = args[:location_id]
     batch_size = args[:batch_size]
 
-    if offset
-      posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).offset(offset).includes(:comments)
-    else
+    # if offset
+      # posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).offset(offset).includes(:comments)
+    # else
       posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).includes(:comments)
-    end
+    # end
 
     @@time = Time.now
     posts.each do |post| 
@@ -62,12 +60,14 @@ class Post < ActiveRecord::Base
   def add_description
     # This could be done before storing records to reduce runtime operations.
 
-    # if !self.hair.empty? && !self.gender.empty?
-    if self.hair.length > 0 && self.gender.length > 0
+    self.gender = "" if self.gender == "other"
+    self.hair = "" if self.hair == "other"
+
+    if self.hair.present? && self.gender.present?
       self.description = "#{gender}, #{self.translate_hair}"
-    elsif self.hair.length > 0
+    elsif self.hair.present?
       self.description = self.translate_hair
-    elsif self.gender.length > 0
+    elsif self.gender.present?
       self.description = gender
     else
       self.description = ""

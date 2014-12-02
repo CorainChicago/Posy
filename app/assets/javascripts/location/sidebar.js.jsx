@@ -18,10 +18,11 @@ var Sidebar = React.createClass({
   render: function() {
           // <h1 id="badge">POSY</h1>
           // <h2 id="location">{locationName}</h2>
+          // <img src={logoFallback} id="logo" />
     return(
       <div id="sidebar">
         <div id="sidebar-container">
-          <img src={logoSVG} id="logo" />
+          <img src={logoSVG} onerror={"this.src=" + logoFallback + ""} id="logo" />
           <button id="new-post-button" onClick={this.showPostForm}>Add Post</button>
           <PostForm ref="postForm" handlePostSubmit={this.props.handlePostSubmit} />
         </div>

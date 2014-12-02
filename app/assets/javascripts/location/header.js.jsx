@@ -15,7 +15,7 @@ var Header = React.createClass({
   render: function() {
     return(
       <div id="header">
-        <p id="hmm">!</p>
+        <p id="menu"> </p>
         <h1 id="badge">POSY</h1>
         <a href="#" id="new-post-link" onClick={this.togglePostForm} >+</a>
         <PostForm ref="postForm" handlePostSubmit={this.handlePostSubmit}/>

@@ -9,6 +9,7 @@ var LocationDisplay = React.createClass({
       horizontal: horizontal,
     };
   },
+
   componentDidMount: function() {
     this.loadPostsFromServer(this.props.batchSize);
     setInterval(this.loadPostsFromServer, this.props.pollInterval);
@@ -16,6 +17,7 @@ var LocationDisplay = React.createClass({
     $(window).on('resize', this.handleResize);
     $(window).on('scroll', this.handleScroll);
   },
+
   loadPostsFromServer: function(numPosts) {
     var size = numPosts || this.state.posts.length
     var that = this;
@@ -36,12 +38,14 @@ var LocationDisplay = React.createClass({
       // IMPLEMENT ERROR MESSAGE?
     })
   },
+
   handleScroll: function() {
     if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
       newSize = this.state.posts.length + this.props.batchSize;
       this.loadPostsFromServer(newSize);
     };
   },
+
   handlePostSubmit: function(event) {
     event.preventDefault();
     var postForm = this.refs.sidebar.refs.postForm
@@ -74,6 +78,7 @@ var LocationDisplay = React.createClass({
       })
     }
   },
+
   handleCommentSubmit: function(event) {
     event.preventDefault();
     var $form = $(event.target);
@@ -103,6 +108,7 @@ var LocationDisplay = React.createClass({
       $form.children(":input").prop("disabled", false);
     });
   },
+
   handleFlagging: function(post, path) {
     var flagPath = this.props.url + path
     $.ajax({
@@ -111,6 +117,7 @@ var LocationDisplay = React.createClass({
     })
     this.loadPostsFromServer();
   },
+
   handleResize: function(event) {
     var horizontal = window.innerWidth > this.props.breakpoint;
     if (this.state.horizontal && !horizontal) {
@@ -120,6 +127,7 @@ var LocationDisplay = React.createClass({
       this.setState({horizontal: true});
     }
   },
+
   render: function() {  
     if (this.state.horizontal) {
       return (
@@ -134,7 +142,7 @@ var LocationDisplay = React.createClass({
       )
     }
     else {
-      // FIX SIDEBAR REF!!!
+      // Fix sidebar ref?
       return (
         <div id="location-container">
           <Header ref="sidebar" handlePostSubmit={this.handlePostSubmit} /> 

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index   
     args = {
       location_id: @location.id,
-      offset: params[:offset],
+      # offset: params[:offset],
       batch_size: params[:batch_size],
       session_id: session[:session_id]
     }
@@ -56,6 +56,9 @@ class PostsController < ApplicationController
 
   def post_params
     process_breaks
+    params[:post][:hair].downcase! if params[:post][:hair]
+    params[:post][:gender].downcase! if params[:post][:gender]
+    params[:post][:spotted_at].strip! if params[:post][:spotted_at]
     params.require(:post).permit(:hair, :gender, :spotted_at, :content)
   end
 

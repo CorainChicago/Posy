@@ -36,18 +36,25 @@ var PostForm = React.createClass({
             <select id="post_gender" name="post[gender]" ref="genderSelect">
               <option value=""></option>
               <option value="Male">Male</option>
-              <option value="Female">Female</option></select>
-            </div>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
 
         <div className="post-form-select">
           <label for="post_hair">Hair</label><br/>
-          <div className="post-form-select-background"><select id="post_hair" name="post[hair]" ><option value=""></option>
-            <option value="Brown">Brown</option>
-            <option value="Black">Black</option>
-            <option value="Blonde">Blonde</option>
-            <option value="Red">Red</option></select></div>
+          <div className="post-form-select-background">
+            <select id="post_hair" name="post[hair]" >
+              <option value=""></option>
+              <option value="Brown">Brown</option>
+              <option value="Black">Black</option>
+              <option value="Blonde">Blonde</option>
+              <option value="Red">Red</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
+        </div>
 
         <label for="post_spotted_at">Location <span id="location-requirement">(required)</span></label>
         <input id="post_spotted_at" name="post[spotted_at]" type="text" /><br/>
