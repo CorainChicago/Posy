@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
     # Originally implemented to retreive posts piecemeal through an offset.
     # For now, that offset is never present
 
-    # offset = args[:offset]
+    offset = args[:offset]
     location_id = args[:location_id]
     batch_size = args[:batch_size]
 

@@ -21,7 +21,6 @@ class PostsController < ApplicationController
 
     if new_post.save
       index
-      # render json: new_post
     else
       render json: {errors: new_post.errors.full_messages}, status: 400
     end
@@ -29,8 +28,6 @@ class PostsController < ApplicationController
 
   def destroy
     # For now, content is not deleted, only hidden
-    # @post.destroy_comments
-    # @post.destroy
     @post.mark_as_removed
 
     redirect_to location_admin_path(params[:location_slug])

@@ -40,7 +40,8 @@ var LocationDisplay = React.createClass({
   },
 
   handleScroll: function() {
-    if ( $(window).scrollTop() == $(document).height() - $(window).height()) {
+    // refactor line below
+    if ( parseInt($(window).scrollTop()) == parseInt($(document).height() - $(window).height())) {
       newSize = this.state.posts.length + this.props.batchSize;
       this.loadPostsFromServer(newSize);
     };

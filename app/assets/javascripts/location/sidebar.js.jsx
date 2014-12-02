@@ -16,9 +16,6 @@ var Sidebar = React.createClass({
     });
   },
   render: function() {
-          // <h1 id="badge">POSY</h1>
-          // <h2 id="location">{locationName}</h2>
-          // <img src={logoFallback} id="logo" />
     return(
       <div id="sidebar">
         <div id="sidebar-container">
