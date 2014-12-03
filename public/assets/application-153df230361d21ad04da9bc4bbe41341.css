@@ -12,6 +12,7 @@
  *
  */
 /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
 /* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   border: 0;
@@ -53,76 +54,22 @@ table {
   border-spacing: 0;
 }
 
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local("Lato Light"), local("Lato-Light"), url(http://fonts.gstatic.com/s/lato/v11/IY9HZVvI1cMoAHxvl0w9LVKPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 300;
-  src: local("Lato Light"), local("Lato-Light"), url(http://fonts.gstatic.com/s/lato/v11/22JRxvfANxSmnAhzbFH8PlKPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Lato Regular"), local("Lato-Regular"), url(http://fonts.gstatic.com/s/lato/v11/8qcEw_nrk_5HEcCpYdJu8BTbgVql8nDJpwnrE27mub0.woff2) format("woff2");
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Lato Regular"), local("Lato-Regular"), url(http://fonts.gstatic.com/s/lato/v11/MDadn8DQ_3oT6kvnUq_2rxTbgVql8nDJpwnrE27mub0.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-
-/* latin-ext */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local("Lato Bold"), local("Lato-Bold"), url(http://fonts.gstatic.com/s/lato/v11/rZPI2gHXi8zxUjnybc2ZQFKPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* latin */
-@font-face {
-  font-family: 'Lato';
-  font-style: normal;
-  font-weight: 700;
-  src: local("Lato Bold"), local("Lato-Bold"), url(http://fonts.gstatic.com/s/lato/v11/MgNNr5y1C_tIEuLEmicLm1KPGs1ZzpMvnHX-7fPOuAc.woff2) format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-
-/* line 59, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
-h1, h2, h3, h4, h5, h6, p, a, label, input, button {
+/* line 5, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+h1, h2, h3, h4, h5, h6, p, a, label, input, button, svg, img {
   font-family: Lato, Helvetica, arial, sans-serif;
 }
 
-/* line 68, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+/* line 14, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
 html {
   box-sizing: border-box;
 }
 
-/* line 72, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+/* line 18, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
 *, *:before, *:after {
   box-sizing: inherit;
 }
 
-/* line 76, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+/* line 22, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
 body {
   background-color: #FFFFFF;
 }
@@ -185,7 +132,7 @@ p, select, input, textarea {
   /* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     padding: 1em 0;
   }
   /* line 37, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
@@ -220,8 +167,8 @@ p, select, input, textarea {
 @media (max-width 775px) {
   /* line 69, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar-container {
-    width: 85%;
-    border: 1px solid white;
+    width: 35%;
+    margin: 0 auto;
   }
 }
 /* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
@@ -560,23 +507,23 @@ textarea {
   display: block;
   width: 100%;
 }
-/* line 17, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 16, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container #post-form {
   display: none;
 }
-/* line 21, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container #new-post-button {
   display: block;
   width: 67%;
   margin: 8em auto;
 }
-/* line 30, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 26, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container h1 {
   font-size: 250%;
   text-align: center;
   margin-top: 1em;
 }
-/* line 36, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container h2 {
   color: white;
   font-size: 2em;
@@ -584,7 +531,7 @@ textarea {
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
-/* line 45, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 41, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link {
   width: 100%;
   text-decoration: none;
@@ -594,7 +541,7 @@ textarea {
   position: absolute;
   bottom: 3em;
 }
-/* line 54, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 50, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link:hover {
   text-decoration: underline;
 }
