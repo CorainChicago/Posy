@@ -129,46 +129,49 @@ p, select, input, textarea {
   }
 }
 @media (max-width: 775px) {
-  /* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 41, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar {
     width: 100%;
     min-height: 100vh;
-    padding: 1em 0;
+    padding: 1em;
   }
-  /* line 37, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 46, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar #sidebar-container {
+    width: 85%;
+    margin: 0 auto;
+  }
+  /* line 51, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar #logo {
     max-width: 278px;
     margin: 0 auto;
   }
 
-  /* line 43, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 57, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #location-posts {
     width: 100%;
     margin: 0 auto;
   }
 
-  /* line 48, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 62, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   .hide-on-small {
     display: none;
   }
+
+  /* line 66, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  button, input[type="submit"] {
+    -webkit-appearance: none;
+  }
 }
 @media (min-width: 1025px) {
-  /* line 57, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 73, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar-container {
     width: 50%;
   }
 }
 @media (max-width: 1024px) and (min-width: 776px) {
-  /* line 63, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  /* line 79, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
   #sidebar-container {
     width: 65%;
-  }
-}
-@media (max-width 775px) {
-  /* line 69, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
-  #sidebar-container {
-    width: 35%;
-    margin: 0 auto;
   }
 }
 /* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
@@ -453,12 +456,6 @@ div.post-form-select select {
   text-align: center;
   width: 100%;
   border: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 5px;
-  text-overflow: '';
-  appearance: none;
-  background: transparent url("/assets/arrow_down_9.png") no-repeat scroll 95% 13px;
 }
 
 /* line 58, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */

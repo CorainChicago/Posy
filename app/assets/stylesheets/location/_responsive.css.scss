@@ -26,13 +26,27 @@
     display: block;
     position: absolute;
   }
+
+  // select {
+  //   // -webkit-appearance: none;
+  //   // -moz-appearance: none;
+  //   // text-indent: 5px;
+  //   // text-overflow: '';
+  //   // appearance: none;
+  //   // background: transparent url(image_path('arrow_down_9.png')) no-repeat scroll 95% 13px;
+  // }
 }
 
 @media (max-width: 775px) {
   #sidebar {
     width: 100%;
     min-height: 100vh;
-    padding: 1em 0;
+    padding: 1em;
+
+    #sidebar-container {
+      width: 85%;
+      margin: 0 auto;
+    }
 
     #logo {
       max-width: 278px;
@@ -49,9 +63,11 @@
     display: none;
   }
 
-}
+  button, input[type="submit"] {
+    -webkit-appearance: none;
+  }
 
-// SIDEBAR CONTAINER
+}
 
 @media (min-width: 1025px) {
   #sidebar-container {
@@ -62,12 +78,5 @@
 @media (max-width: 1024px) and (min-width: 776px) {
   #sidebar-container {
     width: 65%;
-  }
-}
-
-@media (max-width 775px) {
-  #sidebar-container {
-    width: 35%;
-    margin: 0 auto;
   }
 }
