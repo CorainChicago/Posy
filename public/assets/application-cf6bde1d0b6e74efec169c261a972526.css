@@ -1,0 +1,546 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+@import url(//fonts.googleapis.com/css?family=Lato:300,400,700);
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+body {
+  line-height: 1;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+ol, ul {
+  list-style: none;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: none;
+}
+
+/* line 3, /Users/Wil/Dev/posy/vendor/assets/stylesheets/reset.css */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 12, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+h1, h2, h3, h4, h5, h6, p, a, label, input, button {
+  font-family: Lato, Helvetica, arial, sans-serif;
+}
+
+/* line 16, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* line 24, /Users/Wil/Dev/posy/app/assets/stylesheets/_utilities.css.scss */
+body {
+  background-color: #FFFFFF;
+}
+
+/* line 1, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_fonts.css.scss */
+.content, .comment-content, .post-links, label, a {
+  font-weight: 300;
+}
+
+/* line 5, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_fonts.css.scss */
+.location, .post-description, input, textarea {
+  font-weight: 400;
+}
+
+/* line 9, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_fonts.css.scss */
+#listLocation {
+  font-weight: 700;
+}
+
+/* line 13, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_fonts.css.scss */
+p, select, input, textarea {
+  line-height: 1.5;
+}
+
+@media (min-width: 776px) {
+  /* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar {
+    width: 33%;
+    height: 100%;
+    position: fixed;
+  }
+  /* line 7, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar #logo {
+    margin: 2em auto 1em auto;
+  }
+
+  /* line 12, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #location-posts {
+    width: 67%;
+    margin-left: 33%;
+  }
+
+  /* line 17, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  .hide-on-big {
+    display: none;
+  }
+
+  /* line 21, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #listLocation {
+    font-size: 200%;
+  }
+
+  /* line 25, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #about-link {
+    display: block;
+    position: absolute;
+  }
+}
+@media (max-width: 775px) {
+  /* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar {
+    width: 100%;
+    height: 100vh;
+    padding: 1em 0;
+  }
+  /* line 37, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar #logo {
+    max-width: 278px;
+    margin: 0 auto;
+  }
+
+  /* line 43, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #location-posts {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* line 48, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  .hide-on-small {
+    display: none;
+  }
+}
+@media (min-width: 1025px) {
+  /* line 57, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar-container {
+    width: 50%;
+  }
+}
+@media (max-width: 1024px) and (min-width: 776px) {
+  /* line 63, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar-container {
+    width: 65%;
+  }
+}
+@media (max-width 775px) {
+  /* line 69, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_responsive.css.scss */
+  #sidebar-container {
+    width: 85%;
+    border: 1px solid white;
+  }
+}
+/* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables {
+  margin: 50px auto;
+  width: 95%;
+}
+/* line 6, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table {
+  margin-bottom: 50px;
+}
+/* line 9, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table td, #admin-tables .admin-table th {
+  text-align: left;
+  padding: 2px;
+}
+/* line 14, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table th {
+  background-color: #222222;
+  color: #FFFFFF;
+  font-size: 75%;
+}
+/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table td {
+  border: 1px solid #636465;
+}
+/* line 24, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-time, #admin-tables .admin-table .admin-location, #admin-tables .admin-table .admin-hair, #admin-tables .admin-table .admin-gender {
+  font-size: 75%;
+}
+/* line 28, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-time {
+  width: 7%;
+}
+/* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-location {
+  width: 12%;
+}
+/* line 36, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-gender, #admin-tables .admin-table .admin-hair, #admin-tables .admin-table .admin-flags, #admin-tables .admin-table .admin-show, #admin-tables .admin-table .admin-ok, #admin-tables .admin-table .admin-hide {
+  width: 4%;
+}
+/* line 40, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-show-no {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+/* line 46, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-post-grouping-hidden .admin-time, #admin-tables .admin-table .admin-post-grouping-hidden .admin-location, #admin-tables .admin-table .admin-post-grouping-hidden .admin-gender, #admin-tables .admin-table .admin-post-grouping-hidden .admin-hair, #admin-tables .admin-table .admin-post-grouping-hidden .admin-content, #admin-tables .admin-table .admin-comment-hidden .admin-time, #admin-tables .admin-table .admin-comment-hidden .admin-location, #admin-tables .admin-table .admin-comment-hidden .admin-gender, #admin-tables .admin-table .admin-comment-hidden .admin-hair, #admin-tables .admin-table .admin-comment-hidden .admin-content {
+  text-decoration: line-through;
+}
+/* line 51, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-content {
+  width: 52%;
+}
+/* line 55, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table .admin-comment-blank {
+  background-color: #eeeeee;
+}
+/* line 59, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table input {
+  display: block;
+  margin: 0 auto;
+  border: none;
+  color: #FFFFFF;
+  background-color: #636465;
+}
+/* line 65, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-table input:hover {
+  transition: .2s;
+  background-color: #000000;
+}
+/* line 72, /Users/Wil/Dev/posy/app/assets/stylesheets/location/admin.css.scss */
+#admin-tables .admin-post-grouping {
+  border-bottom: 5px solid #000000;
+}
+
+/* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section {
+  margin-top: .5em;
+  margin-left: 1.5em;
+  border-left: 0.1em solid #96281b;
+  padding-left: .5em;
+}
+/* line 8, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section .comment {
+  font-size: 90%;
+  line-height: 1.5;
+  margin-bottom: .25em;
+  color: #636465;
+}
+/* line 14, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section .comment .comment-author {
+  color: #96281b;
+}
+/* line 19, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section form.new-comment {
+  display: none;
+}
+/* line 22, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section form.new-comment input[type="text"], .comment-section form.new-comment input[type="submit"] {
+  outline: none;
+  border-radius: 3px;
+  padding: .5em;
+  border: 0.1em solid #96281b;
+}
+/* line 29, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section form.new-comment input[type="text"] {
+  border: 0.1em solid #96281b;
+  width: 84%;
+  margin-right: 1%;
+  color: #636465;
+}
+/* line 35, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section form.new-comment input[type="submit"] {
+  background-color: white;
+  color: #96281b;
+  width: 15%;
+}
+/* line 39, /Users/Wil/Dev/posy/app/assets/stylesheets/location/comment.css.scss */
+.comment-section form.new-comment input[type="submit"]:hover {
+  transition: .2s;
+  background-color: #96281b;
+  color: white;
+}
+
+/* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/header.css.scss */
+#header {
+  width: 100%;
+  background-color: #96281b;
+  color: #FFFFFF;
+  position: fixed;
+  z-index: 1;
+}
+/* line 9, /Users/Wil/Dev/posy/app/assets/stylesheets/location/header.css.scss */
+#header h1, #header #menu, #header #new-post-button {
+  display: inline-block;
+}
+/* line 13, /Users/Wil/Dev/posy/app/assets/stylesheets/location/header.css.scss */
+#header h1 {
+  display: inline-block;
+  font-size: 200%;
+  text-align: center;
+  margin: .25em auto;
+  width: 50%;
+}
+/* line 21, /Users/Wil/Dev/posy/app/assets/stylesheets/location/header.css.scss */
+#header #menu, #header #new-post-button {
+  width: 25%;
+}
+/* line 25, /Users/Wil/Dev/posy/app/assets/stylesheets/location/header.css.scss */
+#header #new-post-link {
+  font-size: 200%;
+  text-align: right;
+  padding-right: 1em;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+/* line 1, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+#location-posts {
+  padding-top: 1em;
+}
+/* line 4, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+#location-posts #listLocation {
+  color: #96281b;
+  width: 90%;
+  margin: .5em auto 1em auto;
+  font-size: 200%;
+}
+
+/* line 12, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  width: 90%;
+  margin: 1em auto 2em auto;
+  border-radius: 2px;
+}
+/* line 21, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .location, .post .post-description {
+  display: inline;
+}
+/* line 25, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .location {
+  color: white;
+  background-color: #96281b;
+  padding: 2px 4px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  line-height: 1.5;
+}
+/* line 34, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .post-description {
+  color: #636465;
+}
+/* line 38, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .content {
+  color: #636465;
+  line-height: 1.5;
+  margin: .25em auto .25em;
+}
+/* line 44, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .post-links {
+  margin-top: .5em;
+  color: #96281b;
+  font-size: 80%;
+}
+/* line 48, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .post-links a {
+  color: #96281b;
+  text-decoration: none;
+}
+/* line 51, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+.post .post-links a:hover {
+  background-color: #96281b;
+  color: #FFFFFF;
+  transition: .2s;
+}
+
+/* line 60, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post.css.scss */
+#exhausted-circle {
+  display: none;
+  margin: 0 auto 2em auto;
+}
+
+/* line 1, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+label {
+  font-size: 75%;
+}
+
+/* line 5, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+input[type="submit"] {
+  margin-top: 1em;
+  font-size: 75%;
+}
+
+/* line 10, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+textarea, input[type="text"], .post-form-select {
+  margin-bottom: .5em;
+}
+
+/* line 14, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+input[type="submit"], input[type="text"], textarea {
+  width: 98%;
+  padding: 3px;
+  border-radius: 2px;
+}
+
+/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+#new-post-button, input[type="submit"], input[type="text"], select {
+  height: 3em;
+}
+
+/* line 24, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+textarea, input[type="text"], select {
+  color: #636465;
+  border: none;
+  outline: none;
+}
+
+/* line 30, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+textarea, input[type="text"] {
+  padding: 5px 10px;
+  font-size: 80%;
+}
+
+/* line 35, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+div.post-form-select {
+  width: 48%;
+  margin-right: 2%;
+  display: inline-block;
+}
+/* line 40, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+div.post-form-select .post-form-select-background {
+  background-color: #ffffff;
+  border-radius: 2px;
+}
+/* line 45, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+div.post-form-select select {
+  text-align: center;
+  width: 100%;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 5px;
+  text-overflow: '';
+  appearance: none;
+  background: transparent url("/assets/arrow_down_9.png") no-repeat scroll 95% 13px;
+}
+
+/* line 58, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+#new-post-button {
+  font-size: 75%;
+}
+
+/* line 62, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+#new-post-button, input[type="submit"] {
+  background-color: #96281b;
+  border: 1px solid white;
+  border-radius: 2px;
+  color: #ffffff;
+  outline: none;
+}
+/* line 69, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+#new-post-button:hover, input[type="submit"]:hover {
+  transition: .3s;
+  background-color: #ffffff;
+  color: #96281b;
+}
+
+/* line 78, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+textarea {
+  resize: none;
+}
+
+/* line 82, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+#location-requirement, #content-requirement {
+  display: none;
+}
+
+/* line 2, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar {
+  background-color: #96281b;
+  color: #ffffff;
+}
+/* line 6, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container {
+  margin: 0 auto;
+  max-width: 420px;
+}
+/* line 10, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container #logo {
+  display: block;
+  width: 100%;
+}
+/* line 16, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container #post-form {
+  display: none;
+}
+/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container #new-post-button {
+  display: block;
+  width: 67%;
+  margin: 8em auto;
+}
+/* line 29, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container h1 {
+  font-size: 250%;
+  text-align: center;
+  margin-top: 1em;
+}
+/* line 35, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #sidebar-container h2 {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+}
+/* line 44, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #about-link {
+  width: 100%;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-size: 75%;
+  text-align: center;
+  position: absolute;
+  bottom: 3em;
+}
+/* line 53, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+#sidebar #about-link:hover {
+  text-decoration: underline;
+}
