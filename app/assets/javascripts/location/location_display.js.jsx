@@ -31,6 +31,7 @@ var LocationDisplay = React.createClass({
       var posts = response.posts;
       if (posts.length < size) {
         $(window).off('scroll'); // oldest post retreived, stop handling scroll
+        $("#exhausted-circle").css("display", "block");
       }
       that.setState({posts: posts})
     })

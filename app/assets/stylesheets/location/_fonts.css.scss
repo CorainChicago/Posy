@@ -1,11 +1,15 @@
-.content, .comment-content, .post-links, input, label, a {
+.content, .comment-content, .post-links, label, a {
   font-weight: 300
 }
 
-.location {
+.location, .post-description, input, textarea {
   font-weight: 400
 }
 
 #listLocation  {
   font-weight: 700
+}
+
+p, select, input, textarea {
+  line-height: 1.5;
 }

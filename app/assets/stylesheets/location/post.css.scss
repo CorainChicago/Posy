@@ -17,12 +17,13 @@
   position: relative;
   background-color: #ffffff;
   width: 90%;
-  margin: 1em auto;
+  margin: 1em auto 2em auto;
   border-radius: 2px;
+
 
   .location, .post-description {
     display: inline;
-    font-size: 85%;
+    // font-size: 85%;
   }
 
   .location {
@@ -47,7 +48,7 @@
   .post-links {
     margin-top: .5em;
     color: $feature-color;
-    font-size: 75%;
+    font-size: 80%;
     a {
       color: $feature-color;
       text-decoration: none;
@@ -58,4 +59,9 @@
       }
     }
   }
+}
+
+#exhausted-circle {
+  display: none;
+  margin: 0 auto 2em auto;
 }
