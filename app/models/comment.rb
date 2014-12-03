@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :post
   has_many :flaggings, as: :flaggable
+  
+  default_scope { order("created_at ASC") }
 
   validates :content, :post_id, presence: true
 
