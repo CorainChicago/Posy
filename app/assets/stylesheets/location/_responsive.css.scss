@@ -1,0 +1,73 @@
+@media (min-width: 776px) {
+  #sidebar {
+    width: 33%;
+    height: 100%;
+    position: fixed;
+
+    #logo {
+      margin: 2em auto 1em auto;
+    }
+  }
+
+  #location-posts {
+    width: 67%;
+    margin-left: 33%;
+  }
+
+  .hide-on-big {
+    display: none;
+  }
+
+  #listLocation {
+    font-size: 200%;
+  }
+
+  #about-link {
+    display: block;
+    position: absolute;
+  }
+}
+
+@media (max-width: 775px) {
+  #sidebar {
+    width: 100%;
+    height: 100vh;
+    padding: 1em 0;
+
+    #logo {
+      max-width: 278px;
+      margin: 0 auto;
+    }
+  }
+
+  #location-posts {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .hide-on-small {
+    display: none;
+  }
+
+}
+
+// SIDEBAR CONTAINER
+
+@media (min-width: 1025px) {
+  #sidebar-container {
+    width: 50%;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 776px) {
+  #sidebar-container {
+    width: 65%;
+  }
+}
+
+@media (max-width 775px) {
+  #sidebar-container {
+    width: 85%;
+    border: 1px solid white;
+  }
+}
