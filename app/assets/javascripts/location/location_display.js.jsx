@@ -6,7 +6,7 @@ var LocationDisplay = React.createClass({
 
     return {
       posts: [],
-      horizontal: horizontal,
+      horizontal: horizontal
     };
   },
 
@@ -38,6 +38,16 @@ var LocationDisplay = React.createClass({
     .fail(function(response) {
       // IMPLEMENT ERROR MESSAGE?
     })
+  },
+
+  handleResize: function() {
+    var horizontal = window.innerWidth > this.props.breakpoint;
+    if (!horizontal && this.state.horizontal) {
+      this.setState({ horizontal: false });
+    }
+    else if (horizontal && !this.state.horizontal) {
+      this.setState({ horizontal: true });
+    }
   },
 
   handleScroll: function() {
@@ -120,21 +130,10 @@ var LocationDisplay = React.createClass({
     this.loadPostsFromServer();
   },
 
-  handleResize: function(event) {
-    var horizontal = window.innerWidth > this.props.breakpoint;
-    if (this.state.horizontal && !horizontal) {
-      this.setState({horizontal: false})
-    }
-    else if (!this.state.horizontal && horizontal) {
-      this.setState({horizontal: true});
-    }
-  },
-
   render: function() {  
-    if (this.state.horizontal) {
       return (
         <div id="location-container">
-          <Sidebar ref="sidebar" handlePostSubmit={this.handlePostSubmit} />
+          <Sidebar ref="sidebar" handlePostSubmit={this.handlePostSubmit} horizontal={this.state.horizontal}/>
           <div id="location-posts">
               <PostList handleFlagging={this.handleFlagging} 
                         handleCommentSubmit={this.handleCommentSubmit} 
@@ -142,19 +141,5 @@ var LocationDisplay = React.createClass({
           </div>
         </div>
       )
-    }
-    else {
-      // Fix sidebar ref?
-      return (
-        <div id="location-container">
-          <Header ref="sidebar" handlePostSubmit={this.handlePostSubmit} /> 
-          <div id="location-posts">
-            <PostList handleFlagging={this.handleFlagging} 
-                      handleCommentSubmit={this.handleCommentSubmit} 
-                      posts={this.state.posts} />
-          </div>
-        </div>
-      )
-    }
   }
 });
