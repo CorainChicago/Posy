@@ -503,26 +503,27 @@ textarea {
 }
 /* line 10, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container #logo {
+  font-family: Lato, Helvetica, arial, sans-serif;
   display: block;
   width: 100%;
 }
-/* line 16, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 17, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container #post-form {
   display: none;
 }
-/* line 20, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 21, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container #new-post-button {
   display: block;
   width: 67%;
   margin: 8em auto;
 }
-/* line 29, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 30, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container h1 {
   font-size: 250%;
   text-align: center;
   margin-top: 1em;
 }
-/* line 35, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 36, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #sidebar-container h2 {
   color: white;
   font-size: 2em;
@@ -530,7 +531,7 @@ textarea {
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
-/* line 44, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 45, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link {
   width: 100%;
   text-decoration: none;
@@ -540,7 +541,7 @@ textarea {
   position: absolute;
   bottom: 3em;
 }
-/* line 53, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 54, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link:hover {
   text-decoration: underline;
 }
