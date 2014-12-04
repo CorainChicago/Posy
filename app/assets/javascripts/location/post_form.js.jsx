@@ -27,6 +27,10 @@ var PostForm = React.createClass({
     form.reset();
     this.enable();
   },
+  hideForm: function() {
+    this.props.cancel();
+    return false; // disables blank anchor tag on 'cancel' link
+  },
   render: function() {
     return (
       <form accept-charset="UTF-8" action={postsPath} id="post-form" method="post" ref="postForm" onSubmit={this.props.handlePostSubmit} >
@@ -43,7 +47,7 @@ var PostForm = React.createClass({
         </div>
 
         <div className="post-form-select">
-          <label for="post_hair">Hair</label><br/>
+          <label for="post_hair" id="post_hair_label" >Hair</label><br/>
           <div className="post-form-select-background">
             <select id="post_hair" name="post[hair]" >
               <option value=""></option>
@@ -63,6 +67,7 @@ var PostForm = React.createClass({
         <textarea id="post_content" name="post[content]" rows="4" ref="contentField"></textarea><br/>
 
         <input type="submit" value="Submit!" ref="submitButton" />
+        <a id="post-form-cancel" href="#" onClick={this.props.cancel}>Cancel</a>
       </form>
     )
   }

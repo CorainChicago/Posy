@@ -1,32 +1,49 @@
-
 #sidebar {
   background-color: $feature-color;
   color: #ffffff;
+  padding-top: 5em;
 
   #sidebar-container{
     margin: 0 auto;
     max-width: 420px;
 
-    #logo {
-      font-family: $sans-serif-stack;
-      display: block;
-      width: 100%;
+    // #logo {
+    //   font-family: $sans-serif-stack;
+    //   display: block;
+    //   width: 100%;
+    // }
+
+    #sidebar-logo {
+      margin-bottom: 3em;
+
+      h1#logo-type {
+        font-family: $feature-font;
+        font-weight: 700;
+        font-style: italic;
+        font-size: 600%;
+        text-align: center;
+        margin: 0 auto .2em auto;
+      }
+
+      h3#logo-desc {
+        font-family: $sans-serif-stack;
+        font-weight: 400;
+        font-size: 75%;
+        text-align: center;
+        font-style: italic;
+      }
     }
 
     #post-form {
       display: none;
+      margin-bottom: 2em;
     }
 
     #new-post-button {
       display: block;
       width: 67%;
-      margin: 8em auto;
-    }
-
-    h1 {
-      font-size: 250%;
-      text-align: center;
-      margin-top: 1em;
+      margin: 0 auto;
+      // margin: 8em auto;
     }
 
     h2 {
