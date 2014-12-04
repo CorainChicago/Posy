@@ -490,25 +490,30 @@ div.post-form-select .post-form-select-background {
 }
 /* line 56, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 div.post-form-select select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   text-align: center;
   width: 100%;
   border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 5px;
+  text-overflow: '';
+  appearance: none;
+  background: transparent url("/assets/arrow_down_9.png") no-repeat scroll 95% 13px;
+  background-color: #FFFFFF;
 }
 
-/* line 71, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 70, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 #post_hair, #post_hair_label {
   position: relative;
   left: 8%;
 }
 
-/* line 76, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 75, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 #new-post-button {
   font-size: 75%;
 }
 
-/* line 80, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 79, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 #new-post-button, input[type="submit"] {
   background-color: #96281b;
   border: 1px solid white;
@@ -516,7 +521,7 @@ div.post-form-select select {
   color: #ffffff;
   outline: none;
 }
-/* line 87, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 86, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 #new-post-button:hover, input[type="submit"]:hover {
   -webkit-transition: .3s;
   -moz-transition: .3s;
@@ -526,17 +531,17 @@ div.post-form-select select {
   color: #96281b;
 }
 
-/* line 97, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 96, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 textarea {
   resize: none;
 }
 
-/* line 101, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 100, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 #location-requirement, #content-requirement {
   display: none;
 }
 
-/* line 105, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 104, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 a#post-form-cancel {
   display: block;
   text-align: center;
@@ -545,7 +550,7 @@ a#post-form-cancel {
   margin-top: 1em;
   font-size: 75%;
 }
-/* line 112, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
+/* line 111, /Users/Wil/Dev/posy/app/assets/stylesheets/location/post_form.css.scss */
 a#post-form-cancel:hover {
   text-decoration: underline;
 }
