@@ -49,21 +49,10 @@ div.post-form-select {
   width: 48%;
   display: inline-block;
 
-  .post-form-select-background {
-    border-radius: 2px;
-  }
-
   select {
     text-align: center;
     width: 100%;
     border: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    text-indent: 5px;
-    text-overflow: '';
-    appearance: none;
-    background-color: #FFFFFF;
-    background: transparent url(asset-path('arrow_down_9.png')) no-repeat scroll 95% 13px;
   }
 }
 

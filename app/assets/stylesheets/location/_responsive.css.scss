@@ -28,14 +28,6 @@
     bottom: 3em;
   }
 
-  // select {
-  //   // -webkit-appearance: none;
-  //   // -moz-appearance: none;
-  //   // text-indent: 5px;
-  //   // text-overflow: '';
-  //   // appearance: none;
-  //   // background: transparent url(image_path('arrow_down_9.png')) no-repeat scroll 95% 13px;
-  // }
 }
 
 @media (max-width: 775px) {
@@ -71,6 +63,15 @@
     margin: 9em auto 3em auto;
   }
 
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 5px;
+    text-overflow: '';
+    background-color: #FFFFFF;
+    // appearance: none;
+    // background: transparent url(image_path('arrow_down_9.png')) no-repeat scroll 95% 13px;
+  }
 }
 
 @media (min-width: 1025px) {

@@ -29535,7 +29535,7 @@ var PostForm = React.createClass({displayName: 'PostForm',
 
         React.DOM.div({className: "post-form-select"}, 
           React.DOM.label({for: "post_hair", id: "post_hair_label"}, "Hair"), React.DOM.br(null), 
-          React.DOM.div({className: "post-form-select-background"}, 
+          React.DOM.div({className: "post-form-select-background", id: "post_hair_background"}, 
             React.DOM.select({id: "post_hair", name: "post[hair]"}, 
               React.DOM.option({value: ""}), 
               React.DOM.option({value: "Brown"}, "Brown"), 

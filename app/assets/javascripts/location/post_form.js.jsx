@@ -48,7 +48,7 @@ var PostForm = React.createClass({
 
         <div className="post-form-select">
           <label for="post_hair" id="post_hair_label" >Hair</label><br/>
-          <div className="post-form-select-background">
+          <div className="post-form-select-background" id="post_hair_background">
             <select id="post_hair" name="post[hair]" >
               <option value=""></option>
               <option value="Brown">Brown</option>
