@@ -612,14 +612,14 @@ a#post-form-cancel:hover {
 }
 /* line 56, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link {
-  display: block;
+  display: none;
   width: 100%;
   text-decoration: none;
   color: #FFFFFF;
   font-size: 75%;
   text-align: center;
 }
-/* line 64, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
+/* line 65, /Users/Wil/Dev/posy/app/assets/stylesheets/location/sidebar.css.scss */
 #sidebar #about-link:hover {
   text-decoration: underline;
 }

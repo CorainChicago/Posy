@@ -10,11 +10,11 @@ Abusive content can be reported, and content that receives enough reports will b
 
 ## Technologies
 * **Back-end:** Ruby on Rails, PostgreSQL
-* **Front-end:** React.js, HTML/CSS
+* **Front-end:** React.js, Javascript/JQuery, HTML/CSS
 * **Testing:** RSpec
 * **Deployment:** Heroku
 
-## Contact Author
+## Contact author
 [Email](mailto:wilchandler2@gmail.com)  
 [Twitter](https://twitter.com/wil_chandler)  
 [LinkedIn](http://www.linkedin.com/in/wilchandler)  
