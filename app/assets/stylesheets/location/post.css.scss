@@ -3,10 +3,23 @@
   padding-top: 2em;
 
   #listLocation {
-    color: $feature-color;
+    text-align: left;
+    // color: $feature-color;
     width: 90%;
-    margin: .5em auto 1em auto;
-    font-size: 200%;
+    margin: .5em auto 1.4em auto;
+    // font-size: 200%;
+
+
+    #listLocationSpan {
+      padding: .2em .4em;
+
+      font-family: $feature-font;
+      font-weight: 700;
+      font-style: italic;
+      background-color: $feature-color;
+      color: #FFFFFF;
+      width: 55%;
+    }
   }
 }
 

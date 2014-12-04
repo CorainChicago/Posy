@@ -21,10 +21,12 @@ PostList = React.createClass({
 
     return (
       <div className="post-list">
-        <h2 id="listLocation" className="hide-on-small">{locationName}</h2>
+        <h2 id="listLocation" className="hide-on-small">
+          <span id="listLocationSpan">{locationName}</span>
+        </h2>
         {postNodes}
         <svg height="24" width="24" id="exhausted-circle">
-          <circle cx="12" cy="12" r="6" stroke="none" stroke-width="1" fill="#96281B" />
+          <circle cx="12" cy="12" r="4" stroke="none" stroke-width="1" fill="#96281B" />
         </svg>
       </div>
     );
