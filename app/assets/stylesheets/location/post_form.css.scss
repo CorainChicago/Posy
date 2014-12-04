@@ -54,6 +54,8 @@ div.post-form-select {
   }
 
   select {
+    -webkit-appearance:none;
+    -moz-appearance: none;
     text-align: center;
     width: 100%;
     border: 0;

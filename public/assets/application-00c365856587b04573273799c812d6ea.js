@@ -29217,12 +29217,8 @@ module.exports = warning;
 
 /* REACT STRUCTURE 
   -LocationDisplay
-    (if width > ~750px)
-      -Sidebar
-        -PostForm
-    (if width < ~750px)
-      -Header
-        -PostForm
+    -Sidebar
+      -PostForm
     -PostList
       -Post
         -CommentForm
@@ -29263,12 +29259,22 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
   render: function() {
     var path = postsPath + "/" + this.props.postId + "/comments";
 
-    return (
-      React.DOM.form({'accept-charset': "UTF-8", action: path, className: "new-comment", method: "post", onSubmit: this.handleSubmit}, 
-        React.DOM.input({type: "text", name: "comment"}), 
-        React.DOM.input({type: "submit", value: "Submit"})
+    if (this.props.horizontal) {
+      return (
+        React.DOM.form({'accept-charset': "UTF-8", action: path, className: "new-comment", method: "post", onSubmit: this.handleSubmit}, 
+          React.DOM.input({type: "text", name: "comment"}), 
+          React.DOM.input({type: "submit", value: "Submit"})
+        )
       )
-    )
+    }
+    else {
+      return (
+        React.DOM.form({'accept-charset': "UTF-8", action: path, className: "new-comment", method: "post", onSubmit: this.handleSubmit}, 
+          React.DOM.input({type: "text", name: "comment"}), 
+          React.DOM.input({type: "submit", value: "Ok"})
+        )
+      )
+    }
   }
 })
 ;
@@ -29430,7 +29436,8 @@ var LocationDisplay = React.createClass({displayName: 'LocationDisplay',
           React.DOM.div({id: "location-posts"}, 
               PostList({handleFlagging: this.handleFlagging, 
                         handleCommentSubmit: this.handleCommentSubmit, 
-                        posts: this.state.posts})
+                        posts: this.state.posts, 
+                        horizontal: this.state.horizontal})
           )
         )
       )
@@ -29465,7 +29472,10 @@ var Post = React.createClass({displayName: 'Post',
         ), 
         React.DOM.div({className: "comment-section"}, 
           CommentList({comments: this.props.comments}), 
-          CommentForm({ref: "newComment", postId: this.props.key, handleCommentSubmit: this.props.handleCommentSubmit})
+          CommentForm({ref: "newComment", 
+                       postId: this.props.key, 
+                       handleCommentSubmit: this.props.handleCommentSubmit, 
+                       horizontal: this.props.horizontal})
         ), 
         React.DOM.p({className: "post-links"}, this.props.age, " ago |", 
         React.DOM.a({href: "#", className: "add-comment", onClick: this.showCommentForm}, " Comment "), "|", 
@@ -29558,6 +29568,7 @@ PostList = React.createClass({displayName: 'PostList',
     var passFlaggingUp = this.props.handleFlagging;
     var passCommentUp = this.props.handleCommentSubmit;
     var toggleForms = this.toggleCommentForms;
+    var horizontal = this.props.horizontal;
     var postNodes = this.props.posts.map(function (post) {
       return (
         Post({
@@ -29568,16 +29579,19 @@ PostList = React.createClass({displayName: 'PostList',
           key: post.id, 
           comments: post.comments, 
           handleFlagging: passFlaggingUp, 
-          handleCommentSubmit: passCommentUp})
+          handleCommentSubmit: passCommentUp, 
+          horizontal: horizontal})
       )
     });
 
     return (
       React.DOM.div({className: "post-list"}, 
-        React.DOM.h2({id: "listLocation", className: "hide-on-small"}, locationName), 
+        React.DOM.h2({id: "listLocation", className: "hide-on-small"}, 
+          React.DOM.span({id: "listLocationSpan"}, locationName)
+        ), 
         postNodes, 
         React.DOM.svg({height: "24", width: "24", id: "exhausted-circle"}, 
-          React.DOM.circle({cx: "12", cy: "12", r: "6", stroke: "none", 'stroke-width': "1", fill: "#96281B"})
+          React.DOM.circle({cx: "12", cy: "12", r: "4", stroke: "none", 'stroke-width': "1", fill: "#96281B"})
         )
       )
     );

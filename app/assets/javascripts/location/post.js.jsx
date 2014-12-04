@@ -26,7 +26,10 @@ var Post = React.createClass({
         </div>
         <div className="comment-section">
           <CommentList comments={this.props.comments} />
-          <CommentForm ref="newComment" postId={this.props.key} handleCommentSubmit={this.props.handleCommentSubmit} />
+          <CommentForm ref="newComment" 
+                       postId={this.props.key} 
+                       handleCommentSubmit={this.props.handleCommentSubmit} 
+                       horizontal={this.props.horizontal} />
         </div>
         <p className="post-links">{this.props.age} ago |
         <a href="#" className="add-comment" onClick={this.showCommentForm}> Comment </a>|

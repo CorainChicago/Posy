@@ -137,7 +137,8 @@ var LocationDisplay = React.createClass({
           <div id="location-posts">
               <PostList handleFlagging={this.handleFlagging} 
                         handleCommentSubmit={this.handleCommentSubmit} 
-                        posts={this.state.posts} />
+                        posts={this.state.posts} 
+                        horizontal={this.state.horizontal} />
           </div>
         </div>
       )

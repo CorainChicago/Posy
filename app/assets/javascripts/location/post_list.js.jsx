@@ -5,6 +5,7 @@ PostList = React.createClass({
     var passFlaggingUp = this.props.handleFlagging;
     var passCommentUp = this.props.handleCommentSubmit;
     var toggleForms = this.toggleCommentForms;
+    var horizontal = this.props.horizontal;
     var postNodes = this.props.posts.map(function (post) {
       return (
         <Post 
@@ -15,7 +16,8 @@ PostList = React.createClass({
           key={post.id}
           comments={post.comments} 
           handleFlagging={passFlaggingUp}
-          handleCommentSubmit={passCommentUp} />
+          handleCommentSubmit={passCommentUp} 
+          horizontal={horizontal} />
       )
     });
 

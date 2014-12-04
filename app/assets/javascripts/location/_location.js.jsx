@@ -2,12 +2,8 @@
 
 /* REACT STRUCTURE 
   -LocationDisplay
-    (if width > ~750px)
-      -Sidebar
-        -PostForm
-    (if width < ~750px)
-      -Header
-        -PostForm
+    -Sidebar
+      -PostForm
     -PostList
       -Post
         -CommentForm
