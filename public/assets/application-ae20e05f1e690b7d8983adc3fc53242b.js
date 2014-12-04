@@ -29610,7 +29610,6 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
     });
   },
   render: function() {
-          // <img src={logoSVG} onerror={"this.src=" + logoFallback + ""} id="logo" />
     return(
       React.DOM.div({id: "sidebar"}, 
         React.DOM.div({id: "sidebar-container"}, 
@@ -29618,11 +29617,13 @@ var Sidebar = React.createClass({displayName: 'Sidebar',
             React.DOM.h1({id: "logo-type"}, "Posy"), 
             React.DOM.h3({id: "logo-desc"}, "A concise description.")
           ), 
-          React.DOM.h2({id: "listLocation", className: "hide-on-big"}, locationName), 
-          React.DOM.button({id: "new-post-button", onClick: this.showPostForm}, "Add Post"), 
-          PostForm({ref: "postForm", handlePostSubmit: this.props.handlePostSubmit, cancel: this.hidePostForm})
-        ), 
-        React.DOM.a({href: "#", id: "about-link", className: "hide-on-small"}, "About")
+          React.DOM.div({id: "sidebar-non-logo"}, 
+            React.DOM.h2({id: "listLocation", className: "hide-on-big"}, locationName), 
+            React.DOM.button({id: "new-post-button", onClick: this.showPostForm}, "Add Post"), 
+            PostForm({ref: "postForm", handlePostSubmit: this.props.handlePostSubmit, cancel: this.hidePostForm}), 
+            React.DOM.a({href: "#", id: "about-link"}, "About")
+          )
+        )
       )
     )
   }

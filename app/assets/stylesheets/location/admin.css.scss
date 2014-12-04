@@ -63,6 +63,9 @@
       color: #FFFFFF;
       background-color: $dark-gray;
       &:hover {
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -o-transition: .2s;
         transition: .2s;
         background-color: #000000;
       }

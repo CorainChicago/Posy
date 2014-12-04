@@ -52,6 +52,9 @@
       &:hover {
         background-color: $feature-color;
         color: #FFFFFF;
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -o-transition: .2s;
         transition: .2s;
       }
     }

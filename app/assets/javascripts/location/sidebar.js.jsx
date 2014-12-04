@@ -24,7 +24,6 @@ var Sidebar = React.createClass({
     });
   },
   render: function() {
-          // <img src={logoSVG} onerror={"this.src=" + logoFallback + ""} id="logo" />
     return(
       <div id="sidebar">
         <div id="sidebar-container">
@@ -32,11 +31,13 @@ var Sidebar = React.createClass({
             <h1 id="logo-type">Posy</h1>
             <h3 id="logo-desc">A concise description.</h3>
           </div>
-          <h2 id="listLocation" className="hide-on-big">{locationName}</h2>
-          <button id="new-post-button" onClick={this.showPostForm}>Add Post</button>
-          <PostForm ref="postForm" handlePostSubmit={this.props.handlePostSubmit} cancel={this.hidePostForm} />
+          <div id="sidebar-non-logo">
+            <h2 id="listLocation" className="hide-on-big">{locationName}</h2>
+            <button id="new-post-button" onClick={this.showPostForm}>Add Post</button>
+            <PostForm ref="postForm" handlePostSubmit={this.props.handlePostSubmit} cancel={this.hidePostForm} />
+            <a href="#" id="about-link" >About</a>
+          </div>
         </div>
-        <a href="#" id="about-link" className="hide-on-small">About</a>
       </div>
     )
   }

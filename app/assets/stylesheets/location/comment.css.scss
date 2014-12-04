@@ -37,6 +37,9 @@
       color: $feature-color;
       width: 15%;
       &:hover {
+        -webkit-transition: .2s;
+        -moz-transition: .2s;
+        -o-transition: .2s;
         transition: .2s;
         background-color: $feature-color;
         color: white;

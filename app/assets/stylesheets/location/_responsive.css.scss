@@ -23,8 +23,9 @@
   }
 
   #about-link {
-    display: block;
     position: absolute;
+    left: 0;
+    bottom: 3em;
   }
 
   // select {
@@ -43,9 +44,8 @@
     min-height: 100vh;
     padding: 1em;
 
-    #sidebar-container {
-      width: 85%;
-      margin: 0 auto;
+    #sidebar-non-logo {
+      width: 100%;
     }
 
     #logo {
@@ -67,16 +67,20 @@
     -webkit-appearance: none;
   }
 
+  #about-link {
+    margin: 9em auto 3em auto;
+  }
+
 }
 
 @media (min-width: 1025px) {
-  #sidebar-container {
-    width: 50%;
+  #sidebar-non-logo {
+    width: 60%;
   }
 }
 
 @media (max-width: 1024px) and (min-width: 776px) {
-  #sidebar-container {
-    width: 65%;
+  #sidebar-non-logo {
+    width: 77%;
   }
 }

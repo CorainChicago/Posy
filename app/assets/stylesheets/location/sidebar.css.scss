@@ -5,16 +5,11 @@
 
   #sidebar-container{
     margin: 0 auto;
-    max-width: 420px;
-
-    // #logo {
-    //   font-family: $sans-serif-stack;
-    //   display: block;
-    //   width: 100%;
-    // }
+    width: 85%;
 
     #sidebar-logo {
-      margin-bottom: 3em;
+      margin: 0 auto 3em auto;
+      width: 100%;
 
       h1#logo-type {
         font-family: $feature-font;
@@ -34,6 +29,10 @@
       }
     }
 
+    #sidebar-non-logo {
+      margin: 0 auto;
+    }
+
     #post-form {
       display: none;
       margin-bottom: 2em;
@@ -43,7 +42,6 @@
       display: block;
       width: 67%;
       margin: 0 auto;
-      // margin: 8em auto;
     }
 
     h2 {
@@ -56,13 +54,12 @@
   }
 
   #about-link {
+    display: block;
     width: 100%;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 75%;
     text-align: center;
-    position: absolute;
-    bottom: 3em;
 
     &:hover {
       text-decoration: underline;
