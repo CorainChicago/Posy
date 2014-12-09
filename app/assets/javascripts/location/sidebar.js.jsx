@@ -29,7 +29,7 @@ var Sidebar = React.createClass({
         <div id="sidebar-container">
           <div id="sidebar-logo">
             <h1 id="logo-type">Posy</h1>
-            <h3 id="logo-desc">Compliments for those around you</h3>
+            <h3 id="logo-desc">For those around you</h3>
           </div>
           <div id="sidebar-non-logo">
             <h2 id="listLocation" className="hide-on-big">{locationName}</h2>
