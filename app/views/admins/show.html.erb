@@ -1,9 +1,23 @@
-<!-- To be fleshed out -->
-
-<ul>
-<% @locations.each do |location| %>
-  <li><%= link_to location.name, location_admin_path(location) %></li>
-<% end %>
-<ul>
-
+<%= link_to "Back to locations", admin_path %>
 <%= link_to "Logout", logout_path %>
+
+<div id="admin-tables">
+  <table class="admin-table">
+    <tr><td colspan="9">PRIORITIES (flagged by users)</tr>
+    <%= render "show_headers" %>
+
+    <% @priorities.each do |post| %>
+      <%= render partial: "show_row_post", locals: {location: @location, post: post} %>
+    <% end %>
+  </table>
+
+  <table class="admin-table">
+    <tr><td colspan="9">ALL POSTS</td></tr>
+    <%= render "show_headers" %>
+
+    <% @posts.each do |post| %>
+      <%= render partial: "show_row_post", locals: {location: @location, post: post} %>
+    <% end %>
+
+  </table>
+</div>

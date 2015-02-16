@@ -1,5 +1,5 @@
-require 'rails_helper'
+# require 'rails_helper'
 
-RSpec.describe PostController, :type => :controller do
+# RSpec.describe PostController, :type => :controller do
 
-end
+# end

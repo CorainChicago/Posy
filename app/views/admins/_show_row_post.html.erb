@@ -21,6 +21,6 @@
   </tr>
 
   <% post.comments.each do |comment| %>
-    <%= render partial: "admin_row_comment", locals: {location: location, post: post, comment: comment} %>
+    <%= render partial: "show_row_comment", locals: {location: location, post: post, comment: comment} %>
   <% end %>
 </tbody>

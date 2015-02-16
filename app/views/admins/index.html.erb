@@ -1,0 +1,9 @@
+<!-- To be fleshed out -->
+
+<ul>
+<% @locations.each do |location| %>
+  <li><%= link_to location.name, location_admin_path(location) %></li>
+<% end %>
+<ul>
+
+<%= link_to "Logout", logout_path %>

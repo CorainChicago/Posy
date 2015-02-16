@@ -10,19 +10,6 @@ class LocationsController < ApplicationController
     # redirect_to '/' unless @location
   end
 
-  def admin
-    admin_ids = @location.admins.pluck(:id)
-
-    if admin_ids.include? current_admin_id
-      @posts = @location.posts.order(:created_at => :desc)
-      @priorities = @posts.select do |post| 
-        post.admin_priority? || post.has_priority_comment?
-      end
-    else
-      redirect_to login_path
-    end
-  end
-
     private
 
   def get_location
