@@ -10,18 +10,9 @@ class Post < ActiveRecord::Base
   attr_accessor :age, :description
 
   def self.get_posts_by_location(args = {})
-    # Originally implemented to retreive posts piecemeal through an offset.
-    # For now, that offset is never present
-
-    offset = args[:offset]
     location_id = args[:location_id]
     batch_size = args[:batch_size]
-
-    # if offset
-      # posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).offset(offset).includes(:comments)
-    # else
-      posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).includes(:comments)
-    # end
+    posts = Post.where("location_id = ? AND status >= 0", location_id).order(id: :desc).limit(batch_size).includes(:comments)
 
     @@time = Time.now
     posts.each do |post| 
@@ -30,10 +21,6 @@ class Post < ActiveRecord::Base
     end
     posts = filter_flaggings(posts, args[:session_id])
   end
-
-  # def destroy_comments
-  #   self.comments.each { |c| c.destroy }
-  # end
 
   def has_priority_comment?
     self.comments.each { |comment| return true if comment.admin_priority? }

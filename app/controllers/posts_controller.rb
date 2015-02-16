@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   def index   
     args = {
       location_id: @location.id,
-      # offset: params[:offset],
       batch_size: params[:batch_size],
       session_id: session[:session_id]
     }
