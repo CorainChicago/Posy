@@ -16,8 +16,9 @@ class Post < ActiveRecord::Base
   end
 
   def has_priority_comment?
-    self.comments.each { |comment| return true if comment.admin_priority? }
-    return false
+    priority = false
+    self.comments.each { |comment| priority = true if comment.admin_priority? }
+    priority
   end
 
     private
