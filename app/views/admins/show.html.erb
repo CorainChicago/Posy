@@ -6,8 +6,8 @@
     <tr><td colspan="9">PRIORITIES (flagged by users)</tr>
     <%= render "show_headers" %>
 
-    <% @priorities.each do |post| %>
-      <%= render partial: "show_row_post", locals: {location: @location, post: post} %>
+    <% @admin.priorities.each do |post| %>
+      <%= render partial: "show_row_post", locals: {location: @admin.location, post: post} %>
     <% end %>
   </table>
 
@@ -15,8 +15,8 @@
     <tr><td colspan="9">ALL POSTS</td></tr>
     <%= render "show_headers" %>
 
-    <% @posts.each do |post| %>
-      <%= render partial: "show_row_post", locals: {location: @location, post: post} %>
+    <% @admin.posts.each do |post| %>
+      <%= render partial: "show_row_post", locals: {location: @admin.location, post: post} %>
     <% end %>
 
   </table>

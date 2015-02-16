@@ -8,11 +8,11 @@ class AdminsController < ApplicationController
   end
 
   def show
-    @posts = @location.posts.order(:created_at => :desc)
-    @priorities = @posts.select do |post|
-      post.admin_priority? || post.has_priority_comment?
-    end
+    # app/facades/admin_location.rb
+    @admin = AdminLocation.new(@location)
   end
+
+
 
     private
 
