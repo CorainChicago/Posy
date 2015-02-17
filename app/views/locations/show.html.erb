@@ -1,10 +1,23 @@
-<div id="location_posts"></div>
+<div id="location-backdrop"></div>
+<div id="location-container">
+  <div id="location-header">
+    <h1 id="location-brand">Posy</h1>
 
-<%= javascript_tag do %>
-  window.postsPath = '<%= location_posts_path(@location.slug) %>';
-  window.locationName = '<%= @location.name %>';
-  window.logoSVG = '<%= asset_path "posy-logo.svg" %>'
-  window.logoFallback = '<%= asset_path "posy-logo.png" %>'
-  window.loader = '<%= asset_path "loader.GIF" %>'
-  reactLocationReady();
-<% end %>
+    <a href="#">
+      <%= icon('pencil-square-o', '', {class: "fa-lg", id: "location-write-icon"}) %>
+    </a>
+  </div>
+  <div id="location-body">
+    <div id="location-details">
+      <h2 id="location-name"><%= @location.name %></h2>
+      <h3 id="location-description"><%= @location.description %></h3> 
+    </div>
+
+    <div id="location-posts">
+    </div> <!-- #location-posts -->
+
+    <a href="#">
+      <%= icon('arrow-circle-up', '', {class: 'fa-lg', id: 'location-arrow-up'}) %>
+    </a>
+  </div> <!-- #location-body -->
+</div>  <!-- #location-container -->
