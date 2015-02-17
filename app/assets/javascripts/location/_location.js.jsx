@@ -33,16 +33,11 @@ var scrollToY = function(y, $body) {
 var startReact = function() {
   var path = window.location.pathname + "/posts";
   var container = document.getElementById('location-posts');
+  var interval = 5000;  // 5 seconds
+  var batch = 15;       // increment of posts to load
 
-  $.ajax({
-    method: 'GET',
-    url: path
-  }).done(function(data) {
-    posts = data.posts;
-
-    React.renderComponent(
-      <LocationPosts path={path} posts={posts}/>,
-      container
-    )
-  });
+  React.renderComponent(
+    <LocationPosts path={path} pollInterval={interval} batchSize={batch} />,
+    container
+  )
 };

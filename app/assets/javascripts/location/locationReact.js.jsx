@@ -4,7 +4,47 @@ var LocationPosts = React.createClass({
   getInitialState: function() {
     // Perhaps replace this
     // DO NOT REFERENCE THIS PROP LATER
-    return { posts: this.props.posts }
+    // return { posts: this.props.posts };
+    return { posts: [] };
+  },
+
+  componentDidMount: function() {
+    this.loadPostsFromServer(this.props.batchSize);
+    setInterval(this.loadPostsFromServer, this.props.pollInterval);
+  
+    // register listeners
+    $(window).on('scroll', this.handleScroll);
+  },
+
+  loadPostsFromServer: function(numPosts) {
+    var size = numPosts || this.state.posts.length;
+    var that = this;
+
+    $.ajax({
+      url: that.props.path,
+      data: { batch_size: size },
+      dataType: 'json',
+    })
+    .done(function(response) {
+      var posts = response.posts;
+      if (posts.length < size) {
+        // oldest post retreived, stop handling scroll
+        $(window).off('scroll');
+        $("#location-complete").show();
+      }
+      that.setState({posts: posts});
+    })
+    .fail(function(response) {
+      // IMPLEMENT ERROR MESSAGE
+    });
+  },
+
+  handleScroll: function() {
+    // REFACTOR?
+    if ( parseInt($(window).scrollTop()) == parseInt($(document).height() - $(window).height())) {
+      newSize = this.state.posts.length + this.props.batchSize;
+      this.loadPostsFromServer(newSize);
+    }
   },
 
   render: function() {

@@ -60,6 +60,13 @@
     }
   }
 
+  #location-complete {
+    display: none;
+    text-align: center;
+    color: $feature-color;
+    margin-top: 2em;
+  }
+
   #location-arrow-up {
     color: $light-gray;
     position: fixed;
