@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 $('.locations.show').ready(function(e) {
 
   startReact();
@@ -29,6 +31,18 @@ var scrollToY = function(y, $body) {
 };
 
 var startReact = function() {
-  var $path = window.location.pathname;
-};
+  var path = window.location.pathname + "/posts";
+  var container = document.getElementById('location-posts');
 
+  $.ajax({
+    method: 'GET',
+    url: path
+  }).done(function(data) {
+    posts = data.posts;
+
+    React.renderComponent(
+      <LocationPosts path={path} posts={posts}/>,
+      container
+    )
+  });
+};
