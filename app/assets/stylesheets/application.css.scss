@@ -13,6 +13,10 @@
  */
 
 @import 'reset';
-@import '_utilities';
-@import 'location/*';
+@import 'variables';
+@import 'global';
+@import 'location/location';
+@import 'location/post';
+
+@import 'location/admin/*';
 @import 'session/*';

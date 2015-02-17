@@ -1,0 +1,50 @@
+#location-backdrop {
+  background-color: $feature-color;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+#location-container {
+  background-color: white;
+  position: relative;
+  top: 10px;
+  min-height: 100%;
+  padding-bottom: 8em;
+
+  #location-header {
+    padding: 1em 3em;
+    border-bottom: 1px solid $light-light-gray;
+
+    #location-brand {
+      font-size: 1.25em;
+      color: $feature-color;
+      font-weight: 300;
+    }
+  }
+
+  #location-body {
+    padding-top: 3em;
+
+    #location-details {
+      margin-bottom: 6em;
+
+      #location-name, #location-description {
+        text-align: center;
+      }
+
+      #location-name {
+        font-size: 3em;
+        color: $dark-gray;
+        font-weight: 100;
+      }
+
+      #location-description {
+        font-weight: 300;
+        color: $light-gray;
+        font-size: 1em;
+      }
+    }
+  }
+}
