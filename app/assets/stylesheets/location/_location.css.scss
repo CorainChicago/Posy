@@ -22,6 +22,18 @@
       color: $feature-color;
       font-weight: 300;
     }
+
+    #location-write-icon {
+        color: $light-gray;
+      float: right;
+      position: relative;
+      bottom: 1em;
+
+      &:hover {
+      color: $feature-color;
+        transition: .3s;
+      }
+    }
   }
 
   #location-body {
@@ -45,6 +57,18 @@
         color: $light-gray;
         font-size: 1em;
       }
+    }
+  }
+
+  #arrow-up {
+    color: $light-gray;
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+
+    &:hover {
+      color: $feature-color;
+      transition: .3s;
     }
   }
 }
