@@ -23,4 +23,6 @@ class Flagging < ActiveRecord::Base
     flagged_ids
   end
 
+  
+
 end
