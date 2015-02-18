@@ -107,6 +107,7 @@ var LocationPosts = React.createClass({
   },
 
   render: function() {
+    var that = this;
     var postNodes = this.state.posts.map(function(post) {
       return (
         <Post 
@@ -133,9 +134,19 @@ var Post = React.createClass({
     this.refs.list.showCommentForm();
   },
 
+  handleFlaggingClick: function(e) {
+    e.preventDefault();
+    var path = window.location.pathname + "/posts/" + this.props.key + "/flag";
+    var that = this;
+
+    $.post(path, function(response) {
+      $(that.getDOMNode()).hide(250);
+    });
+  },
+
   render: function() {
     return (
-      <div className="post">
+      <div className="post" ref="postContainer">
         <h4 className="post-location">at { this.props.location }</h4>
         <h5 className="post-description">{ this.props.description }</h5>
         <p className="post-content">{ this.props.content }</p>
@@ -143,8 +154,8 @@ var Post = React.createClass({
         <CommentList comments={this.props.comments} postId={this.props.key} ref="list" />
         <p className="post-links">
           {this.props.age} ago | 
-          <a className="post-links-comment" onClick={this.handleCommentClick} href="#">Comment</a> | 
-          <a className="post-links-report" href="#">Report</a>
+          <a className="post-links-comment" href="#" onClick={this.handleCommentClick} >Comment</a> | 
+          <a className="post-links-report" href="#" onClick={this.handleFlaggingClick} >Report</a>
         </p>
       </div>
     )
@@ -170,7 +181,7 @@ var CommentList = React.createClass({
         content={comment.content}
         key={comment.id} />
     })
-    
+
     return(
       <div className="comment-container">
         <div className="comment-list">
