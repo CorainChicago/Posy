@@ -56,6 +56,10 @@
 
       label {
         display: block;
+
+        #new-post-location-requirement, #new-post-message-requirement {
+          display: none;
+        }
       }
 
       input[type="text"], textarea {

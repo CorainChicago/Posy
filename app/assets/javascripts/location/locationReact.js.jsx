@@ -16,6 +16,10 @@ var LocationPosts = React.createClass({
       e.preventDefault();
       that.handleCommentSubmit(this);
     });
+    $("#new-post-form").on('submit', function(e) {
+      e.preventDefault();
+      that.handlePostSubmit(this);
+    });
   },
 
   loadPostsFromServer: function(numPosts) {
@@ -44,8 +48,34 @@ var LocationPosts = React.createClass({
   handleScroll: function() {
     // REFACTOR?
     if ( parseInt($(window).scrollTop()) == parseInt($(document).height() - $(window).height())) {
-      newSize = this.state.posts.length + this.props.batchSize;
+      var newSize = this.state.posts.length + this.props.batchSize;
       this.loadPostsFromServer(newSize);
+    }
+  },
+
+  handlePostSubmit: function(form) {
+    var data = getNewPostInput(form);
+    if (data) {
+      disableForm(form);
+      var path = $(form).attr('action');
+      var that = this;
+
+      $.ajax({
+        url: path,
+        method: "POST",
+        data: data
+      })
+      .done(function(response) {
+        that.setState({ posts: response.posts });
+        resetForm(form);
+        togglePostForm();
+      })
+      .error(function(response) {
+        // IMPLEMENT ERROR MESSAGE
+      })
+      .always(function() {
+        enableForm(form);
+      });
     }
   },
 
@@ -54,10 +84,10 @@ var LocationPosts = React.createClass({
     var that = this;
     var $form = $(form);
     var $input = $form.find('input[type=text]');
-    var text = $input.val().trim();
+    var text = getText($input);
 
     if (text) {
-      $input.prop('disabled', true);
+      disableForm(form);
       var path = $form.attr('action');
       $.ajax({
         method: "POST",
@@ -71,7 +101,7 @@ var LocationPosts = React.createClass({
         $input.val('');
       })
       .always(function() {
-        $input.prop('disabled', false);
+        enableForm(form);
       });
     }
   },

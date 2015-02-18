@@ -10,10 +10,9 @@
         ['Female', 'Female'],
         ['Male', 'Male'],
         ['Other', 'Other']
-      ])) 
+      ]), id: 'new-post-gender') 
     %>
   </div>
-
 
   <div id="new-form-hair" class="new-form-select">  
     <%= label_tag(:hair, "Hair") %>
@@ -25,18 +24,22 @@
         ['Blonde', 'Blonde'],
         ['Red', 'Red'],
         ['Other', 'Other']
-      ])) 
+      ]), id: 'new-post-hair') 
     %>
   </div>
 
   <div id="new-form-location">
-    <%= label_tag(:location, "Location") %>
-    <%= text_field_tag(:location) %>
+    <%= label_tag(:location) do %>
+      Location <span id="new-post-location-requirement">(required)</span>
+    <% end %>
+    <%= text_field_tag(:location, '', id: "new-post-location") %>
   </div>
 
   <div id="new-form-message">
-    <%= label_tag(:message, "Message") %>
-    <%= text_area_tag(:message, '', size: "24x6") %>
+    <%= label_tag(:message) do %>
+      Message <span id="new-post-message-requirement">(required)</span>
+    <% end %>
+    <%= text_area_tag(:message, '', size: "24x6", id: 'new-post-message') %>
   </div>
 
   <%= submit_tag("Submit", id: "new-form-submit") %>
