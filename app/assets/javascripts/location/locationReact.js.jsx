@@ -98,6 +98,7 @@ var LocationPosts = React.createClass({
       })
       .done(function(response) {
         that.setState({ posts: response.posts });
+        $form.hide(250);
         $input.val('');
       })
       .always(function() {
