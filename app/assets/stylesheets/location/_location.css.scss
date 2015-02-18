@@ -23,6 +23,10 @@
       font-weight: 300;
     }
 
+    #new-post-form {
+      display: none;
+    }
+
     #location-write-icon {
         color: $light-gray;
       float: right;

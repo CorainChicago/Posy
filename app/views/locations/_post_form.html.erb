@@ -1,0 +1,35 @@
+<%= form_tag  location_posts_path(location.slug), 
+              method: 'post', 
+              id: 'new-post-form'  do %>
+              
+  <%= label_tag(:location, "Location") %>
+  <%= text_field_tag(:location) %>
+
+  <%= label_tag(:gender, "Gender") %>
+  <%= select_tag(:gender, options_for_select(
+    [
+      ['', ''],
+      ['Female', 'Female'],
+      ['Male', 'Male'],
+      ['Other', 'Other']
+    ])) 
+  %>
+
+
+  <%= label_tag(:hair, "Hair") %>
+  <%= select_tag(:hair, options_for_select(
+    [
+      ['', ''],
+      ['Brown', 'brown'],
+      ['Black', 'Black'],
+      ['Blonde', 'Blonde'],
+      ['Red', 'Red'],
+      ['Other', 'Other']
+    ])) 
+  %>
+
+  <%= label_tag(:message, "Message") %>
+  <%= text_area_tag(:message) %>
+
+  <%= submit_tag("Submit") %>
+<% end %>

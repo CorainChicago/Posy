@@ -15,6 +15,7 @@ $('.locations.show').ready(function(e) {
 
   $pen.click(function(event) {
     event.preventDefault();
+    togglePostForm();
     // IMPLEMENT SHOWING FORM
   });
 });
@@ -30,9 +31,11 @@ var scrollToY = function(y, $body) {
   return false;
 };
 
-var getFormText = function(form) {
-  return $(form).find('input[type=text]').val().trim();
-};
+var togglePostForm = function() {
+  return;
+  // TO BE IMPLEMENTED
+}
+
 
 var startReact = function() {
   var path = window.location.pathname + "/posts";

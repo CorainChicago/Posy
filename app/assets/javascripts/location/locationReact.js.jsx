@@ -15,7 +15,7 @@ var LocationPosts = React.createClass({
     $("#location-posts").on('submit', ".new-comment", function(e) {
       e.preventDefault();
       that.handleCommentSubmit(this);
-    })
+    });
   },
 
   loadPostsFromServer: function(numPosts) {

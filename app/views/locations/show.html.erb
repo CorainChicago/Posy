@@ -6,6 +6,9 @@
     <a href="#">
       <%= icon('pencil-square-o', '', {class: "fa-lg", id: "location-write-icon"}) %>
     </a>
+
+    <%= render partial: 'post_form', locals: {location: @location} %>
+    
   </div>
   <div id="location-body">
     <div id="location-details">
