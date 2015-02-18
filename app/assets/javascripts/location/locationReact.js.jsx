@@ -124,7 +124,10 @@ var Post = React.createClass({
 var CommentList = React.createClass({
   showCommentForm: function() {
     var form = this.refs.form.getDOMNode();
-    if ( !($(form).is(':visible')) ) {
+    if ( $(form).is(':visible') ) {
+      $('.new-comment:visible').hide(250);
+    }
+    else {
       $('.new-comment:visible').hide(250);
       $(form).show(250);
     }

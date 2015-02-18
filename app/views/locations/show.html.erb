@@ -7,20 +7,28 @@
       <%= icon('pencil-square-o', '', {class: "fa-lg", id: "location-write-icon"}) %>
     </a>
 
-    <%= render partial: 'post_form', locals: {location: @location} %>
-    
+
   </div>
-  <div id="location-body">
-    <div id="location-details">
-      <h2 id="location-name"><%= @location.name %></h2>
-      <h3 id="location-description"><%= @location.description %></h3> 
+
+
+  <div id="location-body-container">
+    <div id="location-body">
+
+
+      <div id="location-details">
+        <h2 id="location-name"><%= @location.name %></h2>
+        <h3 id="location-description"><%= @location.description %></h3> 
+      </div>
+
+    <div id="location-new-post">
+      <%= render partial: 'post_form', locals: {location: @location} %>
     </div>
+      <div id="location-posts">
+      </div> <!-- #location-posts -->
 
-    <div id="location-posts">
-    </div> <!-- #location-posts -->
-
-    <div id="location-complete">
-    <%= icon('bolt', '', {class: "fa-lg", id:"location-complete-icon"}) %>
+      <div id="location-complete">
+      <%= icon('bolt', '', {class: "fa-lg", id:"location-complete-icon"}) %>
+      </div>
     </div>
 
     <a href="#">

@@ -1,35 +1,43 @@
 <%= form_tag  location_posts_path(location.slug), 
               method: 'post', 
               id: 'new-post-form'  do %>
-              
-  <%= label_tag(:location, "Location") %>
-  <%= text_field_tag(:location) %>
+     
+  <div id="new-form-gender" class="new-form-select">          
+    <%= label_tag(:gender, "Gender") %>
+    <%= select_tag(:gender, options_for_select(
+      [
+        ['', ''],
+        ['Female', 'Female'],
+        ['Male', 'Male'],
+        ['Other', 'Other']
+      ])) 
+    %>
+  </div>
 
-  <%= label_tag(:gender, "Gender") %>
-  <%= select_tag(:gender, options_for_select(
-    [
-      ['', ''],
-      ['Female', 'Female'],
-      ['Male', 'Male'],
-      ['Other', 'Other']
-    ])) 
-  %>
 
+  <div id="new-form-hair" class="new-form-select">  
+    <%= label_tag(:hair, "Hair") %>
+    <%= select_tag(:hair, options_for_select(
+      [
+        ['', ''],
+        ['Brown', 'brown'],
+        ['Black', 'Black'],
+        ['Blonde', 'Blonde'],
+        ['Red', 'Red'],
+        ['Other', 'Other']
+      ])) 
+    %>
+  </div>
 
-  <%= label_tag(:hair, "Hair") %>
-  <%= select_tag(:hair, options_for_select(
-    [
-      ['', ''],
-      ['Brown', 'brown'],
-      ['Black', 'Black'],
-      ['Blonde', 'Blonde'],
-      ['Red', 'Red'],
-      ['Other', 'Other']
-    ])) 
-  %>
+  <div id="new-form-location">
+    <%= label_tag(:location, "Location") %>
+    <%= text_field_tag(:location) %>
+  </div>
 
-  <%= label_tag(:message, "Message") %>
-  <%= text_area_tag(:message) %>
+  <div id="new-form-message">
+    <%= label_tag(:message, "Message") %>
+    <%= text_area_tag(:message, '', size: "24x6") %>
+  </div>
 
-  <%= submit_tag("Submit") %>
+  <%= submit_tag("Submit", id: "new-form-submit") %>
 <% end %>

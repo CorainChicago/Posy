@@ -23,10 +23,6 @@
       font-weight: 300;
     }
 
-    #new-post-form {
-      display: none;
-    }
-
     #location-write-icon {
         color: $light-gray;
       float: right;
@@ -40,8 +36,96 @@
     }
   }
 
-  #location-body {
+  #location-new-post {
+    display: none;
+    margin-bottom: 3em;
+    background-color: white;
+    color: $feature-color;
+    border: 1px solid $feature-color;
+    border-radius: 5px;
+    padding: 3em;
+    font-weight: 300;
+    font-size: 1em;
+    font-family: $sans-serif-stack;
+
+    #new-post-form {
+      width: 66%;
+      max-width: 400px;
+      display: block;
+      margin: 0 auto;
+
+      label {
+        display: block;
+      }
+
+      input[type="text"], textarea {
+        outline: none;
+        border: 1px solid $light-gray;
+        border-radius: 3px;
+        line-height: 1.5;
+        font-family: $sans-serif-stack;
+        font-size: 1em;
+        color: $dark-gray;
+        padding: .25em .5em;
+      }
+
+      div {
+        margin-bottom: .5em;
+      }
+
+      .new-form-select {
+        display: inline-block;
+        width: 48%;
+        select {
+          padding: 1em;
+          display: block;
+          width: 100%;
+          outline: none;
+        }
+      }
+
+      #new-form-hair {
+        position: relative;
+        left: 3%;
+      }
+
+      #new-form-location {
+        input {
+          width: 100%;
+        }
+      }
+
+      #new-form-message {
+        textarea {
+          width: 100%;
+          resize: none;
+        }
+      }
+
+      #new-form-submit {
+        background-color: $feature-color;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        width: 100%;
+        color: white;
+        padding: 1em;
+
+        &:hover {
+          background-color: $dark-feature-color;
+          transition: .3s;
+        }
+      }
+    }
+  }
+
+  #location-body-container {
     padding-top: 3em;
+
+    #location-body {
+      margin: 0 auto;
+      width: 60%;
+    }
 
     #location-details {
       margin-bottom: 6em;

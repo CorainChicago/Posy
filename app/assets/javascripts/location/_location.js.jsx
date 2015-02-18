@@ -6,7 +6,8 @@ $('.locations.show').ready(function(e) {
 
   var $arrow = $('#location-arrow-up'),
       $pen = $('#location-write-icon'),
-      $body = $('html,body');
+      $body = $('html,body'),
+      $formContainer = $("#location-new-post");
 
   $arrow.click(function(event) {
     event.preventDefault();
@@ -15,7 +16,7 @@ $('.locations.show').ready(function(e) {
 
   $pen.click(function(event) {
     event.preventDefault();
-    togglePostForm();
+    togglePostForm($formContainer, $body);
     // IMPLEMENT SHOWING FORM
   });
 });
@@ -31,11 +32,16 @@ var scrollToY = function(y, $body) {
   return false;
 };
 
-var togglePostForm = function() {
-  return;
-  // TO BE IMPLEMENTED
-}
-
+var togglePostForm = function($formContainer, $body) {
+  if (typeof $formContainer === 'undefined') {
+    $formContainer = $("#location-new-post");
+  }
+  
+  $formContainer.toggle(500, function() {
+    var y = $formContainer.offset().top;
+    scrollToY(y - 100);
+  });
+};
 
 var startReact = function() {
   var path = window.location.pathname + "/posts";
