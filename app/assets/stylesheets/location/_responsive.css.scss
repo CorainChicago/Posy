@@ -1,0 +1,30 @@
+@media (min-width: $breakpoint-min) {
+  #location-body {
+    width: 60%;
+  }
+
+  #new-post-form {
+    width: 66%;
+  }
+
+  #location-arrow-up {
+    right: 5%;
+    bottom: 5%;
+  }
+}
+
+@media (max-width: $breakpoint-max) {
+  
+  #location-body {
+    width: 80%;
+  }
+
+  #new-post-form {
+    width: 100%;
+  }
+
+  #location-arrow-up {
+    right: 4%;
+    bottom: 5%;
+  }
+}
