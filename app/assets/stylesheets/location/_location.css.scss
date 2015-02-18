@@ -24,7 +24,7 @@
     }
 
     #location-write-icon {
-        color: $light-gray;
+      color: $light-gray;
       float: right;
       position: relative;
       bottom: 1em;
@@ -50,6 +50,15 @@
     #new-post-form {
       input, select, textarea {
         -webkit-appearance: none;
+        font-family: $sans-serif-stack;
+      }
+
+      select, option {
+        padding: 0;
+        color: $dark-gray;
+        border: 1px solid $light-gray;
+        border-radius: 3px;
+        background-color: white;
       }
 
       max-width: 400px;
