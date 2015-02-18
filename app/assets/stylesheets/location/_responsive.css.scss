@@ -11,6 +11,10 @@
     right: 5%;
     bottom: 5%;
   }
+
+  .post-location {
+    font-weight: 100;
+  }
 }
 
 @media (max-width: $breakpoint-max) {
@@ -26,5 +30,9 @@
   #location-arrow-up {
     right: 4%;
     bottom: 5%;
+  }
+
+  .post-location {
+    font-weight: 300;
   }
 }
