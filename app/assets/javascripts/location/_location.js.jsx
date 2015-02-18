@@ -30,6 +30,10 @@ var scrollToY = function(y, $body) {
   return false;
 };
 
+var getFormText = function(form) {
+  return $(form).find('input[type=text]').val().trim();
+};
+
 var startReact = function() {
   var path = window.location.pathname + "/posts";
   var container = document.getElementById('location-posts');

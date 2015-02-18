@@ -12,6 +12,7 @@
       color: white;
       font-weight: 100;
       padding: 0 1em;
+      margin-right: .25em;
     }
 
     .post-description {
@@ -40,6 +41,42 @@
 
           .comment-author {
             color: $feature-color;
+          }
+        }
+      }
+
+      form.new-comment {
+        width: 100%;
+        margin-top: .25em;
+        display: none;
+
+        input {
+          background-color: white;
+          border: 1px solid $feature-color;
+          border-radius: 3px;  
+          outline: none;
+        }
+
+        input[type="text"] {
+          font-size: 1em;
+          padding: .25em .5em;
+          font-weight: 300;
+          color: $dark-gray;
+          width: 85%;
+        }
+
+        input[type="submit"] {
+          position: relative;
+          bottom: .2em;
+          margin-left: 1%;
+          width: 13%;
+          color: $feature-color;
+          height: 3em;
+
+          &:hover {
+            background-color: $feature-color;
+            color: white;
+            transition: .5s;
           }
         }
       }
