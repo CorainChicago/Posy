@@ -15,6 +15,10 @@
   .post-location {
     font-weight: 100;
   }
+
+  #location-new-post {
+    padding: 3em;
+  }
 }
 
 @media (max-width: $breakpoint-max) {
@@ -34,5 +38,9 @@
 
   .post-location {
     font-weight: 300;
+  }
+
+  #location-new-post {
+    padding: 1em;
   }
 }
