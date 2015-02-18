@@ -213,7 +213,9 @@ var CommentForm = React.createClass({
     return (
       <form className="new-comment" action={ this.postPath() } method="POST">
         <input type="text"></input>
-        <input type="submit"></input>
+        <button type="submit">
+          <i className="fa fa-check"></i>
+        </button>
       </form>
     )
   }

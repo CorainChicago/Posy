@@ -49,7 +49,7 @@
         margin-top: .25em;
         display: none;
 
-        input {
+        input, button {
           background-color: white;
           border: 1px solid $feature-color;
           border-radius: 3px;  
@@ -64,7 +64,7 @@
           width: 85%;
         }
 
-        input[type="submit"] {
+        button[type="submit"] {
           position: relative;
           bottom: .2em;
           margin-left: 1%;
