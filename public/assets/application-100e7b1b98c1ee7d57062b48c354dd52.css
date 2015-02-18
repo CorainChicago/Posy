@@ -3160,54 +3160,53 @@ html, body {
   background-color: #884044;
   border-radius: 3px;
   color: white;
-  font-weight: 100;
   padding: 0 1em;
   margin-right: .25em;
 }
-/* line 17, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 16, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .post-description {
   display: inline-block;
   color: #884044;
   font-weight: 300;
 }
-/* line 23, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 22, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .post-content {
   color: #515151;
   font-weight: 300;
 }
-/* line 29, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 28, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container {
   margin: .5em 0;
   padding-left: 1em;
 }
-/* line 33, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 32, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container .comment-list {
   border-left: 1px solid #884044;
   padding-left: 1em;
 }
-/* line 37, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 36, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container .comment-list .comment {
   font-weight: 300;
   color: #515151;
 }
-/* line 41, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 40, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container .comment-list .comment .comment-author {
   color: #884044;
 }
-/* line 47, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 46, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container form.new-comment {
   width: 100%;
   margin-top: .25em;
   display: none;
 }
-/* line 52, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 51, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container form.new-comment input, #location-posts .post .comment-container form.new-comment button {
   background-color: white;
   border: 1px solid #884044;
   border-radius: 3px;
   outline: none;
 }
-/* line 59, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 58, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container form.new-comment input[type="text"] {
   font-size: 1em;
   padding: .25em .5em;
@@ -3215,7 +3214,7 @@ html, body {
   color: #515151;
   width: 85%;
 }
-/* line 67, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 66, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container form.new-comment button[type="submit"] {
   position: relative;
   bottom: .2em;
@@ -3224,27 +3223,27 @@ html, body {
   color: #884044;
   height: 3em;
 }
-/* line 75, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 74, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .comment-container form.new-comment button[type="submit"]:hover {
   background-color: #884044;
   color: white;
   -webkit-transition: .5s;
           transition: .5s;
 }
-/* line 84, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 83, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .post-links {
   font-weight: 300;
   color: #884044;
   font-size: .85em;
 }
-/* line 89, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 88, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .post-links a {
   display: inline-block;
   padding: 0 .25em;
   text-decoration: none;
   color: #884044;
 }
-/* line 94, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
+/* line 93, /Users/Wil/Dev/posy/app/assets/stylesheets/location/_post.css.scss */
 #location-posts .post .post-links a:hover {
   border-radius: 3px;
   background-color: #884044;
