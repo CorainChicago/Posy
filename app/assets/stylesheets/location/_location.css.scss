@@ -1,0 +1,169 @@
+#location-backdrop {
+  background-color: $feature-color;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+#location-container {
+  background-color: white;
+  position: relative;
+  top: 10px;
+  min-height: 100%;
+  padding-bottom: 8em;
+
+  #location-header {
+    padding: 1em 3em;
+    border-bottom: 1px solid $light-light-gray;
+
+    #location-brand {
+      font-size: 1.25em;
+      color: $feature-color;
+      font-weight: 300;
+    }
+
+    #location-write-icon {
+        color: $light-gray;
+      float: right;
+      position: relative;
+      bottom: 1em;
+
+      &:hover {
+      color: $feature-color;
+        transition: .3s;
+      }
+    }
+  }
+
+  #location-new-post {
+    display: none;
+    margin-bottom: 3em;
+    background-color: white;
+    color: $feature-color;
+    border: 1px solid $feature-color;
+    border-radius: 5px;
+    padding: 3em;
+    font-weight: 300;
+    font-size: 1em;
+    font-family: $sans-serif-stack;
+
+    #new-post-form {
+      max-width: 400px;
+      display: block;
+      margin: 0 auto;
+
+      label {
+        display: block;
+
+        #new-post-location-requirement, #new-post-message-requirement {
+          display: none;
+        }
+      }
+
+      input[type="text"], textarea {
+        outline: none;
+        border: 1px solid $light-gray;
+        border-radius: 3px;
+        line-height: 1.5;
+        font-family: $sans-serif-stack;
+        font-size: 1em;
+        color: $dark-gray;
+        padding: .25em .5em;
+      }
+
+      div {
+        margin-bottom: .5em;
+      }
+
+      .new-form-select {
+        display: inline-block;
+        width: 48%;
+        select {
+          padding: 1em;
+          display: block;
+          width: 100%;
+          outline: none;
+        }
+      }
+
+      #new-form-hair {
+        position: relative;
+        left: 3%;
+      }
+
+      #new-form-location {
+        input {
+          width: 100%;
+        }
+      }
+
+      #new-form-message {
+        textarea {
+          width: 100%;
+          resize: none;
+        }
+      }
+
+      #new-form-submit {
+        background-color: $feature-color;
+        border-radius: 3px;
+        border: none;
+        outline: none;
+        width: 100%;
+        color: white;
+        padding: 1em;
+
+        &:hover {
+          background-color: $dark-feature-color;
+          transition: .3s;
+        }
+      }
+    }
+  }
+
+  #location-body-container {
+    padding-top: 3em;
+
+    #location-body {
+      margin: 0 auto;
+    }
+
+    #location-details {
+      margin-bottom: 6em;
+
+      #location-name, #location-description {
+        text-align: center;
+      }
+
+      #location-name {
+        font-size: 3em;
+        color: $dark-gray;
+        font-weight: 100;
+      }
+
+      #location-description {
+        font-weight: 300;
+        color: $light-gray;
+        font-size: 1em;
+      }
+    }
+  }
+
+  #location-complete {
+    display: none;
+    text-align: center;
+    color: $feature-color;
+    margin-top: 2em;
+  }
+
+  #location-arrow-up {
+    color: $light-gray;
+    position: fixed;
+
+    &:hover {
+      color: $feature-color;
+      transition: .3s;
+    }
+  }
+}

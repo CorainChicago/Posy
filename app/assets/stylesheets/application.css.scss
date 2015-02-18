@@ -13,6 +13,14 @@
  */
 
 @import 'reset';
-@import '_utilities';
-@import 'location/*';
+@import 'variables';
+@import 'global';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import 'location/location';
+@import 'location/post';
+@import 'location/responsive';
+
+@import 'location/admin/*';
 @import 'session/*';

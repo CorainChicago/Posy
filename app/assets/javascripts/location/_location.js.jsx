@@ -1,19 +1,120 @@
 /** @jsx React.DOM */
 
-/* REACT STRUCTURE 
-  -LocationDisplay
-    -Sidebar
-      -PostForm
-    -PostList
-      -Post
-        -CommentForm
-        -CommentList
-          -Comment
-*/
+$('.locations.show').ready(function(e) {
 
-var reactLocationReady = function() {
+  startReact();
+
+  var $arrow = $('#location-arrow-up'),
+      $pen = $('#location-write-icon'),
+      $body = $('html,body'),
+      $formContainer = $("#location-new-post");
+
+  $arrow.click(function(event) {
+    event.preventDefault();
+    scrollToY(0, $body);
+  });
+
+  $pen.click(function(event) {
+    event.preventDefault();
+    togglePostForm($formContainer, $body);
+    // IMPLEMENT SHOWING FORM
+  });
+});
+
+var scrollToY = function(y, $body) {
+  if (typeof $body === 'undefined') {
+    $body = $('html,body');
+  }
+
+  $body.animate({
+    scrollTop: y
+  }, 750);
+  return false;
+};
+
+var togglePostForm = function($formContainer, $body) {
+  if (typeof $formContainer === 'undefined') {
+    $formContainer = $("#location-new-post");
+  }
+
+  $formContainer.toggle(500, function() {
+    var y = $formContainer.offset().top;
+    if ($formContainer.is(':visible')) {
+      scrollToY(y - 100, $body);
+    }
+    else {
+      scrollToY(0, $body);
+    }
+  });
+};
+
+var getText = function($input) {
+  return $input.val().trim();
+};
+
+var getNewPostInput = function(form) {
+    var gender = $("#new-post-gender").val();
+    var hair = $("#new-post-hair").val();
+    var location = getText($("#new-post-location"));
+    var message = getText($("#new-post-message"));
+
+    if (validateNewPostInput(location, message)) {
+      return {
+        post: {
+          gender: gender,
+          hair: hair,
+          spotted_at: location,
+          content: message
+        }
+      };
+    }
+    else {
+      return false;
+    }
+};
+
+var validateNewPostInput = function(location, message) {
+  if (location && message) {
+    return true;
+  }
+  else {
+    if (!location) {
+      $("#new-post-location-requirement").fadeIn(300);
+    }
+    if (!message) {
+      $("#new-post-message-requirement").fadeIn(300);
+    }
+    return false;
+  }
+};
+
+var enableForm = function(form) {
+  var $inputs = getEnableableInputs(form);
+  $inputs.prop('disabled', false);
+};
+
+var disableForm = function(form) {
+  var $inputs = getEnableableInputs(form);
+  $inputs.prop('disabled', true);
+};
+
+var resetForm = function(form) {
+  var $inputs = $(form).find('input[type=text],textarea,select');
+  $inputs.val('');
+};
+
+var getEnableableInputs = function(form) {
+  return $(form).find('input[type=text],input[type=submit],textarea,select');
+};
+
+var startReact = function() {
+  var path = window.location.pathname + "/posts";
+  var container = document.getElementById('location-posts');
+  var interval = 10000;  // 10 seconds, interval of polling requests
+  var batch = 15;       // increment of posts to load
+
   React.renderComponent(
-    <LocationDisplay url={postsPath} pollInterval={10000} batchSize={10} breakpoint={775} />,
-    document.body
-  );
-}
+    <LocationPosts path={path} pollInterval={interval} batchSize={batch} />,
+    container
+  )
+};

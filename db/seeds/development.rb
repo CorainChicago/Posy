@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-hendrix = Location.create!(name: "Hendrix College", slug: "hendrix")
+hendrix = Location.create!(name: "Hendrix College", slug: "hendrix", description: "Conway, AR")
 admin = Admin.create(email: "dev@dev.com", password: "test")
 admin.locations << hendrix
 

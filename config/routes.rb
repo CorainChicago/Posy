@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'locations#show', slug: 'hendrix'
+  root to: redirect('/hendrix')
 
   get   '/admin',         to: "admins#index"
   get   '/:slug/admin',   to: "admins#show",    as: "location_admin"

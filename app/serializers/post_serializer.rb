@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :content, :gender, :hair, :spotted_at, :age, :description
+  attributes :id, :content, :spotted_at, :age, :description
 
   has_many :comments
 

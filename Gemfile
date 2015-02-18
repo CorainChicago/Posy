@@ -29,6 +29,7 @@ gem "bcrypt-ruby"
 
 gem 'active_model_serializers'
 gem 'react-rails'
+gem 'font-awesome-sass', '~> 4.3.0'
 
 group :development, :test do
   gem 'faker'
