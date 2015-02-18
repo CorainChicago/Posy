@@ -114,8 +114,8 @@ var LocationPosts = React.createClass({
         description={post.description}
         content={post.content}
         comments={post.comments}
-        age={post.age} 
-        id={post.id} />
+        age={post.age}
+        key={post.id} />
       )
     })
 
@@ -140,7 +140,7 @@ var Post = React.createClass({
         <h5 className="post-description">{ this.props.description }</h5>
         <p className="post-content">{ this.props.content }</p>
       
-        <CommentList comments={this.props.comments} postId={this.props.id} ref="list" />
+        <CommentList comments={this.props.comments} postId={this.props.key} ref="list" />
         <p className="post-links">
           {this.props.age} ago | 
           <a className="post-links-comment" onClick={this.handleCommentClick} href="#">Comment</a> | 
@@ -168,12 +168,9 @@ var CommentList = React.createClass({
       return <Comment
         author={comment.author_name}
         content={comment.content}
-        id={comment.id} />
+        key={comment.id} />
     })
-
-    // var path = window.location.pathname + "/posts/;
-    // var 
-
+    
     return(
       <div className="comment-container">
         <div className="comment-list">
