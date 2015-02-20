@@ -82,4 +82,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.react.variant = :production
+
+  config.font_assets.origin = '*'
+  
 end
