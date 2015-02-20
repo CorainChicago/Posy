@@ -67,7 +67,7 @@ class PostsController < ApplicationController
   end
 
   def get_location_by_slug
-    @location = Location.find_by(slug: params[:location_slug])
+    @location = Location.find_by(slug: params[:location_slug].downcase.strip)
   end
 
   def get_post
