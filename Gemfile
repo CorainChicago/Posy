@@ -31,9 +31,9 @@ gem 'active_model_serializers'
 gem 'react-rails'
 gem 'font-awesome-sass', '~> 4.3.0'
 gem 'font_assets'
+gem 'faker'
 
 group :development, :test do
-  gem 'faker'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'database_cleaner', '~> 1.2.0'
   gem 'shoulda-matchers', require: false
