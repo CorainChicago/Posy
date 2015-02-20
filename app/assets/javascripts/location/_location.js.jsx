@@ -7,7 +7,8 @@ $('.locations.show').ready(function(e) {
   var $arrow = $('#location-arrow-up'),
       $pen = $('#location-write-icon'),
       $body = $('html,body'),
-      $formContainer = $("#location-new-post");
+      $formContainer = $("#location-new-post"),
+      $closeIcon = $(".close-icon");
 
   $arrow.click(function(event) {
     event.preventDefault();
@@ -17,7 +18,11 @@ $('.locations.show').ready(function(e) {
   $pen.click(function(event) {
     event.preventDefault();
     togglePostForm($formContainer, $body);
-    // IMPLEMENT SHOWING FORM
+  });
+
+  $closeIcon.click(function(event) {
+    event.preventDefault();
+    handleCloseIconClick(event.target);
   });
 });
 
@@ -46,6 +51,10 @@ var togglePostForm = function($formContainer, $body) {
       scrollToY(0, $body);
     }
   });
+};
+
+var handleCloseIconClick = function(icon) {
+  $(icon).closest('.closable-container').toggle(500);
 };
 
 var getText = function($input) {
