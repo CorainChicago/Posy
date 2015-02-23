@@ -54,7 +54,7 @@ var togglePostForm = function($formContainer, $body) {
 };
 
 var handleCloseIconClick = function(icon) {
-  $(icon).closest('.closable-container').toggle(500);
+  $(icon).closest('.closable-container').hide(500);
 };
 
 var getText = function($input) {
