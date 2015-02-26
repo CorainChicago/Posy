@@ -23,17 +23,21 @@ module Content
   end
 
   def update_flagged_count
-    flags = self.flaggings.count
-
-    if flags >= FLAGGED_THRESHOLD
-      self.update_attributes(flagged: flags, status: STATES[:flagged])
-    else
-      self.update_attribute(:flagged, self.flaggings.count)
-    end
+    self.flagged = flaggings.count
+    check_against_threshold
+    save
   end
 
   def admin_priority?
     self.status == STATES[:flagged]
+  end
+
+    private
+
+  def check_against_threshold
+    if self.flagged >= FLAGGED_THRESHOLD
+      self.status = STATES[:flagged]
+    end
   end
 
 end
