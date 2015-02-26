@@ -3,7 +3,7 @@ class Flagging < ActiveRecord::Base
 
   validates_uniqueness_of :session_id, scope: [:flaggable_id, :flaggable_type]
 
-  after_create { self.flaggable.update_flagged_count }
+  after_create :notify_owner
 
   def self.retreive_flagged_content(session_id)
     flaggings = self.where(session_id: session_id)
@@ -23,6 +23,8 @@ class Flagging < ActiveRecord::Base
     flagged_ids
   end
 
+  def notify_owner
+    flaggable.update_flagged_count
+  end
   
-
 end
