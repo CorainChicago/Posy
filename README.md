@@ -15,4 +15,4 @@ Abusive content can be reported, and content that receives enough reports will b
 * **Deployment:** Heroku, AWS CloudFront
 
 ## Contact author
-[Email](mailto:wilchandler2@gmail.com) | [Twitter](https://twitter.com/wil_chandler) | [LinkedIn](http://www.linkedin.com/in/wilchandler) | [GitHub](https://github.com/wilchandler)  
+[Email](mailto:wilchandler2@gmail.com) | [Twitter](https://twitter.com/wil_chandler) | [LinkedIn](http://www.linkedin.com/in/wilchandler) | [GitHub](https://github.com/wilchandler) | [Website](http://www.wilchandler.me)
