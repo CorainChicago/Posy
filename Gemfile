@@ -39,6 +39,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'debugger'
   gem "autoprefixer-rails"
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :production do
