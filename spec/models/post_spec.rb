@@ -7,15 +7,6 @@ RSpec.describe Post, :type => :model do
   it { should validate_presence_of :content }
   it { should validate_presence_of :location }
 
-  it 'should include the Content module' do
-    post = build(:post)
-    expect(post).to respond_to(:clear?)
-    expect(post).to respond_to(:mark_as_cleared)
-    expect(post).to respond_to(:mark_as_removed)
-    expect(post).to respond_to(:update_flagged_count)
-    expect(post).to respond_to(:admin_priority?)
-  end
-
   describe '#has_priority_comment?' do
     let(:post) { create(:post_with_comments) }
 

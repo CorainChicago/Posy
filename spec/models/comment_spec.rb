@@ -7,15 +7,6 @@ RSpec.describe Comment, :type => :model do
   it { should validate_presence_of :content }
   it { should validate_presence_of :post_id }
 
-  it 'implements the content module' do
-    comment = build(:comment)
-    expect(comment).to respond_to(:clear?)
-    expect(comment).to respond_to(:mark_as_cleared)
-    expect(comment).to respond_to(:mark_as_removed)
-    expect(comment).to respond_to(:update_flagged_count)
-    expect(comment).to respond_to(:admin_priority?)
-  end
-
   describe '#generate_author_name' do
     it 'is called upon creation of comment' do
       comment = build(:comment)
