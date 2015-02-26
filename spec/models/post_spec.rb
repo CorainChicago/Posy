@@ -2,153 +2,112 @@ require 'rails_helper'
 
 RSpec.describe Post, :type => :model do
   it { should have_many :comments }
-  it { should validate_presence_of :content }
-  # it { should validate_presence_of :gender }
-  # it { should validate_presence_of :hair }
-  it { should validate_presence_of :location }
   it { should belong_to :location }
   it { should have_many :flaggings }
+  it { should validate_presence_of :content }
+  it { should validate_presence_of :location }
 
-  describe '#get_posts_by_location' do
-    before(:each) do
-      tu = Location.create(name: "Testing University")
+  it 'should include the Content module' do
+    post = build(:post)
+    expect(post).to respond_to(:clear?)
+    expect(post).to respond_to(:mark_as_cleared)
+    expect(post).to respond_to(:mark_as_removed)
+    expect(post).to respond_to(:update_flagged_count)
+    expect(post).to respond_to(:admin_priority?)
+  end
 
-      Post.create(location: tu, content: "oldest", session_id: "0", gender: "", hair: "", spotted_at: "wherever")
-      28.times do |i|
-        new_post = Post.create!(
-          location: tu,
-          content: Faker::Lorem.paragraph(3),
-          session_id: "0",
-          gender: ["", "Male", "Female"].sample,
-          hair: ["Brown", "Blonde", "Red", "Black", ""].sample,
-          spotted_at: "wherever"
-        )
+  describe '#has_priority_comment?' do
+    let(:post) { create(:post_with_comments) }
 
-        if [0, 12, 22, 15].include? i
-          new_post.update_attribute(:flagged, 99)
-          new_post.update_attribute(:status, -1) unless i == 15
-          new_post.update_attribute(:status, 1) if i == 15
-        end
-      end
-      Post.create(location: tu, content: "newest", session_id: "0", gender: "", hair: "", spotted_at: "wherever")
+    it 'returns true if a related comment is an admin priority' do
+      comment = create(:comment)
+      allow(comment).to receive(:admin_priority?).and_return(true)
+      post.comments << comment
+
+      expect(post.has_priority_comment?).to be_truthy
     end
+
+    it 'returns false if no related comments are admin priorities' do
+      expect(post.has_priority_comment?).to be_falsey   
+    end
+
+    it 'returns false if there are no comments' do
+      p = create(:post)
+      expect(p.has_priority_comment?).to be_falsey
+    end
+  end
+
+  describe '.get_posts_by_location' do
 
     let(:args) do
-      location_id = Location.find_by(name: "Testing University").id
-      {location_id: location_id, batch_size: 10, offset: nil }
+      location = create(:location_with_posts)
+      { location_id: location.id }
     end
 
-    let(:uncleared_posts) { Post.where(flagged: 99, status: -1 ) }
-    let(:cleared_post) { Post.find_by(flagged: 99, status: 1) }
-
-
-
-    it 'should respond with the correct batch size (if available)' do
-      posts = Post.get_posts_by_location(args)
-      expect(posts.count).to be 10
-
-      args[:batch_size] = 9
-      posts = Post.get_posts_by_location(args)
-      expect(posts.count).to be 9
-
-      args[:batch_size] = 15
-      posts = Post.get_posts_by_location(args)
-      expect(posts.count).to be 15
+    def create_flagged_post(session_id)
+      post = create(:post, location_id: args[:location_id])
+      create(:flagging, flaggable: post, session_id: session_id)
+      post
     end
 
-    it 'should return as many as available if fewer posts than batch_size' do
-      args[:batch_size] = 100
+    it 'returns a collection of posts' do
       posts = Post.get_posts_by_location(args)
-      expect(posts.count).to eq 27
+
+      expect(posts.class).to match(Post::ActiveRecord_Relation)
     end
 
-    it 'should not return posts that have been flagged above a threshold' do
-      args[:batch_size] = 100
+    it 'filters posts that have been removed/flagged excessively' do
+      # This is a bit tightly coupled, but alas
+      flagged = create(:post, location_id: args[:location_id], status: -1)
       posts = Post.get_posts_by_location(args)
-      expect(posts.include? uncleared_posts[0]).to be false
-      expect(posts.include? uncleared_posts[1]).to be false
-      expect(posts.include? uncleared_posts[2]).to be false
+      posts_count = Location.find(args[:location_id]).posts.count
+      clear_count = posts.count
+
+      expect(posts.include? flagged).to be_falsey
+      expect(posts_count - clear_count).to eq 1
     end
 
-    it 'should return posts that have been flagged but cleared' do
-      args[:batch_size] = 100
+    it 'filters posts that the given session has flagged' do
+      args[:session_id] = "test"
+      flagged = create_flagged_post(args[:session_id])
       posts = Post.get_posts_by_location(args)
-      expect(posts.include? cleared_post).to be true
+
+      expect(posts.include? flagged).to be_falsey
     end
 
-
-    xit 'should return batches by offset' do
-      first_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
-      args[:offset] = first_batch_ids.count
-      second_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
-      args[:offset] = first_batch_ids.count + second_batch_ids.count
-      third_batch_ids = Post.get_posts_by_location(args).map { |p| p.id }
-
-      second_batch_ids.each do |id|
-        expect(first_batch_ids.include? id).to be false
-        expect(third_batch_ids.include? id).to be false
+    it 'orders posts descendingly' do
+      posts = Post.get_posts_by_location(args)
+      desc = true
+      (0...posts.count - 1).each do |i|
+        if posts[i].created_at < posts[i + 1].created_at
+          desc = false
+          break
+        end
       end
 
-      third_batch_ids.each do |id|
-        expect(first_batch_ids.include? id).to be false
-      end
-
-      # Implicitly tests that offset does not include flagged/uncleared posts
-      expect(first_batch_ids.uniq.count).to be 10
-      expect(second_batch_ids.uniq.count).to be 10
-      expect(third_batch_ids.uniq.count).to be 7
+      expect(desc).to be_truthy
     end
 
-    xit 'should return posts in order from newest to oldest' do
-      first_posts = Post.get_posts_by_location(args)
-      expect(first_posts.first.content).to eq "newest"
+    it 'limits the collection by batch size (if applicable)' do
+      args[:batch_size] = 2000000
+      posts_one = Post.get_posts_by_location(args)
+      expect(posts_one.count).to eq Post.all.count
 
-      args[:offset] = first_posts.count
-      args[:batch_size] = 20
-      second_posts = Post.get_posts_by_location(args)
-      expect(second_posts.last.content).to eq "oldest"
+      args[:batch_size] = 2
+      posts_two = Post.get_posts_by_location(args)
+      expect(posts_two.count).to eq args[:batch_size]
+    end
+
+    it 'limits collection while accounting for filtered posts' do
+      args[:batch_size] = 4
+      args[:session_id] = "test'"
+      flagged = create_flagged_post(args[:session_id])
+      posts = Post.get_posts_by_location(args)
+
+      expect(posts.count).to eq args[:batch_size]
+      expect(posts.include? flagged).to be_falsey
     end
 
   end
 
-  describe "#update_flagged_count" do
-    before(:each) do
-      Post.create!(
-        location: Location.create(name: "Testing University"),
-        content: "hello there",
-        session_id: 0,
-        gender: "Male",
-        hair: "Brown",
-        spotted_at: "wherever"
-      )
-    end
-
-    let(:post) { Post.find_by(content: "hello there", spotted_at: "wherever") }
-    
-    it 'should update the flagged column of the record' do
-      # This, perhaps unfortunately, is testing via a Flagging callback that calls this method
-      expect{ Flagging.create(session_id: "0", flaggable: post) }.to \
-        change{ Post.find_by(content: "hello there", spotted_at: "wherever").flagged }.by(1)
-    end
-    
-  end
-
-  describe '#mark_as_cleared' do
-    before(:each) do
-      Post.create!(
-        location: Location.create(name: "Testing University"),
-        content: "hello there",
-        session_id: 0,
-        gender: "Male",
-        hair: "Brown",
-        spotted_at: "wherever"
-      )
-    end
-
-    let(:post) { Post.find_by(content: "hello there", spotted_at: "wherever") }
-
-    it 'should update the post\'s status to 1' do
-      expect{ post.mark_as_cleared }.to change{ post.status }.to(1)
-    end
-  end
 end

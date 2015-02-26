@@ -14,11 +14,11 @@ class Post < ActiveRecord::Base
     batch_size = args[:batch_size]
     
     self.where(location_id: location_id)
-      .where("status >= ?", 0)
-      .where.not(id: post_flags)
-      .order(id: :desc)
-      .limit(batch_size)
-      .includes(:comments)
+        .where("status >= ?", 0)
+        .where.not(id: post_flags)
+        .order(id: :desc)
+        .limit(batch_size)
+        .includes(:comments)
   end
 
   def has_priority_comment?
