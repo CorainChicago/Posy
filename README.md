@@ -9,9 +9,9 @@ For small_ish_ communities like colleges and universities, users can anonymously
 Abusive content can be reported, and content that receives enough reports will be removed until addressed by a page administrator.
 
 ## Technologies
-* **Back-end:** Ruby on Rails, PostgreSQL
+* **Back-end:** Ruby on Rails
 * **Front-end:** React.js, Javascript/JQuery, HTML/CSS
-* **Testing:** RSpec
+* **Testing:** RSpec, factory_girl
 * **Deployment:** Heroku, AWS CloudFront
 
 ## Contact author
