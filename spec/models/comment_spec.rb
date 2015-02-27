@@ -7,6 +7,8 @@ RSpec.describe Comment, :type => :model do
   it { should validate_presence_of :content }
   it { should validate_presence_of :post_id }
 
+  it_behaves_like "Content"
+
   describe '#generate_author_name' do
     it 'is called upon creation of comment' do
       comment = build(:comment)

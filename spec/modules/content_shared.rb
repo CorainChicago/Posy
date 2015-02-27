@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+# This file is loaded in ../support/loading.rb so that
+# it can be referenced in multiple other files.
+
 RSpec.shared_examples "Content" do
   let(:content) { create(described_class) }
   let(:flagged_content) { create(described_class, status: -1) }
@@ -54,12 +57,4 @@ RSpec.shared_examples "Content" do
     end
   end
 
-end
-
-RSpec.describe Comment do
-  it_behaves_like "Content"
-end
-
-RSpec.describe Post do
-  it_behaves_like "Content"
 end

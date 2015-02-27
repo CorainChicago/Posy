@@ -1,0 +1,1 @@
+require_relative '../modules/content_shared.rb'

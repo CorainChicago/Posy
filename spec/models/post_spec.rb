@@ -7,6 +7,8 @@ RSpec.describe Post, :type => :model do
   it { should validate_presence_of :content }
   it { should validate_presence_of :location }
 
+  it_behaves_like "Content"
+
   describe '#has_priority_comment?' do
     let(:post) { create(:post_with_comments) }
 
