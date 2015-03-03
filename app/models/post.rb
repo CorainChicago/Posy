@@ -8,14 +8,15 @@ class Post < ActiveRecord::Base
   validates :content, :location, presence: true
 
   def self.get_posts_by_location(args = {})
-    flag_ids = Flagging.retreive_flagged_content(args[:session_id])
-    post_flags = flag_ids[:posts]
+    flagged_post_ids = Flagging.posts_flagged_by_session(args[:session_id])
+                               .pluck(:flaggable_id)
+
     location_id = args[:location_id]
     batch_size = args[:batch_size]
     
     self.where(location_id: location_id)
         .where("status >= ?", 0)
-        .where.not(id: post_flags)
+        .where.not(id: flagged_post_ids)
         .order(id: :desc)
         .limit(batch_size)
         .includes(:comments)

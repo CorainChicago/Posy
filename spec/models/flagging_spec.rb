@@ -5,7 +5,7 @@ RSpec.describe Flagging, :type => :model do
   it { should belong_to :flaggable }
 
   describe 'after_create callback' do
-    it 'should notify its flaggable to #update_flagged_count' do
+    it 'notifies its flaggable to #update_flagged_count' do
       flaggable = build(:post)
 
       expect(flaggable).to receive(:update_flagged_count)
@@ -14,7 +14,7 @@ RSpec.describe Flagging, :type => :model do
   end
 
   describe 'uniqueness validation' do
-    it 'should not log multiple flaggings of same flaggable by single session' do
+    it 'does not log multiple flaggings of same flaggable by single session' do
       flagging_one = create(:flagging, session_id: "0")
       flagging_two = build(:flagging, session_id: "0", flaggable: flagging_one.flaggable)
       
@@ -22,9 +22,41 @@ RSpec.describe Flagging, :type => :model do
     end
   end
 
-  describe '.retreive_flagged_content' do
-    # I strongly suspect I will change/remove this method shortly
-    pending
+  describe 'class methods to retrieve flagged content' do
+    let(:session) { "test_session" }
+
+    before(:context) do
+      create(:flagging, session_id: "foo")
+      create(:flagging_for_comment, session_id: "test")
+    end
+
+    let(:flagged_post) { create(:flagging, session_id: session) }
+    let(:flagged_comment) { create(:flagging_for_comment, session_id: session) }
+
+    describe '.flagged_by_session' do
+      it 'returns flagged content for a given session_id' do
+        flagged = Flagging.flagged_by_session(session)
+
+        expect(flagged).to match_array([flagged_post, flagged_comment])
+      end
+    end
+
+    describe '.posts_flagged_by_session' do
+
+      it 'returns flagged posts for a given session_id' do
+        flagged = Flagging.posts_flagged_by_session(session)
+
+        expect(flagged).to match_array([flagged_post])
+      end
+    end
+
+    describe '.comments_flagged_by_session' do
+      it 'returns flagged comments for a given session_id' do
+        flagged = Flagging.comments_flagged_by_session(session)
+
+        expect(flagged).to match_array([flagged_comment])
+      end
+    end
   end
   
 end

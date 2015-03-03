@@ -5,22 +5,16 @@ class Flagging < ActiveRecord::Base
 
   after_create :notify_owner
 
-  def self.retreive_flagged_content(session_id)
-    flaggings = self.where(session_id: session_id)
-    flagged_ids = { posts: [], comments: [] }
+  def self.flagged_by_session(session_id)
+    self.where(session_id: session_id)
+  end
 
-    # This enumeration is intended to reduce database queries to just one;
-    # these items may already be loaded into memory though, so I am unsure if
-    # enumeration is actually faster than multiple ActiveRecord queries.
-    flaggings.each do |flagging|
-      if flagging.flaggable_type == "Post"
-        flagged_ids[:posts] << flagging.flaggable_id
-      elsif flagging.flaggable_type == "Comment"
-        flagged_ids[:comments] << flagging.flaggable_id
-      end
-    end
+  def self.comments_flagged_by_session(session_id)
+    flagged_by_session(session_id).where(flaggable_type: Comment)
+  end
 
-    flagged_ids
+  def self.posts_flagged_by_session(session_id)
+    flagged_by_session(session_id).where(flaggable_type: Post)
   end
 
   def notify_owner
