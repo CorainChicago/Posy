@@ -15,7 +15,7 @@ class Location < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= name.downcase.strip.gsub(/ /, '-')
-    self.save
+    save
   end
 
 end
