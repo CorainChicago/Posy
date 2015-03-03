@@ -5,7 +5,7 @@ class Location < ActiveRecord::Base
 
   validates :name, presence: true
 
-  after_create { generate_slug }
+  after_create :generate_slug
 
   def to_param
     slug
