@@ -25,7 +25,7 @@ RSpec.describe Flagging, :type => :model do
   describe 'class methods to retrieve flagged content' do
     let(:session) { "test_session" }
 
-    before(:context) do
+    before(:each) do
       create(:flagging, session_id: "foo")
       create(:flagging_for_comment, session_id: "test")
     end
