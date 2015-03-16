@@ -1,12 +1,21 @@
 # Posy
-Compliments for those around you.
 
-**Check it out at [Posy.us](http://www.posy.us/demo)**
+[**View Live / Demo Site**](http://www.posy.us/demo)
+
+## About
+Posy was built to learn about **React.js** and to continue gaining experience building with **Ruby on Rails** and testing with **RSpec**.  Along the way, I gained a little experience with **factory_girl** and **AWS CloudFront** (along with a very frustrating CORS restriction on fonts).
+
+Posy is divided into pages for smallish communities like colleges and universities.  Users can anonymously read, post, comment, and report content.  Subjects are identified by location and optionally by hair color and gender.
+
 
 ## Features
-For small_ish_ communities like colleges and universities, users can anonymously post and comment on messages about the people around them.  Subjects are identified by location and optionally by gender and hair color. For each post, pages attempt to identify comments by the author and multiple comments by the same user to facilitate conversations.
+* Single page for reading, posting, commenting, and reporting
+* Comments are anonymous, but sessions are recorded so that comments are hopefully shown to be by the same person.
+* Administrative panel to remove/clear content
+* Offensive comment is removed automatically through user reporting
+* Responsively designed
+* Model unit testing with RSpec
 
-Abusive content can be reported, and content that receives enough reports will be removed until addressed by a page administrator.
 
 ## Technologies
 * **Back-end:** Ruby on Rails
@@ -15,4 +24,4 @@ Abusive content can be reported, and content that receives enough reports will b
 * **Deployment:** Heroku, AWS CloudFront
 
 ## Contact author
-[Email](mailto:wilchandler2@gmail.com) | [Twitter](https://twitter.com/wil_chandler) | [LinkedIn](http://www.linkedin.com/in/wilchandler) | [GitHub](https://github.com/wilchandler) | [Website](http://www.wilchandler.me)
+[Website](http://www.wilchandler.me) | [Email](mailto:wilchandler2@gmail.com) | [Twitter](https://twitter.com/wil_chandler) | [LinkedIn](http://www.linkedin.com/in/wilchandler) | [GitHub](https://github.com/wilchandler)
