@@ -9,7 +9,7 @@ Posy is divided into pages for smallish communities like colleges and universiti
 
 
 ## Features
-* Single page for reading, posting, commenting, and reporting
+* Single page for reading, posting, commenting, and reporting for each location
 * Comments are anonymous, but sessions are recorded so that comments are hopefully shown to be by the same person.
 * Administrative panel to remove/clear content
 * Offensive comment is removed automatically through user reporting
