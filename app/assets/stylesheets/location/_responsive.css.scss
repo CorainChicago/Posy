@@ -3,6 +3,11 @@
     width: 60%;
   }
 
+  #location-header {
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+  }
+
   #new-post-form {
     width: 66%;
   }

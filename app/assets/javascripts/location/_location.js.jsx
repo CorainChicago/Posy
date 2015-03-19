@@ -4,8 +4,8 @@ $('.locations.show').ready(function(e) {
 
   startReact();
 
-  var $arrow = $('#location-arrow-up'),
-      $pen = $('#location-write-icon'),
+  // var $arrow = $('#location-arrow-up')
+  var $pen = $('#location-write-icon'),
       $body = $('html,body'),
       $formContainer = $("#location-new-post"),
       $closeIcon = $(".close-icon"),
@@ -33,10 +33,10 @@ $('.locations.show').ready(function(e) {
     }
   });
 
-  $arrow.click(function(event) {
-    event.preventDefault();
-    scrollToY(0, $body);
-  });
+  // $arrow.click(function(event) {
+  //   event.preventDefault();
+  //   scrollToY(0, $body);
+  // });
 
   $pen.click(function(event) {
     event.preventDefault();
