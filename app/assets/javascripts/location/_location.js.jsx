@@ -8,7 +8,30 @@ $('.locations.show').ready(function(e) {
       $pen = $('#location-write-icon'),
       $body = $('html,body'),
       $formContainer = $("#location-new-post"),
-      $closeIcon = $(".close-icon");
+      $closeIcon = $(".close-icon"),
+      $header = $('#location-header'),
+      $locationBody = $('#location-body-container'),
+      $window = $(window),
+      headerFixed = false,
+      headerOffset = 10; //height of colored trim at top of page
+
+  // this is added without jQuery because this page's React will
+  // remove a $(window).scroll event listener in some situations
+  window.addEventListener('scroll', function() {
+    var height = window.pageYOffset;
+    if (!headerFixed && height > headerOffset) {
+      headerFixed = true;
+      $header.css('position', 'fixed');
+      $header.css('top', 0);
+      $locationBody.css('margin-top', $header.height() + headerOffset);
+    }
+    else if (headerFixed && height < headerOffset) {
+      headerFixed = false;
+      $header.css('position', 'relative');
+      $header.css('top', headerOffset);
+      $locationBody.css('margin-top', 0);
+    }
+  });
 
   $arrow.click(function(event) {
     event.preventDefault();

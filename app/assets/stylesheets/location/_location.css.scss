@@ -17,6 +17,12 @@
     padding: 1em 3em;
     border-bottom: 1px solid $light-light-gray;
 
+    background-color: white;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+    width: 100%;
+    height: 4em;
+
     #location-brand {
       font-size: 1.25em;
       color: $feature-color;
