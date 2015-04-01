@@ -4,7 +4,6 @@ $('.locations.show').ready(function(e) {
 
   startReact();
 
-  // var $arrow = $('#location-arrow-up')
   var $pen = $('#location-write-icon'),
       $body = $('html,body'),
       $formContainer = $("#location-new-post"),
@@ -32,12 +31,7 @@ $('.locations.show').ready(function(e) {
       $locationBody.css('margin-top', 0);
     }
   });
-
-  // $arrow.click(function(event) {
-  //   event.preventDefault();
-  //   scrollToY(0, $body);
-  // });
-
+  
   $pen.click(function(event) {
     event.preventDefault();
     togglePostForm($formContainer, $body);
@@ -65,7 +59,7 @@ var togglePostForm = function($formContainer, $body) {
     $formContainer = $("#location-new-post");
   }
 
-  $formContainer.toggle(500, function() {
+  $formContainer.slideToggle(500, function() {
     var y = $formContainer.offset().top;
     if ($formContainer.is(':visible')) {
       scrollToY(y - 100, $body);
@@ -77,7 +71,7 @@ var togglePostForm = function($formContainer, $body) {
 };
 
 var handleCloseIconClick = function(icon) {
-  $(icon).closest('.closable-container').hide(500);
+  $(icon).closest('.closable-container').slideToggle(500);
 };
 
 var getText = function($input) {

@@ -171,7 +171,7 @@ var CommentList = React.createClass({
     }
     else {
       $('.new-comment:visible').hide(250);
-      $(form).show(250);
+      $(form).slideDown(250);
     }
   },
 
